@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlatFleet.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15,0" Spacing="30">
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Frame CornerRadius="20" WidthRequest="600" HeightRequest="600" Rotation="25"
+                       AbsoluteLayout.LayoutBounds="0.1,1,400,100"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       Padding="0"
+                       IsClippedToBounds="True">
+                    <Image Source="@string/ff_main_cop.png" Aspect="AspectFill"/>
+                </Frame>
+            </AbsoluteLayout>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Frame CornerRadius="360" WidthRequest="100" HeightRequest="100"
+                       AbsoluteLayout.LayoutBounds="0.1,12,40,300"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       Padding="0"
+                       IsClippedToBounds="True">
+                    <Image Source="@string/logo_white.png" Aspect="AspectFill"/>
+                </Frame>
+            </AbsoluteLayout>
+            <Label Text="FlatFleet" FontSize="41"/>
+            <Label Text="Lorem ipsum dolor sit amet consectetur. Mi enim dignissim vitae quam quis fringilla sodales. Sed vel pellentesque nec proin"
+                   Margin="2,-20,20,20"
+                   TextColor="Gray"
+                   FontSize="18"/>
+            <Button Text="Get Started" TextColor="White" Margin="0,-20,0,20"
+                    HorizontalOptions="Fill" BackgroundColor="Blue"/>
+            <Button Text="Sign In" TextColor="Blue" Margin="0,-35,0,20"
+                    BackgroundColor="White" BorderWidth="1"
+                    HorizontalOptions="Fill" BorderColor="Blue"
+                    Clicked="OnSignInBtn_Click"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
