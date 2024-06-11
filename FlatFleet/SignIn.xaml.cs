@@ -1,9 +1,14 @@
-namespace FlatFleet;
+using Microsoft.Maui.Controls;
+using Navigation;
 
-public partial class SignIn : ContentPage
+namespace FlatFleet
 {
-	public SignIn()
-	{
-		InitializeComponent();
-	}
+    public partial class SignIn : ContentPage
+    {
+        public SignIn()
+        {
+            InitializeComponent();
+            BindingContext = new SignInViewModel();
+        }
+    }
 }
