@@ -30,7 +30,8 @@
                    TextColor="Gray"
                    FontSize="18"/>
             <Button Text="Get Started" TextColor="White" Margin="0,-20,0,20"
-                    HorizontalOptions="Fill" BackgroundColor="Blue"/>
+                    HorizontalOptions="Fill" BackgroundColor="Blue"
+                    Clicked="OnGetStartedBtn_Click"/>
             <Button Text="Sign In" TextColor="Blue" Margin="0,-35,0,20"
                     BackgroundColor="White" BorderWidth="1"
                     HorizontalOptions="Fill" BorderColor="Blue"

@@ -13,6 +13,10 @@ namespace FlatFleet
         {
             await NavigationService.Navigate(typeof(SignIn));
         }
+        public async void OnGetStartedBtn_Click(object sender, EventArgs e)
+        {
+            await NavigationService.Navigate(typeof(GetStarted));
+        }
     }
 
 }
