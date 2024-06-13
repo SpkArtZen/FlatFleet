@@ -108,10 +108,19 @@
 
             <Label Text="Forgot password?" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="0,0,25,0" TextColor="Blue"/>
         </Grid>
-        <Button Text="Continue" BackgroundColor="Blue" TextColor="White" VerticalOptions="Center" HorizontalOptions="Fill" Margin="20,15,20,0" FontAttributes="Bold"/>
+        <Button Text="Continue" BackgroundColor="Blue" TextColor="White" VerticalOptions="Center" HorizontalOptions="Fill" Margin="20,15,20,0" FontAttributes="Bold">
+            <Button.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CreateAccountCommand}" />
+            </Button.GestureRecognizers>
+        </Button>
         <HorizontalStackLayout>
             <Label Text="Don't have an account?" HorizontalOptions="Center" Margin="90, 10, -5, 0"/>
-            <Label Text="Sign Up" Margin="10" TextColor="Blue"/>
+
+            <Label Text="Sign Up" Margin="10" TextColor="Blue">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CreateAccountCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

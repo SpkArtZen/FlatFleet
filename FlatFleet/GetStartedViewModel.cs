@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
+using Navigation;
 
 namespace FlatFleet
 {
@@ -86,7 +87,7 @@ namespace FlatFleet
             else if (clickCount == 2)
             {
                 // Перехід на сторінку SignIn
-                await Application.Current.MainPage.Navigation.PushAsync(new SignIn());
+                await NavigationService.NavigateTo(typeof(SignIn));
             }
         }
 
@@ -96,5 +97,6 @@ namespace FlatFleet
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }

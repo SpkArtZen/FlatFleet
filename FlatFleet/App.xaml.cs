@@ -7,13 +7,7 @@ namespace FlatFleet
         {
             InitializeComponent();
 
-            var navPage = new NavigationPage(new MainPage())
-            {
-                BarBackgroundColor = Colors.Transparent,
-                BarTextColor = Colors.White
-            };
-
-            MainPage = navPage;
+            MainPage = new NavigationPage(new MainPage()); // Встановлення головної сторінки з навігацією
         }
     }
 }

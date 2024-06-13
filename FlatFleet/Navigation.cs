@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,18 +9,22 @@ namespace Navigation
 {
     public class NavigationService
     {
-        public static async Task Navigate(Type page)
+        public static async Task NavigateTo(Page page)
         {
-            try
+            if (Application.Current.MainPage is NavigationPage navigationPage)
             {
-                var Page = (Page)Activator.CreateInstance(page);
-                await Application.Current.MainPage.Navigation.PushAsync(Page);
+                await navigationPage.PushAsync(page);
             }
-            catch
+            else
             {
-                throw new ArgumentException("Page not found");
+                Application.Current.MainPage = new NavigationPage(page);
             }
         }
-        
+
+        public static async Task NavigateTo(Type pageType)
+        {
+            var page = (Page)Activator.CreateInstance(pageType);
+            await NavigateTo(page);
+        }
     }
 }
