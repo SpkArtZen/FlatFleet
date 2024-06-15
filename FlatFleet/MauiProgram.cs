@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using CommunityToolkit.Maui;
+using Microsoft.Maui.Controls.Compatibility.Hosting;
 
 namespace FlatFleet
 {
@@ -9,6 +11,7 @@ namespace FlatFleet
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
