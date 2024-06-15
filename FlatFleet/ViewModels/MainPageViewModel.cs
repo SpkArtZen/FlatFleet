@@ -2,13 +2,13 @@
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace FlatFleet
+namespace FlatFleet.ViewModels
 {
     public class MainPageViewModel : BindableObject
     {
         public ICommand OnSignInCommand { get; }
         public ICommand ToGetStartedCommand { get; }
-        public MainPageViewModel() 
+        public MainPageViewModel()
         {
             ToGetStartedCommand = new Command(OnGetStartedBtn_Click);
             OnSignInCommand = new Command(OnSignIn);

@@ -1,12 +1,12 @@
 ﻿using Navigation;
 using System.Windows.Input;
 
-namespace FlatFleet
+namespace FlatFleet.ViewModels
 {
-    public class NewPasswordAcceptedViewModel : BindableObject
+    public class PrivacyPolicyViewModel : BindableObject
     {
         public ICommand OnSignInCommand { get; }
-        public NewPasswordAcceptedViewModel()
+        public PrivacyPolicyViewModel()
         {
             OnSignInCommand = new Command(OnSignIn);
         }

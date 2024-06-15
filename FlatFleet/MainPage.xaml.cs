@@ -1,4 +1,6 @@
 ﻿
+using FlatFleet.ViewModels;
+
 namespace FlatFleet
 {
     public partial class MainPage : ContentPage

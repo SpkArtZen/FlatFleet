@@ -1,7 +1,7 @@
 ﻿using Navigation;
 using System.Windows.Input;
 
-namespace FlatFleet
+namespace FlatFleet.ViewModels
 {
     public class SignInViewModel
     {
@@ -10,7 +10,7 @@ namespace FlatFleet
         public ICommand LoginWithAppleCommand { get; }
         public ICommand CreateAccountCommand { get; }
         public ICommand ForgotPasswordCommand { get; }
-        public SignInViewModel() 
+        public SignInViewModel()
         {
             LoginWithGoogleCommand = new Command(OnLoginWithGoogle);
             LoginWithFacebookCommand = new Command(OnLoginWithFacebook);

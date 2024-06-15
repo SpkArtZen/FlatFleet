@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
 
-namespace FlatFleet
+namespace FlatFleet.ViewModels
 {
     public class GetStartedViewModel : BindableObject, INotifyPropertyChanged
     {

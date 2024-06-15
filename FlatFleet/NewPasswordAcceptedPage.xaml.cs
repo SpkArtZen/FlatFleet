@@ -1,3 +1,5 @@
+using FlatFleet.ViewModels;
+
 namespace FlatFleet;
 
 public partial class NewPasswordAcceptedPage : ContentPage

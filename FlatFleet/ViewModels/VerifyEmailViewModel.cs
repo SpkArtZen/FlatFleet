@@ -1,12 +1,12 @@
 ﻿using Navigation;
 using System.Windows.Input;
 
-namespace FlatFleet
+namespace FlatFleet.ViewModels
 {
     public class VerifyEmailViewModel : BindableObject
     {
         public ICommand VerifyCodeOnEmail { get; }
-        public VerifyEmailViewModel() 
+        public VerifyEmailViewModel()
         {
             VerifyCodeOnEmail = new Command(CheckEmailCode);
         }

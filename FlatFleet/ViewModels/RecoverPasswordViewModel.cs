@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Navigation;
 
-namespace FlatFleet
+namespace FlatFleet.ViewModels
 {
     public class RecoverPasswordViewModel : BindableObject
     {

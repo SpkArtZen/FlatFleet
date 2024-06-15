@@ -1,7 +1,7 @@
 ﻿using Navigation;
 using System.Windows.Input;
 
-namespace FlatFleet
+namespace FlatFleet.ViewModels
 {
     public class EntryNewPasswordPageViewModel : BindableObject
     {
