@@ -2,13 +2,48 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlatFleet.TermsOfServicePage"
-             Title="TermsOfServicePage">
+             Title="TermsOfServicePage"
+             NavigationPage.HasNavigationBar="False">
     <ScrollView>
         <VerticalStackLayout>
-            <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            <Frame Padding="0" BorderColor="White" HeightRequest="30" Margin="20">
+                <Image Source="@string/close_icon.png" HorizontalOptions="End" VerticalOptions="End" Aspect="AspectFill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnCloseDocument}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+            <Label Text="Term Of Service Page" FontSize="35" FontAttributes="Bold" Margin="15,-30,0,0"/>
+            <Label Text="Lorem ipsum dolor sit amet consectetur.
+Malesuada vitae id tempus aliquet pharetra netus
+nam nulla. Mattis et velit tincidunt proin nunc.
+Amet volutpat viverra diam ullamcorper mauris
+leo. Luctus faucibus viverra sit vitae elementum
+cras rhoncus scelerisque nisl.
+Fames pulvinar viverra nisi at at augue mi cras.
+Sodales pharetra tortor eu eu. Sagittis et faucibus
+lacus faucibus diam aliquam. Pellentesque
+dignissim viverra leo enim pretium diam integer ac
+eget.
+Convallis quis montes sit enim vivamus neque
+nulla. Ullamcorper curabitur faucibus tellus non in
+mauris euismod tempus. Turpis pulvinar ut vitae
+leo sollicitudin ultrices dapibus.
+Lorem ipsum dolor sit amet consectetur.
+Malesuada vitae id tempus aliquet pharetra netus
+nam nulla. Mattis et velit tincidunt proin nunc.
+Amet volutpat viverra diam ullamcorper mauris
+leo.
+Luctus faucibus viverra sit vitae elementum cras
+rhoncus scelerisque nisl. Fames pulvinar viverra
+nisi at at augue mi cras.
+
+Fames pulvinar viverra nisi at at augue mi cras.
+Sodales pharetra tortor eu eu. Sagittis et faucibus
+lacus faucibus diam aliquam. Pellentesque
+dignissim viverra leo enim pretium diam integer ac
+eget."
+                FontSize="Small" Margin="20"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

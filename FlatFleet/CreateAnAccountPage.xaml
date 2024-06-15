@@ -91,20 +91,20 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label Text="Terms of Service"
-                   TextColor="Blue" Grid.Column="0">
+                   TextColor="{StaticResource Blue}" Grid.Column="0">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnTermsOfServiceCommand}" />
                 </Label.GestureRecognizers> 
             </Label>
             <Label Text=" and " Grid.Column="1"/>
             <Label Text="Privacy Policy"
-                   TextColor="Blue" Grid.Column="2">
+                   TextColor="{StaticResource Blue}" Grid.Column="2">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnPrivacePolicyCommand}" />
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
-        <Button Text="Continue" Background="Blue" HorizontalOptions="FillAndExpand" Margin ="20" VerticalOptions="Center" />
+        <Button Text="Continue" Background="{StaticResource AddButtonBlue}" HorizontalOptions="FillAndExpand" Margin ="20" VerticalOptions="Center" />
         <Grid HorizontalOptions="Center" ColumnSpacing="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -112,7 +112,7 @@
             </Grid.ColumnDefinitions>
             <Label Text="Already have an account?"/>
             <Label Text="Sign In"
-           TextColor="Blue" Grid.Column="1">
+           TextColor="{StaticResource Blue}" Grid.Column="1">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnSignInCommand}" />
                 </Label.GestureRecognizers>

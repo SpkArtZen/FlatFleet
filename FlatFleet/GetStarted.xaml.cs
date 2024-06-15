@@ -5,11 +5,11 @@ public partial class GetStarted : ContentPage
 	public GetStarted()
 	{
 		InitializeComponent();
-        BindingContext = new GetStartedViewModel();
+        BindingContext = new Model();
     }
     private async void GetStartedBtn_click(object sender, EventArgs e)
 	{
-        if (BindingContext is GetStartedViewModel viewModel)
+        if (BindingContext is Model viewModel)
         {
             viewModel.GetStartedCommand.Execute(null);
         }

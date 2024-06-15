@@ -1,8 +1,8 @@
 namespace FlatFleet;
 
-public partial class PrivacyPolicyPage : ContentPage
+public partial class RecoverPasswordPage : ContentPage
 {
-	public PrivacyPolicyPage()
+	public RecoverPasswordPage()
 	{
 		InitializeComponent();
 		BindingContext = new Model();

@@ -46,8 +46,8 @@
                 <TapGestureRecognizer Command="{Binding LoginWithGoogleCommand}" />
             </Frame.GestureRecognizers>
         </Frame>
-        
-        <Frame Grid.ColumnSpan="2" BackgroundColor="Blue" CornerRadius="5" Padding="10" HeightRequest="40" WidthRequest="350" HasShadow="False" Margin="10,10,10,0">
+
+        <Frame Grid.ColumnSpan="2" BackgroundColor="{StaticResource Blue}" CornerRadius="5" Padding="10" HeightRequest="40" WidthRequest="350" HasShadow="False" Margin="10,10,10,0">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
                 <Image Source="@string/facebook_icon.png" WidthRequest="30" HeightRequest="30" Margin="10,10,-7,10"/>
                 <Label Text="Login with Facebook" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" Margin="13,0,0,0" FontAttributes="Bold"/>
@@ -106,9 +106,14 @@
             
             <Label Text="Remember me" VerticalOptions="Center" HorizontalOptions="Start" Margin="0" Grid.Column="1"/>
 
-            <Label Text="Forgot password?" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="0,0,25,0" TextColor="Blue"/>
+            <Label Text="Forgot password?" VerticalOptions="Center" HorizontalOptions="End" Grid.Column="2" Margin="0,0,25,0" TextColor="{StaticResource Blue}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
         </Grid>
-        <Button Text="Continue" BackgroundColor="Blue" TextColor="White" VerticalOptions="Center" HorizontalOptions="Fill" Margin="20,15,20,0" FontAttributes="Bold">
+        <Button Text="Continue" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Fill" Margin="20,15,20,0" FontAttributes="Bold">
             <Button.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding CreateAccountCommand}" />
             </Button.GestureRecognizers>
@@ -116,7 +121,7 @@
         <HorizontalStackLayout>
             <Label Text="Don't have an account?" HorizontalOptions="Center" Margin="90, 10, -5, 0"/>
 
-            <Label Text="Sign Up" Margin="10" TextColor="Blue">
+            <Label Text="Sign Up" Margin="10" TextColor="{StaticResource Blue}">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding CreateAccountCommand}" />
                 </Label.GestureRecognizers>
