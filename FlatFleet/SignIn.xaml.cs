@@ -5,10 +5,8 @@ namespace FlatFleet
         public SignIn()
         {
             InitializeComponent();
-            BindingContext = new Model();
+            BindingContext = new SignInViewModel();
         }
     }
-
-    
 }
 

@@ -5,7 +5,7 @@ namespace FlatFleet
 		public CreateAnAccountPage()
 		{
 			InitializeComponent();
-			BindingContext = new Model();
+			BindingContext = new CreateAnAccountViewModel();
         }
 	}
 }

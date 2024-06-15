@@ -6,7 +6,7 @@ namespace FlatFleet
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new Model();
+            BindingContext = new MainPageViewModel();
         }
         
     }

@@ -5,6 +5,6 @@ public partial class NewPasswordAcceptedPage : ContentPage
 	public NewPasswordAcceptedPage()
 	{
 		InitializeComponent();
-		BindingContext = new Model();
+		BindingContext = new NewPasswordAcceptedViewModel();
 	}
 }

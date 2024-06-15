@@ -5,6 +5,6 @@ public partial class PrivacyPolicyPage : ContentPage
 	public PrivacyPolicyPage()
 	{
 		InitializeComponent();
-		BindingContext = new Model();
+		BindingContext = new PrivacyPolicyViewModel();
 	}
 }

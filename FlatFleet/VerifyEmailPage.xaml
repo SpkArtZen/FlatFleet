@@ -9,7 +9,7 @@
                FontSize="24"
                FontAttributes="Bold"
                VerticalOptions="Center"
-               HorizontalOptions="Center" />
+               HorizontalOptions="Start" />
     </NavigationPage.TitleView>
     <VerticalStackLayout>
         <Frame Padding="0" HeightRequest="120" WidthRequest="120" BorderColor="White" Margin="0,90,0,0">

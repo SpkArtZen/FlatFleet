@@ -5,6 +5,6 @@ public partial class TermsOfServicePage : ContentPage
 	public TermsOfServicePage()
 	{
 		InitializeComponent();
-		BindingContext = new Model();
+		BindingContext = new TermsOfServiceViewModel();
 	}
 }

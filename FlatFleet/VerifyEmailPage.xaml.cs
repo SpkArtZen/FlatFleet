@@ -5,7 +5,7 @@ public partial class VerifyEmailPage : ContentPage
 	public VerifyEmailPage()
 	{
 		InitializeComponent();
-		BindingContext = new Model();
+		BindingContext = new VerifyEmailViewModel();
 	}
     private void Entry_TextChanged(object sender, TextChangedEventArgs e)
     {
