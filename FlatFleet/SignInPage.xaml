@@ -79,7 +79,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="@string/email_logo.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Grid.Column="0" Margin="20,0" />
-                <Entry Placeholder="Email" Grid.Column="1" VerticalOptions="Center" Margin="0,0,5,0" />
+                <Entry 
+                    Placeholder="Email" 
+                    Grid.Column="1" 
+                    VerticalOptions="Center" 
+                    Margin="0,0,5,0" 
+                    Text="{Binding Email}"/>
             </Grid>
         </Frame>
 
@@ -91,7 +96,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="@string/password_logo.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Grid.Column="0" Margin="20,0" />
-                <Entry Placeholder="Password" Grid.Column="1" VerticalOptions="Center" Margin="0,0,40,0" />
+                <Entry 
+                    Placeholder="Password" 
+                    Grid.Column="1" 
+                    VerticalOptions="Center" 
+                    Margin="0,0,40,0" 
+                    Text="{Binding Password}"/>
                 <Image Source= "@string/hide_icon.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"  Grid.Column="1"/>
             </Grid>
         </Frame>
@@ -115,7 +125,7 @@
         </Grid>
         <Button Text="Continue" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Fill" Margin="20,15,20,0" FontAttributes="Bold">
             <Button.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding SelectAccountCommand}" />
+                <TapGestureRecognizer Command="{Binding SignInCommand}" />
             </Button.GestureRecognizers>
         </Button>
         <HorizontalStackLayout>

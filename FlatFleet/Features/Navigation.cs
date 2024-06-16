@@ -1,4 +1,4 @@
-﻿namespace Navigation
+﻿namespace FlatFleet.Features.Navigation
 {
     public class NavigationService
     {

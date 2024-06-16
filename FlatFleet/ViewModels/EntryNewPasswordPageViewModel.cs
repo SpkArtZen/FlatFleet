@@ -1,4 +1,4 @@
-﻿using Navigation;
+﻿using FlatFleet.Features.Navigation;
 using System.Windows.Input;
 
 namespace FlatFleet.ViewModels

@@ -2,7 +2,7 @@
 using Firebase.Auth;
 using FlatFleet.Features.SignUp;
 using FlatFleet.ViewModels;
-using Navigation;
+using FlatFleet.Features.Navigation;
 
 namespace FlatFleet
 {
