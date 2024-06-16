@@ -23,6 +23,7 @@
             <mtc:Expander IsExpanded="{Binding IsOpened}">
                 <mtc:Expander.Header>
                     <StackLayout Orientation="Horizontal" HeightRequest="42" Padding="10">
+                        <Label Text="{Binding SearchIcon}" HorizontalOptions="Start"/>
                         <Label HorizontalOptions="Start" Text="{Binding SelectedText}"/>
                         <Label Text="&#9660;" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
                     </StackLayout>
@@ -32,7 +33,7 @@
                         <CollectionView ItemsSource ="{Binding TypesOfAccount}" HeightRequest="130" >
                             <CollectionView.ItemTemplate BorderColor="Gray">
                                 <DataTemplate>
-                                    <Label Text="{Binding}" Margin="10,2,10,10">
+                                    <Label x:Name ="TypePage" Text="{Binding}" Margin="10,2,10,10">
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding BindingContext.SelectedItem, Source={x:Reference SelectAccountType}}"
                                                               CommandParameter="{Binding .}"
@@ -46,5 +47,9 @@
                 </mtc:Expander.Content>
             </mtc:Expander>
         </Frame>
+        <Button Text="Submit" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" FontFamily="SFProText-Semibold" 
+                FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"
+                Command="{Binding ContinueWithThisTypeCommand}">
+        </Button>
     </VerticalStackLayout>
 </ContentPage>

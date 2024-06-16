@@ -1,11 +1,24 @@
-﻿using MvvmHelpers;
+﻿using CommunityToolkit.Maui.ImageSources;
+using MvvmHelpers;
+using Navigation;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace FlatFleet.ViewModels
 {
     public class SelectAccountTypeViewModel : BaseViewModel
-    { 
+    {
+        public string _searchIcon = "";
+        public string SearchIcon
+        {
+            get { return _searchIcon; }
+            set
+            {
+                SetProperty(ref _searchIcon, value);
+            }
+        }
+
         private string _selectedText = "Select the item";
         public string SelectedText
         {
@@ -36,19 +49,18 @@ namespace FlatFleet.ViewModels
             }
         }
 
-        public Command SelectedItem
+        private string _isSelected = "";
+        public string IsSelected
         {
-            get
+            get { return _isSelected; }
+            set
             {
-                return new Command((obj) => SelectedItemAction(obj));
+                SetProperty(ref _isSelected, value);
             }
         }
 
-        private void SelectedItemAction(object obj)
-        {
-            IsOpened = false;
-            SelectedText = obj.ToString();
-        }
+        public ICommand SelectedItem { get; }
+        public ICommand ContinueWithThisTypeCommand { get; private set; }
 
         public SelectAccountTypeViewModel()
         {
@@ -59,6 +71,38 @@ namespace FlatFleet.ViewModels
                 "The tenant of the house",
                 "Doubt"
             };
+
+            SelectedItem = new Command((obj) => SelectedItemAction(obj));
+            ContinueWithThisTypeCommand = new Command(ContinueWithDefaultPage);
+        }
+
+        private void SelectedItemAction(object obj)
+        {
+            IsOpened = false;
+            SearchIcon = "\U0001F50E";
+            IsSelected = "\u2713";
+            SelectedText = obj.ToString();
+
+            if (SelectedText == "Management company")
+            {
+                ContinueWithThisTypeCommand = new Command(ContinueWithCompanyPage);
+            }
+            else
+            {
+                ContinueWithThisTypeCommand = new Command(ContinueWithDefaultPage);
+            }
+
+            OnPropertyChanged(nameof(ContinueWithThisTypeCommand));
+        }
+
+        private async void ContinueWithCompanyPage()
+        {
+            await NavigationService.NavigateTo(typeof(ManagementCompanyPage));
+        }
+
+        private async void ContinueWithDefaultPage()
+        {
+            await NavigationService.NavigateTo(typeof(MainPage));
         }
     }
 }
