@@ -1,23 +1,18 @@
-﻿using System.Collections.ObjectModel;
+﻿using MvvmHelpers;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace FlatFleet.ViewModels
 {
-    public class SelectAccountTypeViewModel : BindableObject, INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-
+    public class SelectAccountTypeViewModel : BaseViewModel
+    { 
         private string _selectedText = "Select the item";
         public string SelectedText
         {
             get { return _selectedText; }
             set
             {
-                if (_selectedText != value)
-                {
-                    _selectedText = value;
-                    OnPropertyChanged(nameof(SelectedText));
-                }
+                SetProperty(ref _selectedText, value);
             }
         }
 
@@ -27,11 +22,7 @@ namespace FlatFleet.ViewModels
             get { return _isOpened; }
             set
             {
-                if (_isOpened != value)
-                {
-                    _isOpened = value;
-                    OnPropertyChanged(nameof(IsOpened));
-                }
+                SetProperty(ref _isOpened, value);
             }
         }
 
@@ -41,11 +32,7 @@ namespace FlatFleet.ViewModels
             get { return _types; }
             set
             {
-                if (_types != value)
-                {
-                    _types = value;
-                    OnPropertyChanged(nameof(TypesOfAccount));
-                }
+                SetProperty(ref _types, value);
             }
         }
 
@@ -72,11 +59,6 @@ namespace FlatFleet.ViewModels
                 "The tenant of the house",
                 "Doubt"
             };
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

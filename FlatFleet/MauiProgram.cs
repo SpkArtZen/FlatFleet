@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using CommunityToolkit.Maui;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 
 namespace FlatFleet
@@ -27,7 +27,7 @@ namespace FlatFleet
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            object value = builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

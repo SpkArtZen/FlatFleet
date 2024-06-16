@@ -65,9 +65,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.1" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.0-preview.5.24307.10" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.0-preview.5.24307.10" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0-preview.5.24306.7" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
+		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -101,21 +102,6 @@
 	  <MauiXaml Update="VerifyEmailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
-	  <PackageReference Include="Xamarin.AndroidX.Navigation.Common">
-	    <Version>2.7.7.4</Version>
-	  </PackageReference>
-	  <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment">
-	    <Version>2.7.7.4</Version>
-	  </PackageReference>
-	  <PackageReference Include="Xamarin.AndroidX.Navigation.Runtime">
-	    <Version>2.7.7.4</Version>
-	  </PackageReference>
-	  <PackageReference Include="Xamarin.AndroidX.Navigation.UI">
-	    <Version>2.7.7.4</Version>
-	  </PackageReference>
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionFlatFleetHideInfoBar="True" /></VisualStudio></ProjectExtensions>
