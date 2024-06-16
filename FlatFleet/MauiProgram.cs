@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Firebase.Auth;
+using Firebase.Auth.Providers;
+using Microsoft.Extensions.Logging;
 
 namespace FlatFleet
 {
@@ -22,6 +24,15 @@ namespace FlatFleet
                     fonts.AddFont("SFProText-LightItalic.ttf", "SFProText-LightItalic");
                     fonts.AddFont("SFProText-Medium.ttf", "SFProText-Medium");
                 });
+            builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig()
+            {
+                ApiKey = "AIzaSyBGFWSnUtDTw0z508FPy5f_z8Z2aFeTw04",
+                AuthDomain = "flat-fleet.firebaseapp.com",
+                Providers = new FirebaseAuthProvider[]
+                {
+                    new EmailProvider()
+                }
+            }));
 
 #if DEBUG
     		builder.Logging.AddDebug();
