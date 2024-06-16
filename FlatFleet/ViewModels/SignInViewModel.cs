@@ -10,6 +10,7 @@ namespace FlatFleet.ViewModels
         public ICommand LoginWithAppleCommand { get; }
         public ICommand CreateAccountCommand { get; }
         public ICommand ForgotPasswordCommand { get; }
+        public ICommand SelectAccountCommand { get; }
         public SignInViewModel()
         {
             LoginWithGoogleCommand = new Command(OnLoginWithGoogle);
@@ -17,7 +18,13 @@ namespace FlatFleet.ViewModels
             LoginWithAppleCommand = new Command(OnLoginWithApple);
             CreateAccountCommand = new Command(OnCreateAccount);
             ForgotPasswordCommand = new Command(OnForgotPassword);
+            SelectAccountCommand = new Command(SelectAccountType);
         }
+        private async void SelectAccountType()
+        {
+            await NavigationService.NavigateTo(typeof(SelectAccountTypePage));
+        }
+
         private async void OnLoginWithGoogle()
         {
             await NavigationService.NavigateTo(typeof(MainPage));

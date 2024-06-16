@@ -115,7 +115,7 @@
         </Grid>
         <Button Text="Continue" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Fill" Margin="20,15,20,0" FontAttributes="Bold">
             <Button.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding CreateAccountCommand}" />
+                <TapGestureRecognizer Command="{Binding SelectAccountCommand}" />
             </Button.GestureRecognizers>
         </Button>
         <HorizontalStackLayout>

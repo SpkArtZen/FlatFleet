@@ -1,6 +1,8 @@
-﻿using Firebase.Auth;
+﻿using CommunityToolkit.Maui;
+using Firebase.Auth;
 using Firebase.Auth.Providers;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Compatibility.Hosting;
 
 namespace FlatFleet
 {
@@ -11,6 +13,7 @@ namespace FlatFleet
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -36,7 +39,7 @@ namespace FlatFleet
             builder.Services.AddTransient<SignUpPageViewModel> ();
             builder.Services.AddTransient<SignUpPage>();
 #if DEBUG
-    		builder.Logging.AddDebug();
+            object value = builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
