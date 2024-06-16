@@ -15,4 +15,7 @@
         ContentTemplate="{x:DataTemplate local:SignUpPage}"
         Route="SignUp"/>
 
+    <ShellContent 
+        ContentTemplate="{DataTemplate local:SelectAccountTypePage}"
+        Route="SelectAccountType"/>
 </Shell>

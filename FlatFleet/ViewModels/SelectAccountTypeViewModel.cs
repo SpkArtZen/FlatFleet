@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui.ImageSources;
 using MvvmHelpers;
-using Navigation;
+using FlatFleet.Features.Navigation;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
