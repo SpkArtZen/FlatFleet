@@ -9,6 +9,10 @@
 
     <ShellContent
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage"/>
+    
+    <ShellContent
+        ContentTemplate="{x:DataTemplate local:SignUpPage}"
+        Route="SignUp"/>
 
 </Shell>

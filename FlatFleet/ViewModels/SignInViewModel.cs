@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace FlatFleet.ViewModels
 {
-    public class SignInViewModel
+    public class SignInViewModel : BindableObject
     {
         public ICommand LoginWithGoogleCommand { get; }
         public ICommand LoginWithFacebookCommand { get; }
@@ -42,7 +42,8 @@ namespace FlatFleet.ViewModels
 
         private async void OnCreateAccount()
         {
-            await NavigationService.NavigateTo(typeof(CreateAnAccountPage));
+            // await Shell.Current.GoToAsync("//SignUp");
+            await NavigationService.NavigateTo(typeof(SignUpPage));
         }
         private async void OnForgotPassword()
         {

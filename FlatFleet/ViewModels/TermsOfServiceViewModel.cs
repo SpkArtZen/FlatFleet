@@ -5,14 +5,15 @@ namespace FlatFleet.ViewModels
 {
     public class TermsOfServiceViewModel : BindableObject
     {
-        public ICommand OnSignInCommand { get; }
+        public ICommand OnSignUpCommand { get; }
         public TermsOfServiceViewModel()
         {
-            OnSignInCommand = new Command(OnSignIn);
+            OnSignUpCommand = new Command(OnSignUp);
         }
-        private async void OnSignIn()
+        private async void OnSignUp()
         {
-            await NavigationService.NavigateTo(typeof(SignIn));
+            // await Shell.Current.GoToAsync("//SignUp");
+            await NavigationService.NavigateTo(typeof(SignUpPage));
         }
     }
 }

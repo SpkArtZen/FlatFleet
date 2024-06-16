@@ -1,5 +1,4 @@
 ﻿using Navigation;
-using System.ComponentModel;
 using System.Windows.Input;
 
 namespace FlatFleet.ViewModels
@@ -8,6 +7,7 @@ namespace FlatFleet.ViewModels
     {
         public ICommand OnSignInCommand { get; }
         public ICommand ToGetStartedCommand { get; }
+
         public MainPageViewModel()
         {
             ToGetStartedCommand = new Command(OnGetStartedBtn_Click);
@@ -20,7 +20,7 @@ namespace FlatFleet.ViewModels
 
         private async void OnSignIn()
         {
-            await NavigationService.NavigateTo(typeof(SignIn));
+            await NavigationService.NavigateTo(typeof(SingInPage));
         }
     }
 }

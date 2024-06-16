@@ -86,13 +86,13 @@ namespace FlatFleet.ViewModels
             else if (clickCount == 2)
             {
                 // Перехід на сторінку SignIn
-                await Application.Current.MainPage.Navigation.PushAsync(new SignIn());
+                await Application.Current.MainPage.Navigation.PushAsync(new SingInPage());
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string propertyName)
+        protected override void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
