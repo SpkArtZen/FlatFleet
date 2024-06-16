@@ -4,10 +4,10 @@ namespace FlatFleet.Features.SignUp
 {
     public partial class SignUpCommand : AsyncCommandBase
     {
-        private readonly SignUpFormViewModel _viewModel;
+        private readonly SignUpPageViewModel _viewModel;
         private readonly FirebaseAuthClient _authClient;
 
-        public SignUpCommand(SignUpFormViewModel viewModel, FirebaseAuthClient authClient)
+        public SignUpCommand(SignUpPageViewModel viewModel, FirebaseAuthClient authClient)
         {
             _viewModel = viewModel;
             _authClient = authClient;
@@ -17,12 +17,12 @@ namespace FlatFleet.Features.SignUp
         {
             try
             {
-                await _authClient.CreateUserWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password);
-                // some sort of alert
+                await _authClient.CreateUserWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password, _viewModel.FullName);
+                await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed up!", "Ok");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // another alert
+                await Application.Current.MainPage.DisplayAlert("Error", "Failed to sign up. Please try again later.", "Ok");
             }
         }
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"           
-             x:Class="FlatFleet.CreateAnAccountPage"
-             Title="CreateAnAccountPage"
+             x:Class="FlatFleet.SignUpPage"
+             Title="SignUpPage"
              NavigationPage.HasNavigationBar="False">
     <VerticalStackLayout>
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -46,7 +46,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="@string/user_icon.png" WidthRequest="13" HeightRequest="13" VerticalOptions="Center" Grid.Column="0" Margin="20,0" />
-                <Entry Placeholder="Full name" Grid.Column="1" FontSize="12" VerticalOptions="EndAndExpand" Margin="0,-14,40,0" />
+                <Entry 
+                    Placeholder="Full name" 
+                    Grid.Column="1" FontSize="12" 
+                    VerticalOptions="EndAndExpand" 
+                    Margin="0,-14,40,0" 
+                    Text="{Binding FullName}"/>
             </Grid>
         </Frame>
         <Frame Grid.ColumnSpan="2" BackgroundColor="White" CornerRadius="5" Padding="10" HeightRequest="44" WidthRequest="350" HasShadow="False" Margin="10,10,10,0">
@@ -57,7 +62,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="@string/phone_icon.png" WidthRequest="13" HeightRequest="13" VerticalOptions="Center" Grid.Column="0" Margin="20,0" />
-                <Entry Placeholder="Phone number" Grid.Column="1" FontSize="12" VerticalOptions="EndAndExpand" Margin="0,-14,40,0"  />
+                <Entry 
+                    Placeholder="Phone number" 
+                    Grid.Column="1" 
+                    FontSize="12" 
+                    VerticalOptions="EndAndExpand" 
+                    Margin="0,-14,40,0"
+                    Text="{Binding PhoneNumber}"/>
             </Grid>
         </Frame>
         <Frame Grid.ColumnSpan="2" BackgroundColor="White" CornerRadius="5" Padding="10" HeightRequest="44" WidthRequest="350" HasShadow="False" Margin="10,10,10,0">
@@ -68,7 +79,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="@string/email_logo.png" WidthRequest="13" HeightRequest="13" VerticalOptions="Center" Grid.Column="0" Margin="20,0" />
-                <Entry Placeholder="Email" Grid.Column="1" FontSize="12" VerticalOptions="EndAndExpand" Margin="0,-14,40,0" />
+                <Entry 
+                    Placeholder="Email" 
+                    Grid.Column="1" 
+                    FontSize="12" 
+                    VerticalOptions="EndAndExpand" 
+                    Margin="0,-14,40,0" 
+                    Text="{Binding Email}"/>
             </Grid>
         </Frame>
         <Frame Grid.ColumnSpan="3" BackgroundColor="White" CornerRadius="5" Padding="10" HeightRequest="44" WidthRequest="350" HasShadow="False" Margin="10,10,10,10">
@@ -79,7 +96,14 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="@string/password_logo.png" WidthRequest="13" HeightRequest="13" VerticalOptions="Center" Grid.Column="0" Margin="20,0" />
-                <Entry Placeholder="Password" Grid.Column="1"  FontSize="12" VerticalOptions="End" Margin="0,-14,40,0" IsPassword="True" />
+                <Entry 
+                    Placeholder="Password" 
+                    Grid.Column="1"  
+                    FontSize="12" 
+                    VerticalOptions="End" 
+                    Margin="0,-14,40,0" 
+                    IsPassword="True" 
+                    Text="{Binding Password}"/>
                 <Image Source= "@string/hide_icon.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1"/>
             </Grid>
         </Frame>
@@ -94,7 +118,7 @@
                    TextColor="{StaticResource Blue}" Grid.Column="0">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnTermsOfServiceCommand}" />
-                </Label.GestureRecognizers> 
+                </Label.GestureRecognizers>
             </Label>
             <Label Text=" and " Grid.Column="1"/>
             <Label Text="Privacy Policy"
@@ -104,7 +128,12 @@
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
-        <Button Text="Continue" Background="{StaticResource AddButtonBlue}" HorizontalOptions="FillAndExpand" Margin ="20" VerticalOptions="Center" />
+        <Button 
+            Text="Continue" 
+            Background="{StaticResource AddButtonBlue}" 
+            HorizontalOptions="FillAndExpand" Margin ="20" 
+            VerticalOptions="Center" 
+            Command="{Binding SignUpCommand}"/>
         <Grid HorizontalOptions="Center" ColumnSpacing="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>

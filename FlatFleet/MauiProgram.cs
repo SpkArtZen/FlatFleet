@@ -33,7 +33,8 @@ namespace FlatFleet
                     new EmailProvider()
                 }
             }));
-
+            builder.Services.AddTransient<SignUpPageViewModel> ();
+            builder.Services.AddTransient<SignUpPage>();
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif

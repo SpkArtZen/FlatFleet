@@ -12,7 +12,8 @@ namespace FlatFleet.ViewModels
         }
         private async void OnSignIn()
         {
-            await NavigationService.NavigateTo(typeof(CreateAnAccountPage));
+            // await Shell.Current.GoToAsync("//SignUp");
+            await NavigationService.NavigateTo(typeof(SingInPage));
         }
     }
 }
