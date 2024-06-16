@@ -102,14 +102,11 @@
 	  <MauiXaml Update="RecoverPasswordPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-<<<<<<< HEAD
-	  <MauiXaml Update="SignInPage.xaml">
-=======
+	  <MauiXaml Update="SignInPage.xaml" />
 	  <MauiXaml Update="SelectAccountTypePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SignIn.xaml">
->>>>>>> e7f7184eb23899895ad4bbc3e3a5891afbb6a914
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SignUpPage.xaml">
