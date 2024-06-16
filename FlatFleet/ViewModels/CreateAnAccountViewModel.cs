@@ -12,10 +12,13 @@ namespace FlatFleet
     {
         public ICommand OnTermsOfServiceCommand { get; }
         public ICommand OnPrivacePolicyCommand { get; }
+        public ICommand OnSignInCommand { get; }
+
         public CreateAnAccountViewModel()
         {
             OnTermsOfServiceCommand = new Command(OnTermsOfService);
             OnPrivacePolicyCommand = new Command(OnPrivacePolicy);
+            OnSignInCommand = new Command(OnSingIn);
         }
         private async void OnTermsOfService()
         {
@@ -25,6 +28,11 @@ namespace FlatFleet
         private async void OnPrivacePolicy()
         {
             await NavigationService.NavigateTo(typeof(PrivacyPolicyPage));
+        }
+
+        private async void OnSingIn()
+        {
+            await NavigationService.NavigateTo(typeof(SingInPage));
         }
     }
 }

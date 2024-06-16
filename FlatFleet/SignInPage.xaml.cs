@@ -2,9 +2,9 @@ using FlatFleet.ViewModels;
 
 namespace FlatFleet
 {
-    public partial class SignIn : ContentPage
+    public partial class SingInPage : ContentPage
     {
-        public SignIn()
+        public SingInPage()
         {
             InitializeComponent();
             BindingContext = new SignInViewModel();

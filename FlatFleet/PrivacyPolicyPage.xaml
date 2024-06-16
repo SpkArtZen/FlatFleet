@@ -9,7 +9,7 @@
             <Frame Padding="0" BorderColor="White" HeightRequest="30" Margin="20">
                 <Image Source="@string/close_icon.png" HorizontalOptions="End" VerticalOptions="End" Aspect="AspectFill">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnCloseDocument}"></TapGestureRecognizer>
+                        <TapGestureRecognizer Command="{Binding OnSignInCommand}"></TapGestureRecognizer>
                     </Image.GestureRecognizers> 
                 </Image>
             </Frame>

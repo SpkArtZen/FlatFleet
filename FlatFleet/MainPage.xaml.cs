@@ -1,5 +1,4 @@
-﻿
-using FlatFleet.ViewModels;
+﻿using FlatFleet.ViewModels;
 
 namespace FlatFleet
 {

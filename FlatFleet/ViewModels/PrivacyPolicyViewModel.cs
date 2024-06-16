@@ -12,7 +12,7 @@ namespace FlatFleet.ViewModels
         }
         private async void OnSignIn()
         {
-            await NavigationService.NavigateTo(typeof(SignIn));
+            await NavigationService.NavigateTo(typeof(CreateAnAccountPage));
         }
     }
 }

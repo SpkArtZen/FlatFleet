@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace FlatFleet.ViewModels
 {
-    public class SignInViewModel
+    public class SignInViewModel : BindableObject
     {
         public ICommand LoginWithGoogleCommand { get; }
         public ICommand LoginWithFacebookCommand { get; }
