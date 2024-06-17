@@ -4,11 +4,9 @@ namespace FlatFleet;
 
 public partial class SelectAccountTypePage : ContentPage
 {
-    public SelectAccountTypePage()
+    public SelectAccountTypePage(SelectAccountTypePageViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = new SelectAccountTypeViewModel();
+        BindingContext = viewModel;
     }
-
-
 }

@@ -4,9 +4,9 @@ namespace FlatFleet;
 
 public partial class PrivacyPolicyPage : ContentPage
 {
-	public PrivacyPolicyPage()
+	public PrivacyPolicyPage(PrivacyPolicyViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = new PrivacyPolicyViewModel();
+		BindingContext = viewModel;
 	}
 }

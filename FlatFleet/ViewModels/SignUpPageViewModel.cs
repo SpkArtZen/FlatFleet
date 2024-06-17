@@ -70,17 +70,20 @@ namespace FlatFleet
         }
         private async void OnTermsOfService()
         {
-            await NavigationService.NavigateTo(typeof(TermsOfServicePage));
+            await Shell.Current.GoToAsync("//TermsOfService");
+            // await NavigationService.NavigateTo(typeof(TermsOfServicePage));
         }
 
         private async void OnPrivacePolicy()
         {
-            await NavigationService.NavigateTo(typeof(PrivacyPolicyPage));
+            await Shell.Current.GoToAsync("//PrivacyPolicy");
+            // await NavigationService.NavigateTo(typeof(PrivacyPolicyPage));
         }
 
         private async void OnSingIn()
         {
-            await NavigationService.NavigateTo(typeof(SignInPage));
+            await Shell.Current.GoToAsync("//SignIn");
+            //await NavigationService.NavigateTo(typeof(SignInPage));
         }
     }
 }

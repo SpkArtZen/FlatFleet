@@ -23,6 +23,14 @@
         ContentTemplate="{DataTemplate local:SignInPage}"
         Route="SignIn"/>
 
+    <ShellContent
+        ContentTemplate="{DataTemplate local:TermsOfServicePage}"
+        Route="TermsOfService"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:PrivacyPolicyPage}"
+        Route="PrivacyPolicy"/>
+
     <ShellContent 
         ContentTemplate="{DataTemplate local:SelectAccountTypePage}"
         Route="SelectAccountType"/>

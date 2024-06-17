@@ -37,18 +37,29 @@ namespace FlatFleet
                     new EmailProvider()
                 }
             }));
-            builder.Services.AddSingleton<MainPageViewModel>();
-            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<MainPage>();
 
-            builder.Services.AddSingleton<GetStarted>();
-            builder.Services.AddSingleton<GetStartedViewModel>();
+            builder.Services.AddTransient<GetStarted>();
+            builder.Services.AddTransient<GetStartedViewModel>();
 
             builder.Services.AddTransient<SignUpPageViewModel>();
             builder.Services.AddTransient<SignUpPage>();
+
+            builder.Services.AddTransient<PrivacyPolicyViewModel>();
+            builder.Services.AddTransient<PrivacyPolicyPage>();
+
+            builder.Services.AddTransient<TermsOfServiceViewModel>();
+            builder.Services.AddTransient<TermsOfServicePage>();
+
+            builder.Services.AddTransient<SignInPageViewModel>();
+            builder.Services.AddTransient<SignInPage>();
+
+            builder.Services.AddTransient<SelectAccountTypePageViewModel>();
+            builder.Services.AddTransient<SelectAccountTypePage>();
 #if DEBUG
             object value = builder.Logging.AddDebug();
 #endif
-
             return builder.Build();
         }
     }
