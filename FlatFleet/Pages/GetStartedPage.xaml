@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FlatFleet.GetStarted"
+             x:Class="FlatFleet.Pages.GetStartedPage"
              xmlns:s="clr-namespace:FlatFleet.Models.Selectors"
              xmlns:vm="clr-namespace:FlatFleet.ViewModels"
-             Title="GetStarted"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.BindingContext>

@@ -47,5 +47,4 @@ namespace FlatFleet.ViewModels
         }
             
         }
-    }
 }

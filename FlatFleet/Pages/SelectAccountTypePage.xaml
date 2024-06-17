@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mtc="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:Class="FlatFleet.SelectAccountTypePage" x:Name="SelectAccountType"
+             x:Class="FlatFleet.Pages.SelectAccountTypePage"
              Title="SelectAccountTypePage">
     <NavigationPage.TitleView>
         <Label Text="Sign In"

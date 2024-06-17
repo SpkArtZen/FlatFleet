@@ -1,8 +1,7 @@
 ﻿using CommunityToolkit.Maui.ImageSources;
 using MvvmHelpers;
 using FlatFleet.Features.Navigation;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+using FlatFleet.Pages;
 using System.Windows.Input;
 
 namespace FlatFleet.ViewModels

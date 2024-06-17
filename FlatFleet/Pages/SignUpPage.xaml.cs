@@ -1,7 +1,7 @@
 using Firebase.Auth.Providers;
 using Firebase.Auth;
 
-namespace FlatFleet;
+namespace FlatFleet.Pages;
 
 public partial class SignUpPage : ContentPage
 {

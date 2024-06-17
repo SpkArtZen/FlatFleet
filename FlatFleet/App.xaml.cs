@@ -1,19 +1,18 @@
 ﻿using Microsoft.Maui.Controls;
-namespace FlatFleet
+namespace FlatFleet;
+
+public partial class App : Application
 {
-    public partial class App : Application
+    public App()
     {
-        public App()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            MainPage = new AppShell(); // Це потрібно для навігації за допомогою Shell.Current.GoToAsync("//Page")
-        }
+        MainPage = new AppShell(); // Це потрібно для навігації за допомогою Shell.Current.GoToAsync("//Page")
+    }
 
-        protected override async void OnStart()
-        {
-            await Shell.Current.GoToAsync("//MainPage");
-            base.OnStart();
-        }
+    protected override async void OnStart()
+    {
+        await Shell.Current.GoToAsync("//MainPage");
+        base.OnStart();
     }
 }

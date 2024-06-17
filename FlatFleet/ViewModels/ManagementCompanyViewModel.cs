@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlatFleet
+namespace FlatFleet.ViewModels
 {
     public class ManagementCompanyViewModel : BindableObject
     {

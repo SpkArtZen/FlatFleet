@@ -1,14 +1,13 @@
 ﻿using FlatFleet.ViewModels;
 
-namespace FlatFleet
+namespace FlatFleet.Pages;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage(MainPageViewModel viewModel)
     {
-        public MainPage(MainPageViewModel viewModel)
-        {
-            InitializeComponent();
-            BindingContext = viewModel;
-        }
-        
+        InitializeComponent();
+        BindingContext = viewModel;
     }
+    
 }

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Firebase.Auth;
 using Firebase.Auth.Providers;
+using FlatFleet.Pages;
 using FlatFleet.ViewModels;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
@@ -42,8 +43,8 @@ namespace FlatFleet
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<MainPage>();
 
-            builder.Services.AddTransient<GetStarted>();
             builder.Services.AddTransient<GetStartedViewModel>();
+            builder.Services.AddTransient<GetStartedPage>();
 
             builder.Services.AddTransient<SignUpPageViewModel>();
             builder.Services.AddTransient<SignUpPage>();

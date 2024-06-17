@@ -1,6 +1,7 @@
 ﻿using Firebase.Auth;
 using FlatFleet.Features.Navigation;
 using FlatFleet.Features.SignIn;
+using FlatFleet.Pages;
 using System.Windows.Input;
 
 namespace FlatFleet.ViewModels

@@ -2,9 +2,9 @@ using FlatFleet.ViewModels;
 
 namespace FlatFleet.Pages;
 
-public partial class SelectAccountTypePage : ContentPage
+public partial class GetStartedPage : ContentPage
 {
-    public SelectAccountTypePage(SelectAccountTypePageViewModel viewModel)
+    public GetStartedPage(GetStartedViewModel viewModel)
     {
         InitializeComponent();
         BindingContext = viewModel;

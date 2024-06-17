@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FlatFleet"
+    xmlns:pages="clr-namespace:FlatFleet.Pages"
     Shell.FlyoutBehavior="Disabled"
     Title="FlatFleet">
 
@@ -15,46 +16,46 @@
     -->
     
     <ShellContent
-        ContentTemplate="{DataTemplate local:MainPage}"
+        ContentTemplate="{DataTemplate pages:MainPage}"
         Route="MainPage"/>
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:GetStarted}"
+        ContentTemplate="{DataTemplate pages:GetStartedPage}"
         Route="GetStarted"/>
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:SignInPage}"
+        ContentTemplate="{DataTemplate pages:SignInPage}"
         Route="SignIn"/>
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:RecoverPasswordPage}"
+        ContentTemplate="{DataTemplate pages:RecoverPasswordPage}"
         Route="RecoverPassword"/>
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:VerifyEmailPage}"
+        ContentTemplate="{DataTemplate pages:VerifyEmailPage}"
         Route="VerifyEmail"/>
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:EntryNewPasswordPage}"
+        ContentTemplate="{DataTemplate pages:EntryNewPasswordPage}"
         Route="EnterNewPassword"/>
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:NewPasswordAcceptedPage}"
+        ContentTemplate="{DataTemplate pages:NewPasswordAcceptedPage}"
         Route="NewPasswordAccepted"/>
 
     <ShellContent
-        ContentTemplate="{x:DataTemplate local:SignUpPage}"
+        ContentTemplate="{x:DataTemplate pages:SignUpPage}"
         Route="SignUp"/>
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:TermsOfServicePage}"
+        ContentTemplate="{DataTemplate pages:TermsOfServicePage}"
         Route="TermsOfService"/>
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:PrivacyPolicyPage}"
+        ContentTemplate="{DataTemplate pages:PrivacyPolicyPage}"
         Route="PrivacyPolicy"/>
 
     <ShellContent 
-        ContentTemplate="{DataTemplate local:SelectAccountTypePage}"
+        ContentTemplate="{DataTemplate pages:SelectAccountTypePage}"
         Route="SelectAccountType"/>
 </Shell>

@@ -1,6 +1,6 @@
 using FlatFleet.ViewModels;
 
-namespace FlatFleet;
+namespace FlatFleet.Pages;
 
 public partial class EntryNewPasswordPage : ContentPage
 {
