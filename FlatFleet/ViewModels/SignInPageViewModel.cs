@@ -32,12 +32,29 @@ namespace FlatFleet.ViewModels
             }
         }
 
+        private bool _isPasswordHidden = true;
+        public bool IsPasswordHidden
+        {
+            get { return _isPasswordHidden; }
+            set
+            {
+                if (_isPasswordHidden != value)
+                {
+                    _isPasswordHidden = value;
+                    OnPropertyChanged(nameof(IsPasswordHidden));
+                }
+            }
+        }
+
         public ICommand SignInCommand { get; }
         public ICommand LoginWithGoogleCommand { get; }
         public ICommand LoginWithFacebookCommand { get; }
         public ICommand LoginWithAppleCommand { get; }
         public ICommand CreateAccountCommand { get; }
         public ICommand ForgotPasswordCommand { get; }
+
+        public ICommand SwitchAppearanceOfPassword { get; }
+
         // public ICommand SelectAccountCommand { get; }
         
         public SignInPageViewModel(FirebaseAuthClient authClient)
@@ -48,6 +65,7 @@ namespace FlatFleet.ViewModels
             LoginWithAppleCommand = new Command(OnLoginWithApple);
             CreateAccountCommand = new Command(OnCreateAccount);
             ForgotPasswordCommand = new Command(OnForgotPassword);
+            SwitchAppearanceOfPassword = new Command(OnSwitchAppearanceOfPassword);
             // SelectAccountCommand = new Command(SelectAccountType);
         }
 
@@ -84,6 +102,11 @@ namespace FlatFleet.ViewModels
         {
             await Shell.Current.GoToAsync("//RecoverPassword");
             // await NavigationService.NavigateTo(typeof(RecoverPasswordPage));
+        }
+
+        private void OnSwitchAppearanceOfPassword()
+        {
+            IsPasswordHidden = !IsPasswordHidden;
         }
     }
 }

@@ -102,9 +102,20 @@
                     FontSize="12" 
                     VerticalOptions="End" 
                     Margin="0,-14,40,0" 
-                    IsPassword="True" 
+                    IsPassword="{Binding IsPasswordHidden}" 
                     Text="{Binding Password}"/>
-                <Image Source= "@string/hide_icon.png" WidthRequest="20" HeightRequest="30" HorizontalOptions="End" VerticalOptions="Center" Grid.Column="1"/>
+                <Image 
+                    Source= "@string/hide_icon.png" 
+                    WidthRequest="20" 
+                    HeightRequest="30" 
+                    HorizontalOptions="End" 
+                    VerticalOptions="Center" 
+                    Grid.Column="1">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding SwitchAppearanceOfPassword}"/>
+                    </Image.GestureRecognizers>
+                </Image>
             </Grid>
         </Frame>
         <Label Text="By selecting Create Account below, I agree to" Margin="25,5"/>
