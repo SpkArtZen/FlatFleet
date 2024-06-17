@@ -1,5 +1,4 @@
-﻿using FlatFleet.Features.Navigation;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace FlatFleet.ViewModels
 {
@@ -12,8 +11,8 @@ namespace FlatFleet.ViewModels
         }
         private async void OnSignIn()
         {
-            // await Shell.Current.GoToAsync("//SignUp");
-            await NavigationService.NavigateTo(typeof(SingInPage));
+            await Shell.Current.GoToAsync("//SignIn");
+            // await NavigationService.NavigateTo(typeof(SignInPage));
         }
     }
 }

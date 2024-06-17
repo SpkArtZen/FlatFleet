@@ -3,16 +3,17 @@ using System.Windows.Input;
 
 namespace FlatFleet.ViewModels
 {
-    public class VerifyEmailViewModel : BindableObject
+    public class VerifyEmailPageViewModel : BindableObject
     {
         public ICommand VerifyCodeOnEmail { get; }
-        public VerifyEmailViewModel()
+        public VerifyEmailPageViewModel()
         {
             VerifyCodeOnEmail = new Command(CheckEmailCode);
         }
         private async void CheckEmailCode()
         {
-            await NavigationService.NavigateTo(typeof(EntryNewPasswordPage));
+            await Shell.Current.GoToAsync("//EnterNewPassword");
+            // await NavigationService.NavigateTo(typeof(EntryNewPasswordPage));
         }
     }
 }

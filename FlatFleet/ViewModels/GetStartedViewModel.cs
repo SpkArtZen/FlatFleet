@@ -7,7 +7,7 @@ using MvvmHelpers;
 
 namespace FlatFleet.ViewModels
 {
-    public class GetStartedViewModel : BaseViewModel
+    public class GetStartedViewModel : ViewModelBase
     {
         private ObservableCollection<CarouselItem> _carouselItemsIds;
         public ObservableCollection<CarouselItem> CarouselItemsIds
@@ -41,10 +41,11 @@ namespace FlatFleet.ViewModels
         private async void OnGetStarted()
         {
             // Перехід на сторінку SignIn
-            
-            
+            await Shell.Current.GoToAsync("//SignIn");
 
             //await Application.Current.MainPage.Navigation.PushAsync(new SignInPage());
+        }
+            
         }
     }
 }

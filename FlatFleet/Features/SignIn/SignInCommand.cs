@@ -10,10 +10,10 @@ namespace FlatFleet.Features.SignIn
 {
     public class SignInCommand : AsyncCommandBase
     {
-        private readonly SignInViewModel _viewModel;
+        private readonly ViewModels.SignInPageViewModel _viewModel;
         private readonly FirebaseAuthClient _authClient;
 
-        public SignInCommand(SignInViewModel viewModel, FirebaseAuthClient authClient)
+        public SignInCommand(ViewModels.SignInPageViewModel viewModel, FirebaseAuthClient authClient)
         {
             _viewModel = viewModel;
             _authClient = authClient;
@@ -25,7 +25,7 @@ namespace FlatFleet.Features.SignIn
             {
                 await _authClient.SignInWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password);
                 await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed in!", "Ok");
-                _viewModel.SelectAccountType();
+                await Shell.Current.GoToAsync("//SelectAccountType");
             }
             catch (Exception)
             {

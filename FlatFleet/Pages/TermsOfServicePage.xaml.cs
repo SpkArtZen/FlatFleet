@@ -4,9 +4,9 @@ namespace FlatFleet;
 
 public partial class TermsOfServicePage : ContentPage
 {
-	public TermsOfServicePage()
+	public TermsOfServicePage(TermsOfServiceViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = new TermsOfServiceViewModel();
+		BindingContext = viewModel;
 	}
 }

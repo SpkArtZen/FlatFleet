@@ -4,10 +4,10 @@ namespace FlatFleet;
 
 public partial class VerifyEmailPage : ContentPage
 {
-    public VerifyEmailPage()
+    public VerifyEmailPage(VerifyEmailPageViewModel viewModel) 
     {
         InitializeComponent();
-        BindingContext = new VerifyEmailViewModel();
+        BindingContext = viewModel;
     }
 
     private void Entry_TextChanged(object sender, TextChangedEventArgs e)

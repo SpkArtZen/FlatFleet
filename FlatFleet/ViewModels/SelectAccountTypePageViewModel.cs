@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace FlatFleet.ViewModels
 {
-    public class SelectAccountTypeViewModel : BaseViewModel
+    public class SelectAccountTypePageViewModel : BaseViewModel
     {
         public string _searchIcon = "";
         public string SearchIcon
@@ -62,7 +62,7 @@ namespace FlatFleet.ViewModels
         public ICommand SelectedItem { get; }
         public ICommand ContinueWithThisTypeCommand { get; private set; }
 
-        public SelectAccountTypeViewModel()
+        public SelectAccountTypePageViewModel()
         {
             TypesOfAccount = new List<string>
             {

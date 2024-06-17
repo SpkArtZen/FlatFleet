@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Firebase.Auth;
 using Firebase.Auth.Providers;
+using FlatFleet.ViewModels;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 
@@ -27,6 +28,8 @@ namespace FlatFleet
                     fonts.AddFont("SFProText-LightItalic.ttf", "SFProText-LightItalic");
                     fonts.AddFont("SFProText-Medium.ttf", "SFProText-Medium");
                 });
+
+            // КОД НИЖЧЕ - НЕ ЧІПАТИ! ВІН ПОТРІБЕН ДЛЯ КОРЕКТНОГО СТВОРЕННЯ СТОРІНОК ЧЕРЕЗ DI
             builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig()
             {
                 ApiKey = "AIzaSyBGFWSnUtDTw0z508FPy5f_z8Z2aFeTw04",
@@ -36,12 +39,35 @@ namespace FlatFleet
                     new EmailProvider()
                 }
             }));
-            builder.Services.AddTransient<SignUpPageViewModel> ();
+            builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<MainPage>();
+
+            builder.Services.AddTransient<GetStarted>();
+            builder.Services.AddTransient<GetStartedViewModel>();
+
+            builder.Services.AddTransient<SignUpPageViewModel>();
             builder.Services.AddTransient<SignUpPage>();
+
+            builder.Services.AddTransient<PrivacyPolicyViewModel>();
+            builder.Services.AddTransient<PrivacyPolicyPage>();
+
+            builder.Services.AddTransient<TermsOfServiceViewModel>();
+            builder.Services.AddTransient<TermsOfServicePage>();
+
+            builder.Services.AddTransient<SignInPageViewModel>();
+            builder.Services.AddTransient<SignInPage>();
+
+            builder.Services.AddTransient<RecoverPasswordPageViewModel>();
+            builder.Services.AddTransient<RecoverPasswordPage>();
+
+            builder.Services.AddTransient<VerifyEmailPageViewModel>();
+            builder.Services.AddTransient<VerifyEmailPage>();
+
+            builder.Services.AddTransient<SelectAccountTypePageViewModel>();
+            builder.Services.AddTransient<SelectAccountTypePage>();
 #if DEBUG
             object value = builder.Logging.AddDebug();
 #endif
-
             return builder.Build();
         }
     }

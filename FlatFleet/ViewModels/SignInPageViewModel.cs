@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace FlatFleet.ViewModels
 {
-    public class SignInViewModel : ViewModelBase
+    public class SignInPageViewModel : ViewModelBase
     {
         private string _email;
 
@@ -39,7 +39,7 @@ namespace FlatFleet.ViewModels
         public ICommand ForgotPasswordCommand { get; }
         // public ICommand SelectAccountCommand { get; }
         
-        public SignInViewModel(FirebaseAuthClient authClient)
+        public SignInPageViewModel(FirebaseAuthClient authClient)
         {
             SignInCommand = new SignInCommand(this, authClient);
             LoginWithGoogleCommand = new Command(OnLoginWithGoogle);
@@ -50,34 +50,39 @@ namespace FlatFleet.ViewModels
             // SelectAccountCommand = new Command(SelectAccountType);
         }
 
-        public async void SelectAccountType()
+        private async void SelectAccountType()
         {
-            await NavigationService.NavigateTo(typeof(SelectAccountTypePage));
+            await Shell.Current.GoToAsync("//SelectAccountType");
+            // await NavigationService.NavigateTo(typeof(SelectAccountTypePage));
         }
 
         private async void OnLoginWithGoogle()
         {
+            // TODO: зробити сторінку для логіну через Google
             await NavigationService.NavigateTo(typeof(MainPage));
         }
 
         private async void OnLoginWithFacebook()
         {
+            // TODO: зробити сторінку для логіну через Facebook
             await NavigationService.NavigateTo(typeof(MainPage));
         }
 
         private async void OnLoginWithApple()
         {
+            // TODO: зробити сторінку для логіну через Apple
             await NavigationService.NavigateTo(typeof(MainPage));
         }
 
         private async void OnCreateAccount()
         {
-            // await Shell.Current.GoToAsync("//SignUp");
-            await NavigationService.NavigateTo(typeof(SignUpPage));
+            await Shell.Current.GoToAsync("//SignUp");
+            // await NavigationService.NavigateTo(typeof(SignUpPage));
         }
         private async void OnForgotPassword()
         {
-            await NavigationService.NavigateTo(typeof(RecoverPasswordPage));
+            await Shell.Current.GoToAsync("//RecoverPassword");
+            // await NavigationService.NavigateTo(typeof(RecoverPasswordPage));
         }
     }
 }

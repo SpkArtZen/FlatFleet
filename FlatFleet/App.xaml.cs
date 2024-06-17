@@ -7,7 +7,13 @@ namespace FlatFleet
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage()); // Встановлення головної сторінки з навігацією
+            MainPage = new AppShell(); // Це потрібно для навігації за допомогою Shell.Current.GoToAsync("//Page")
+        }
+
+        protected override async void OnStart()
+        {
+            await Shell.Current.GoToAsync("//MainPage");
+            base.OnStart();
         }
     }
 }

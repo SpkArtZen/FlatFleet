@@ -15,12 +15,12 @@ namespace FlatFleet.ViewModels
         }
         public static async void OnGetStartedBtn_Click()
         {
-            await NavigationService.NavigateTo(typeof(GetStarted));
+            await Shell.Current.GoToAsync("//GetStarted");
         }
 
         private async void OnSignIn()
         {
-            await NavigationService.NavigateTo(typeof(SingInPage));
+            await Shell.Current.GoToAsync("//SignIn");
         }
     }
 }

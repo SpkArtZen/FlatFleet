@@ -4,12 +4,11 @@ namespace FlatFleet
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public MainPage(MainPageViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = new MainPageViewModel();
+            BindingContext = viewModel;
         }
         
     }
-
 }

@@ -19,6 +19,7 @@ namespace FlatFleet.Features.SignUp
             {
                 await _authClient.CreateUserWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password, _viewModel.FullName);
                 await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed up!", "Ok");
+                await Shell.Current.GoToAsync("//SelectAccountType");
             }
             catch (Exception)
             {
