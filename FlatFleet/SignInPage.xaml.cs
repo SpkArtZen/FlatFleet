@@ -4,9 +4,9 @@ using FlatFleet.ViewModels;
 
 namespace FlatFleet
 {
-    public partial class SingInPage : ContentPage
+    public partial class SignInPage : ContentPage
     {
-        public SingInPage()
+        public SignInPage()
         {
             InitializeComponent();
             BindingContext = new SignInViewModel(new Firebase.Auth.FirebaseAuthClient(new FirebaseAuthConfig()

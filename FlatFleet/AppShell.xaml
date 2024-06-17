@@ -10,17 +10,19 @@
     <ShellContent
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"/>
-    
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:GetStarted}"
+        Route="GetStarted"/>
+
     <ShellContent
         ContentTemplate="{x:DataTemplate local:SignUpPage}"
         Route="SignUp"/>
 
-    <!--
     <ShellContent
         ContentTemplate="{DataTemplate local:SignInPage}"
-        Route="SignInPage"/>
-    -->
-    
+        Route="SignIn"/>
+
     <ShellContent 
         ContentTemplate="{DataTemplate local:SelectAccountTypePage}"
         Route="SelectAccountType"/>

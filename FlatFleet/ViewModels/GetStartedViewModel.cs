@@ -4,7 +4,7 @@ using Microsoft.Maui.Controls;
 
 namespace FlatFleet.ViewModels
 {
-    public class GetStartedViewModel : BindableObject, INotifyPropertyChanged
+    public class GetStartedViewModel : ViewModelBase
     {
         private int clickCount = 0;
         private bool isFrame1Visible = true;
@@ -86,15 +86,8 @@ namespace FlatFleet.ViewModels
             else if (clickCount == 2)
             {
                 // Перехід на сторінку SignIn
-                await Application.Current.MainPage.Navigation.PushAsync(new SingInPage());
+                await Shell.Current.GoToAsync("//SignIn");
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected override void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

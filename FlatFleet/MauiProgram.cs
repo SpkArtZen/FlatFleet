@@ -37,8 +37,11 @@ namespace FlatFleet
                     new EmailProvider()
                 }
             }));
-            builder.Services.AddSingleton<MainPageViewModel>(new MainPageViewModel());
-            builder.Services.AddSingleton<MainPage>(s => new MainPage(s.GetRequiredService<MainPageViewModel>()));
+            builder.Services.AddSingleton<MainPageViewModel>();
+            builder.Services.AddSingleton<MainPage>();
+
+            builder.Services.AddSingleton<GetStarted>();
+            builder.Services.AddSingleton<GetStartedViewModel>();
 
             builder.Services.AddTransient<SignUpPageViewModel>();
             builder.Services.AddTransient<SignUpPage>();

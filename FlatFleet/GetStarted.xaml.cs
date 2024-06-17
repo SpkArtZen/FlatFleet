@@ -4,10 +4,10 @@ namespace FlatFleet;
 
 public partial class GetStarted : ContentPage
 {
-    public GetStarted()
+    public GetStarted(GetStartedViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = new GetStartedViewModel();
+        BindingContext = viewModel;
     }
     private async void GetStartedBtn_click(object sender, EventArgs e)
     {

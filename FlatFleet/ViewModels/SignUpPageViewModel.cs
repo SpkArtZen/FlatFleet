@@ -80,7 +80,7 @@ namespace FlatFleet
 
         private async void OnSingIn()
         {
-            await NavigationService.NavigateTo(typeof(SingInPage));
+            await NavigationService.NavigateTo(typeof(SignInPage));
         }
     }
 }

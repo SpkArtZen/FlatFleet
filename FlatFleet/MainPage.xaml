@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlatFleet.MainPage"
              NavigationPage.HasNavigationBar="False">
-
     <ScrollView>
         <VerticalStackLayout Padding="15,0" Spacing="30">
             <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
