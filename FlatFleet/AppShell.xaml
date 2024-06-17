@@ -7,6 +7,13 @@
     Shell.FlyoutBehavior="Disabled"
     Title="FlatFleet">
 
+    <!--
+    Навігацію робимо через Shell.Current.GoToAsync("//RouteToPage"), тому нові сторінки треба додати сюди
+    <ShellContent
+        ContentTemplate="{DataTemplate namespace:SamplePage}"
+        Route="RouteToPage"/>
+    -->
+    
     <ShellContent
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"/>
@@ -16,12 +23,24 @@
         Route="GetStarted"/>
 
     <ShellContent
-        ContentTemplate="{x:DataTemplate local:SignUpPage}"
-        Route="SignUp"/>
-
-    <ShellContent
         ContentTemplate="{DataTemplate local:SignInPage}"
         Route="SignIn"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:RecoverPasswordPage}"
+        Route="RecoverPassword"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:VerifyEmailPage}"
+        Route="VerifyEmail"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:EntryNewPasswordPage}"
+        Route="EnterNewPassword"/>
+
+    <ShellContent
+        ContentTemplate="{x:DataTemplate local:SignUpPage}"
+        Route="SignUp"/>
 
     <ShellContent
         ContentTemplate="{DataTemplate local:TermsOfServicePage}"

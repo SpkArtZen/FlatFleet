@@ -81,7 +81,8 @@ namespace FlatFleet.ViewModels
         }
         private async void OnForgotPassword()
         {
-            await NavigationService.NavigateTo(typeof(RecoverPasswordPage));
+            await Shell.Current.GoToAsync("//RecoverPassword");
+            // await NavigationService.NavigateTo(typeof(RecoverPasswordPage));
         }
     }
 }

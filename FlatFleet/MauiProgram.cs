@@ -28,6 +28,8 @@ namespace FlatFleet
                     fonts.AddFont("SFProText-LightItalic.ttf", "SFProText-LightItalic");
                     fonts.AddFont("SFProText-Medium.ttf", "SFProText-Medium");
                 });
+
+            // КОД НИЖЧЕ - НЕ ЧІПАТИ! ВІН ПОТРІБЕН ДЛЯ КОРЕКТНОГО СТВОРЕННЯ СТОРІНОК ЧЕРЕЗ DI
             builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig()
             {
                 ApiKey = "AIzaSyBGFWSnUtDTw0z508FPy5f_z8Z2aFeTw04",
@@ -54,6 +56,12 @@ namespace FlatFleet
 
             builder.Services.AddTransient<SignInPageViewModel>();
             builder.Services.AddTransient<SignInPage>();
+
+            builder.Services.AddTransient<RecoverPasswordPageViewModel>();
+            builder.Services.AddTransient<RecoverPasswordPage>();
+
+            builder.Services.AddTransient<VerifyEmailPageViewModel>();
+            builder.Services.AddTransient<VerifyEmailPage>();
 
             builder.Services.AddTransient<SelectAccountTypePageViewModel>();
             builder.Services.AddTransient<SelectAccountTypePage>();

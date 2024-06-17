@@ -8,22 +8,27 @@ using FlatFleet.Features.Navigation;
 
 namespace FlatFleet.ViewModels
 {
-    public class RecoverPasswordViewModel : BindableObject
+    public class RecoverPasswordPageViewModel : ViewModelBase
     {
         public ICommand CheckEmailCommand { get; }
         public ICommand CreateAccountCommand { get; }
-        public RecoverPasswordViewModel()
+        
+        public RecoverPasswordPageViewModel()
         {
             CheckEmailCommand = new Command(CheckEmail);
             CreateAccountCommand = new Command(CreateAnAccount);
         }
+        
         private async void CheckEmail()
         {
-            await NavigationService.NavigateTo(typeof(VerifyEmailPage));
+            await Shell.Current.GoToAsync("//VerifyEmail");
+            // await NavigationService.NavigateTo(typeof(VerifyEmailPage));
         }
+        
         private async void CreateAnAccount()
         {
-            await NavigationService.NavigateTo(typeof(SignUpPage));
+            await Shell.Current.GoToAsync("//SignUp");
+            // await NavigationService.NavigateTo(typeof(SignUpPage));
         }
     }
 }

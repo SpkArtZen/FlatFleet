@@ -4,9 +4,9 @@ namespace FlatFleet;
 
 public partial class RecoverPasswordPage : ContentPage
 {
-	public RecoverPasswordPage()
+	public RecoverPasswordPage(RecoverPasswordPageViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = new RecoverPasswordViewModel();
+		BindingContext = viewModel;
 	}
 }
