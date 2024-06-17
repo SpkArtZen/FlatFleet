@@ -56,10 +56,25 @@ namespace FlatFleet
             }
         }
 
+        private bool _isPasswordHidden = true;
+        public bool IsPasswordHidden
+        {
+            get { return _isPasswordHidden; }
+            set
+            {
+                if (_isPasswordHidden != value)
+                {
+                    _isPasswordHidden = value;
+                    OnPropertyChanged(nameof(IsPasswordHidden));
+                }
+            }
+        }
+
         public ICommand SignUpCommand { get; }
         public ICommand OnTermsOfServiceCommand { get; }
         public ICommand OnPrivacePolicyCommand { get; }
         public ICommand OnSignInCommand { get; }
+        public ICommand SwitchAppearanceOfPassword { get; }
 
         public SignUpPageViewModel(FirebaseAuthClient authClient)
         {
@@ -67,6 +82,7 @@ namespace FlatFleet
             OnTermsOfServiceCommand = new Command(OnTermsOfService);
             OnPrivacePolicyCommand = new Command(OnPrivacePolicy);
             OnSignInCommand = new Command(OnSingIn);
+            SwitchAppearanceOfPassword = new Command(OnSwitchAppearanceOfPassword);
         }
         private async void OnTermsOfService()
         {
@@ -84,6 +100,11 @@ namespace FlatFleet
         {
             await Shell.Current.GoToAsync("//SignIn");
             //await NavigationService.NavigateTo(typeof(SignInPage));
+        }
+
+        private void OnSwitchAppearanceOfPassword()
+        {
+            IsPasswordHidden = !IsPasswordHidden;
         }
     }
 }
