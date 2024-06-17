@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Firebase.Auth;
 using Firebase.Auth.Providers;
+using FlatFleet.ViewModels;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 
@@ -36,7 +37,10 @@ namespace FlatFleet
                     new EmailProvider()
                 }
             }));
-            builder.Services.AddTransient<SignUpPageViewModel> ();
+            builder.Services.AddSingleton<MainPageViewModel>(new MainPageViewModel());
+            builder.Services.AddSingleton<MainPage>(s => new MainPage(s.GetRequiredService<MainPageViewModel>()));
+
+            builder.Services.AddTransient<SignUpPageViewModel>();
             builder.Services.AddTransient<SignUpPage>();
 #if DEBUG
             object value = builder.Logging.AddDebug();
