@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlatFleet.GetStarted"
+             xmlns:s="clr-namespace:FlatFleet.Models.Selectors"
+             xmlns:vm="clr-namespace:FlatFleet.ViewModels"
+             Title="GetStarted"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <vm:GetStartedViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+
+        <DataTemplate
+            x:Key="item1">
+
+            <VerticalStackLayout
+                Spacing="64"
+                Padding="20">
+
+                <Grid
+                    Margin="0,40,0,0"
+                    HorizontalOptions="Center"
+                    WidthRequest="380"
+                    HeightRequest="380"
+                    RowDefinitions="95,95,95,95"
+                    ColumnDefinitions="95,95,95,95">
+
+                    <Border
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        HeightRequest="380"
+                        WidthRequest="380"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.RowSpan="4"
+                        Grid.ColumnSpan="4"
+                        StrokeShape="RoundRectangle 360">
+                        <Image
+                            Aspect="AspectFill"
+                            Source="@string/get_started_1.jpg"/>
+                    </Border>
+
+                    <Border
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Stroke="White"
+                        StrokeThickness="6.18"
+                        StrokeShape="RoundRectangle 360"
+                        Background="{StaticResource Blue}">
+                        <Image 
+                            Source="@string/get_started_icon_1.png"/>
+                    </Border>
+
+                </Grid>
+
+                <VerticalStackLayout
+                    Spacing="8">
+                    <Label 
+                        Text="Manage your home easily" 
+                        HorizontalOptions="Center" 
+                        HorizontalTextAlignment="Center"
+                        FontSize="36"
+                        FontFamily="SFProText-Bold"/>
+
+                    <Label 
+                        Text="Lorem ipsum dolor sit amet consectetur. Mi enim dignissim vitae quam quis fringilla"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        FontSize="16"/>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+        </DataTemplate>
+
+        <DataTemplate
+            x:Key="item2">
+
+            <!-- Insert the desired content here -->
+
+        </DataTemplate>
+
+        <DataTemplate
+            x:Key="item3">
+
+            <!-- Insert the desired content here -->
+
+        </DataTemplate>
+
+        <DataTemplate
+            x:Key="item4">
+
+            <Frame x:Name="Frame4" Padding ="0" HeightRequest="690" BorderColor="White">
+                <VerticalStackLayout Spacing="10" Padding="10">
+                    <Grid ColumnSpacing ="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="110" />
+                        </Grid.ColumnDefinitions>
+                        <Frame HorizontalOptions="Start" VerticalOptions="Start" Grid.Column= "0" CornerRadius="15" HeightRequest="320" WidthRequest="110" Padding="0" BorderColor="White">
+                            <VerticalStackLayout Spacing="10">
+
+                                <Frame Padding="0" CornerRadius="15" HeightRequest="200">
+                                    <Image Source="@string/get_started_pic2.jpg" Aspect="AspectFill"/>
+                                </Frame>
+
+                                <Frame Padding="0" CornerRadius="15" HeightRequest="200">
+                                    <Image Source="@string/sign.jpg"  WidthRequest="200" HeightRequest="200" Margin="0,-80,0,0"/>
+                                </Frame>
+
+                            </VerticalStackLayout>
+                        </Frame>
+                        <Frame HorizontalOptions="Center" Grid.Column= "1" CornerRadius="15" HeightRequest="320" WidthRequest="110" Padding="0">
+                            <Image Source="@string/get_started_pic2.jpg" Aspect="AspectFill"/>
+                        </Frame>
+                        <Frame HorizontalOptions="Start" VerticalOptions="Start" Grid.Column= "2" CornerRadius="15" HeightRequest="320" WidthRequest="110" Padding="0" BorderColor="White">
+                            <VerticalStackLayout Spacing="10">
+
+                                <Frame Padding="0" CornerRadius="15" HeightRequest="200">
+                                    <Image Source="@string/sign.jpg" Aspect="AspectFill"/>
+                                </Frame>
+
+                                <Frame Padding="0" CornerRadius="15" HeightRequest="200">
+                                    <Image Source="@string/get_started_pic2.jpg"  WidthRequest="200" HeightRequest="200" Margin="0,-80,0,0"/>
+                                </Frame>
+
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+                    <Label Text="Manage your home easily" FontSize="39" FontAttributes="Bold" HorizontalTextAlignment="Start" Margin="0,0,30,0" LineBreakMode ="WordWrap"/>
+                    <Label Text="Lorem ipsum dolor sit amet consectetur. Mi enim dignissim vitae quam quis fringilla" Margin="0,0,0,15"/>
+
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame WidthRequest="20" HeightRequest="20" Grid.Column="0" Padding="0">
+                            <Image Source="@string/commit.jpg"  Aspect="AspectFill"/>
+                        </Frame>
+                        <Label Text="Lorem ipsum" Grid.Column="1" HorizontalOptions="StartAndExpand" VerticalOptions="Center" LineBreakMode="WordWrap"/>
+                    </Grid>
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame WidthRequest="20" HeightRequest="20" Grid.Column="0" Padding="0">
+                            <Image Source="@string/commit.jpg"  Aspect="AspectFill"/>
+                        </Frame>
+                        <Label Text="Lorem ipsum" Grid.Column="1" HorizontalOptions="StartAndExpand" VerticalOptions="Center" LineBreakMode="WordWrap"/>
+                    </Grid>
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame WidthRequest="20" HeightRequest="20" Grid.Column="0" Padding="0">
+                            <Image Source="@string/commit.jpg"  Aspect="AspectFill"/>
+                        </Frame>
+                        <Label Text="Lorem ipsum" Grid.Column="1" HorizontalOptions="StartAndExpand" VerticalOptions="Center" LineBreakMode="WordWrap"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+        </DataTemplate>
+
+
+        <s:CarouselDataTemplateSelector 
+            x:Key="carouselDataTemplateSelector"
+            ItemTemplate1="{StaticResource item1}"
+            ItemTemplate2="{StaticResource item2}"
+            ItemTemplate3="{StaticResource item3}"
+            ItemTemplate4="{StaticResource item4}"/>
+
+    </ContentPage.Resources>
+
+    <Grid
+        RowDefinitions="auto, auto, auto">
+
+        <CarouselView 
+            Grid.Row="0"
+            IndicatorView="indicatorView"
+            Loop="False"
+            ItemsSource="{Binding CarouselItemsIds}"
+            ItemTemplate="{StaticResource carouselDataTemplateSelector}">
+
+        </CarouselView>
+
+        <IndicatorView 
+            Grid.Row="1"
+            x:Name="indicatorView"
+            HorizontalOptions="Center"
+            SelectedIndicatorColor="{StaticResource Blue}"/>
+
+        <Button 
+            Grid.Row="2"
+            Text="Get started"
+            Margin="10,60,10,0"
+            BackgroundColor="{StaticResource Blue}"
+            FontAttributes="Bold"
+            Command="{Binding GetStartedCommand}"/>
+    </Grid>
+</ContentPage>
