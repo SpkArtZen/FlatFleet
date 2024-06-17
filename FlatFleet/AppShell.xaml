@@ -39,6 +39,10 @@
         Route="EnterNewPassword"/>
 
     <ShellContent
+        ContentTemplate="{DataTemplate local:NewPasswordAcceptedPage}"
+        Route="NewPasswordAccepted"/>
+
+    <ShellContent
         ContentTemplate="{x:DataTemplate local:SignUpPage}"
         Route="SignUp"/>
 

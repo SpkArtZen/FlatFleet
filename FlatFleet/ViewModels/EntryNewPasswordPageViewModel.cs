@@ -12,7 +12,8 @@ namespace FlatFleet.ViewModels
         }
         private async void CheckPasswords()
         {
-            await NavigationService.NavigateTo(typeof(NewPasswordAcceptedPage));
+            await Shell.Current.GoToAsync("//NewPasswordAccepted");
+            // await NavigationService.NavigateTo(typeof(NewPasswordAcceptedPage));
         }
     }
 }
