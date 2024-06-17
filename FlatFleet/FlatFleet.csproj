@@ -103,6 +103,9 @@
 	  <MauiXaml Update="Pages\RecoverPasswordPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\UploadFilesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="SignInPage.xaml" />
 	  <MauiXaml Update="Pages\SelectAccountTypePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>

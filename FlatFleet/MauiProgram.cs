@@ -66,6 +66,9 @@ namespace FlatFleet
 
             builder.Services.AddTransient<SelectAccountTypePageViewModel>();
             builder.Services.AddTransient<SelectAccountTypePage>();
+
+            builder.Services.AddTransient<ManagementCompanyViewModel>();
+            builder.Services.AddTransient<ManagementCompanyPage>();
 #if DEBUG
             object value = builder.Logging.AddDebug();
 #endif

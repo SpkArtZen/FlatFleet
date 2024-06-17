@@ -4,9 +4,9 @@ namespace FlatFleet.Pages;
 
 public partial class ManagementCompanyPage : ContentPage
 {
-	public ManagementCompanyPage()
+	public ManagementCompanyPage(ManagementCompanyViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = new ManagementCompanyViewModel();
+		BindingContext = viewModel;
 	}
 }

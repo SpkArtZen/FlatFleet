@@ -96,12 +96,12 @@ namespace FlatFleet.ViewModels
 
         private async void ContinueWithCompanyPage()
         {
-            await NavigationService.NavigateTo(typeof(ManagementCompanyPage));
+            await Shell.Current.GoToAsync("//SelectManagementCompany");
         }
 
         private async void ContinueWithDefaultPage()
         {
-            await NavigationService.NavigateTo(typeof(MainPage));
+            
         }
     }
 }

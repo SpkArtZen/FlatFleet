@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mtc="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="FlatFleet.Pages.UploadFilesPage"
+             Title="UploadFilesPage">
+    <VerticalStackLayout>
+        <Frame Padding="0" HeightRequest="100" WidthRequest="180">
+            <Image Source="@string/upload_files_tabel.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding UploadFileCommand}"></TapGestureRecognizer>
+                </Image.GestureRecognizers>
+            </Image>
+        </Frame>
+        <Label Text="or" TextColor ="Gray" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
+        <Button Text="Use Camera" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" HorizontalOptions="Center" HeightRequest="50" WidthRequest="140">
+        </Button>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="Upload list" Grid.Column="0" TextColor="Gray" HorizontalOptions="Start"/>
+            <Label Text="Files Ready" Grid.Column="1" TextColor="Gray" HorizontalOptions="End"/>
+        </Grid>
+        <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+        <toolkit:Expander>
+            <toolkit:Expander.Header>
+                <Grid>
+                    <Image Source="folder.png" WidthRequest="24" HeightRequest="24"/>
+                    <Label Text="Document title" FontSize="Medium"/>
+                    <Label Text="1.0 KB / 1.4 KB" FontSize="Small" HorizontalOptions="End"/>
+                </Grid>
+            </toolkit:Expander.Header>
+            <toolkit:Expander.Content>
+                <!-- Expandable content -->
+                <StackLayout>
+                    <Grid>
+                        <Image Source="document.png" WidthRequest="24" HeightRequest="24"/>
+                        <Label Text="Document title" FontSize="Medium"/>
+                        <Label Text="110 MB / 820 MB" FontSize="Small" HorizontalOptions="End"/>
+                        <Image Source="cancel.png" WidthRequest="24" HeightRequest="24" HorizontalOptions="End"/>
+                    </Grid>
+                    <Grid>
+                        <Image Source="document.png" WidthRequest="24" HeightRequest="24"/>
+                        <Label Text="Document title" FontSize="Medium"/>
+                        <Label Text="110 MB / 820 MB" FontSize="Small" HorizontalOptions="End"/>
+                        <Image Source="error.png" WidthRequest="24" HeightRequest="24" HorizontalOptions="End"/>
+                    </Grid>
+                    <Grid>
+                        <Image Source="document.png" WidthRequest="24" HeightRequest="24"/>
+                        <Label Text="Document title" FontSize="Medium"/>
+                        <Label Text="110 MB / 820 MB" FontSize="Small" HorizontalOptions="End"/>
+                        <Image Source="delete.png" WidthRequest="24" HeightRequest="24" HorizontalOptions="End"/>
+                    </Grid>
+                </StackLayout>
+            </toolkit:Expander.Content>
+        </toolkit:Expander>
+
+        <!-- Second Expander (Expanded) -->
+        <toolkit:Expander IsExpanded="True">
+            <toolkit:Expander.Header>
+                <Grid>
+                    <Image Source="folder_checked.png" WidthRequest="24" HeightRequest="24"/>
+                    <Label Text="Document title" FontSize="Medium"/>
+                    <Label Text="1.4 KB" FontSize="Small" HorizontalOptions="End"/>
+                </Grid>
+            </toolkit:Expander.Header>
+            <toolkit:Expander.Content>
+                <!-- Expandable content -->
+                <Grid>
+                    <Image Source="document_checked.png" WidthRequest="24" HeightRequest="24"/>
+                    <Label Text="Document title" FontSize="Medium"/>
+                    <Label Text="1.4 KB" FontSize="Small" HorizontalOptions="End"/>
+                    <Image Source="delete.png" WidthRequest="24" HeightRequest="24" HorizontalOptions="End"/>
+                </Grid>
+            </toolkit:Expander.Content>
+        </toolkit:Expander>
+    </VerticalStackLayout>
+</ContentPage>

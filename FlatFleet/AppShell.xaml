@@ -58,4 +58,7 @@
     <ShellContent 
         ContentTemplate="{DataTemplate pages:SelectAccountTypePage}"
         Route="SelectAccountType"/>
+    <ShellContent
+        ContentTemplate="{DataTemplate pages:ManagementCompanyPage}"
+        Route="SelectManagementCompany"/>
 </Shell>
