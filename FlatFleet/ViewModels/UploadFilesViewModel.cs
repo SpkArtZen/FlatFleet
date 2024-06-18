@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using Firebase.Storage;
 using FlatFleet.Pages;
 using Microsoft.Maui.Controls;
 
@@ -8,13 +9,16 @@ namespace FlatFleet.ViewModels
 {
     public class UploadFilesViewModel : ViewModelBase
     {
+        private FirebaseStorage _storage;
+
         public ICommand UploadFileCommand {  get; }
 
         public event EventHandler<List<FileItem>>? FilesLoaded;
         
-        public UploadFilesViewModel()
+        public UploadFilesViewModel(FirebaseStorage storage)
         {
             LoadFiles();
+            _storage = storage;
             UploadFileCommand = new Command(Upload);
         }
         private async void Upload()
@@ -29,10 +33,13 @@ namespace FlatFleet.ViewModels
             {
                 new FileItem { Title = files.FileName, Size = filesToUpload.Length.ToString() },
             };
-
             // Console.WriteLine(filesToUpload);
 
             FilesLoaded?.Invoke(this, FilesToUploadList);
+
+            await _storage
+                .Child("documents/" + files.FileName)
+                .PutAsync(filesToUpload);
         }
 
         
