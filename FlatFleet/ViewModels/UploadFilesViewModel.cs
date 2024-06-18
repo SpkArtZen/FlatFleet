@@ -30,7 +30,7 @@ namespace FlatFleet.ViewModels
                 new FileItem { Title = files.FileName, Size = filesToUpload.Length.ToString() },
             };
 
-            Console.WriteLine(filesToUpload);
+            // Console.WriteLine(filesToUpload);
 
             FilesLoaded?.Invoke(this, FilesToUploadList);
         }
