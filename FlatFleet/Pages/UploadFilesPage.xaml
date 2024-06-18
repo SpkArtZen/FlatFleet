@@ -3,32 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mtc="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="FlatFleet.Pages.UploadFilesPage"
-             Title="UploadFilesPage">
-    <VerticalStackLayout>
-        <Frame Padding="0" HeightRequest="160" WidthRequest="366">
-            <Image Source="@string/upload_files_tabel.png" Aspect="AspectFill">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding UploadFileCommand}"></TapGestureRecognizer>
-                </Image.GestureRecognizers>
-            </Image>
-        </Frame>
-        <Label Text="or" TextColor ="Gray" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
-        <Button Text="Use Camera" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" HorizontalOptions="Center" HeightRequest="50" WidthRequest="140">
-        </Button>
-        <Grid Grid.ColumnSpan="2" Margin="10,25,10,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Text="Upload list" Grid.Column="0" TextColor="Gray" HorizontalOptions="Start"/>
-            <Label Text="Files Ready" Grid.Column="2" TextColor="Gray" HorizontalOptions="End"/>
-        </Grid>
-        <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-        <ScrollView>
-            <StackLayout x:Name="FilesStackLayout">
-                <!-- Сюди будуть додаватись файли -->
-            </StackLayout>
-        </ScrollView>
-    </VerticalStackLayout>
+             Title="UploadFilesPage" x:FieldModifier ="public">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Frame x:Name="FrameName" x:FieldModifier ="public" IsVisible="False">
+                <cv:CameraView x:Name="cameraView" WidthRequest="300" HeightRequest="300" x:FieldModifier ="public" IsVisible="False"/>
+            </Frame>
+            <Button Text="Make photo"
+         TextColor="Blue"
+         Margin="0,35,0,20"
+         BackgroundColor="White"
+         BorderWidth="1"
+         HorizontalOptions="Fill"
+         BorderColor="Blue"
+         Command="{Binding SaveFilePic}" x:FieldModifier ="public"/>
+            <Label x:Name="lblImageSize" Text="Розмір зображення: 0 KB" TextColor="Gray" HorizontalOptions="Center" x:FieldModifier ="public"/>
+            <Frame Padding="0" HeightRequest="160" WidthRequest="366">
+                <Image Source="@string/upload_files_tabel.png" Aspect="AspectFill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding UploadFileCommand}"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+            <Label Text="or" TextColor ="Gray" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"/>
+            <Button Text="Use Camera" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" HorizontalOptions="Center" HeightRequest="50" WidthRequest="140">
+                <Button.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CameraOnCommand}"></TapGestureRecognizer>
+                </Button.GestureRecognizers>
+            </Button>
+            <Grid Grid.ColumnSpan="2" Margin="10,25,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Upload list" Grid.Column="0" TextColor="Gray" HorizontalOptions="Start"/>
+                <Label Text="Files Ready" Grid.Column="2" TextColor="Gray" HorizontalOptions="End"/>
+            </Grid>
+            <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
+            <ScrollView>
+                <StackLayout x:Name="FilesStackLayout">
+                    <!-- Сюди будуть додаватись файли -->
+                </StackLayout>
+            </ScrollView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
+    

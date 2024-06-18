@@ -1,3 +1,4 @@
+using Camera.MAUI;
 using CommunityToolkit.Maui.Views;
 using FlatFleet.ViewModels;
 
@@ -11,6 +12,7 @@ public partial class UploadFilesPage : ContentPage
 		BindingContext = viewModel;
         viewModel.FilesLoaded += OnFilesLoaded;
     }
+
     private void OnFilesLoaded(object? sender, List<FileItem> files)
     {
         FilesStackLayout.Children.Clear();
@@ -92,11 +94,12 @@ public partial class UploadFilesPage : ContentPage
         {
             Children =
                 {
-                    new Image { Source = "document_checked.png", WidthRequest = 24, HeightRequest = 24 },
+                    new Image { Source = "document.png", WidthRequest = 24, HeightRequest = 24 },
                     new Label { Text = file.Title, FontSize = 16, VerticalOptions = LayoutOptions.Center },
                     new Label { Text = file.Size, FontSize = 14, HorizontalOptions = LayoutOptions.End, VerticalOptions = LayoutOptions.Center },
                     new Image { Source = "delete.png", WidthRequest = 24, HeightRequest = 24, HorizontalOptions = LayoutOptions.End, VerticalOptions = LayoutOptions.Center }
                 }
         };
     }
+
 }
