@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using Camera.MAUI;
 using Firebase.Auth;
 using Firebase.Auth.Providers;
 using FlatFleet.Pages;
@@ -16,6 +17,7 @@ namespace FlatFleet
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .UseMauiCameraView()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -69,6 +71,9 @@ namespace FlatFleet
 
             builder.Services.AddTransient<ManagementCompanyViewModel>();
             builder.Services.AddTransient<ManagementCompanyPage>();
+
+            builder.Services.AddTransient<UploadFilesViewModel>();
+            builder.Services.AddTransient<UploadFilesPage>();
 #if DEBUG
             object value = builder.Logging.AddDebug();
 #endif

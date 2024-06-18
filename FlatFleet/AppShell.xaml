@@ -61,4 +61,7 @@
     <ShellContent
         ContentTemplate="{DataTemplate pages:ManagementCompanyPage}"
         Route="SelectManagementCompany"/>
+    <ShellContent
+        ContentTemplate="{DataTemplate pages:UploadFilesPage}"
+        Route="UploadFiles"/>
 </Shell>
