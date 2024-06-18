@@ -100,8 +100,19 @@
                     Grid.Column="1" 
                     VerticalOptions="Center" 
                     Margin="0,0,40,0" 
-                    Text="{Binding Password}"/>
-                <Image Source= "@string/hide_icon.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="End"  Grid.Column="1"/>
+                    Text="{Binding Password}"
+                    IsPassword="{Binding IsPasswordHidden}"/>
+                <Image 
+                    Source="@string/hide_icon.png" 
+                    WidthRequest="30" 
+                    HeightRequest="30" 
+                    HorizontalOptions="End"  
+                    Grid.Column="1">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding SwitchAppearanceOfPassword}"/>
+                    </Image.GestureRecognizers>
+                </Image>
             </Grid>
         </Frame>
         <Grid>
