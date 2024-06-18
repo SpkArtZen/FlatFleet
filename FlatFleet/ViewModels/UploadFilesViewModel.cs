@@ -1,31 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using Firebase.Storage;
 using FlatFleet.Pages;
 using Microsoft.Maui.Controls;
 
 namespace FlatFleet.ViewModels
 {
-    public class UploadFilesViewModel : BindableObject
+    public class UploadFilesViewModel : ViewModelBase
     {
+        private FirebaseStorage _storage;
+
         public ICommand UploadFileCommand {  get; }
 
         public event EventHandler<List<FileItem>>? FilesLoaded;
-        public UploadFilesViewModel()
+        
+        public UploadFilesViewModel(FirebaseStorage storage)
         {
             LoadFiles();
+            _storage = storage;
             UploadFileCommand = new Command(Upload);
         }
         private async void Upload()
         {
             LoadFiles();
         }
-        private void LoadFiles()
+        private async void LoadFiles()
         {
-            var files = GetFilesFromSystem();
-            FilesLoaded?.Invoke(this, files);
+            var files = await FilePicker.PickAsync();
+            var filesToUpload = await files.OpenReadAsync();
+            var FilesToUploadList = new List<FileItem>()
+            {
+                new FileItem { Title = files.FileName, Size = filesToUpload.Length.ToString() },
+            };
+            // Console.WriteLine(filesToUpload);
+
+            FilesLoaded?.Invoke(this, FilesToUploadList);
+
+            await _storage
+                .Child("documents/" + files.FileName)
+                .PutAsync(filesToUpload);
         }
 
+        
         private List<FileItem> GetFilesFromSystem()
         {
             return new List<FileItem>
@@ -34,6 +51,7 @@ namespace FlatFleet.ViewModels
                 new FileItem { Title = "Document title 2", Size = "2.0 KB" }
             };
         }
+        
     }
 
     public class FileItem

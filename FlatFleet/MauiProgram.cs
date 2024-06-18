@@ -6,6 +6,7 @@ using FlatFleet.Pages;
 using FlatFleet.ViewModels;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
+using Firebase.Storage;
 
 namespace FlatFleet
 {
@@ -42,6 +43,7 @@ namespace FlatFleet
                     new EmailProvider()
                 }
             }));
+            builder.Services.AddSingleton<FirebaseStorage>(s => new FirebaseStorage("flat-fleet.appspot.com"));
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<MainPage>();
 
