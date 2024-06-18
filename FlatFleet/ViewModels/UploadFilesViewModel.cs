@@ -6,11 +6,12 @@ using Microsoft.Maui.Controls;
 
 namespace FlatFleet.ViewModels
 {
-    public class UploadFilesViewModel : BindableObject
+    public class UploadFilesViewModel : ViewModelBase
     {
         public ICommand UploadFileCommand {  get; }
 
         public event EventHandler<List<FileItem>>? FilesLoaded;
+        
         public UploadFilesViewModel()
         {
             LoadFiles();
@@ -20,12 +21,21 @@ namespace FlatFleet.ViewModels
         {
             LoadFiles();
         }
-        private void LoadFiles()
+        private async void LoadFiles()
         {
-            var files = GetFilesFromSystem();
-            FilesLoaded?.Invoke(this, files);
+            var files = await FilePicker.PickAsync();
+            var filesToUpload = await files.OpenReadAsync();
+            var FilesToUploadList = new List<FileItem>()
+            {
+                new FileItem { Title = files.FileName, Size = filesToUpload.Length.ToString() },
+            };
+
+            Console.WriteLine(filesToUpload);
+
+            FilesLoaded?.Invoke(this, FilesToUploadList);
         }
 
+        
         private List<FileItem> GetFilesFromSystem()
         {
             return new List<FileItem>
@@ -34,6 +44,7 @@ namespace FlatFleet.ViewModels
                 new FileItem { Title = "Document title 2", Size = "2.0 KB" }
             };
         }
+        
     }
 
     public class FileItem
