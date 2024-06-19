@@ -29,21 +29,6 @@ namespace FlatFleet.ViewModels
             }
         }
 
-        private int _filesCount = 0;
-
-        public int FilesCount
-        {
-            get { return _filesCount; }
-            set
-            {
-                if (_filesCount != value)
-                {
-                    _filesCount = value;
-                    OnPropertyChanged(nameof(FilesCount));
-                }
-            }
-        }
-
         private FirebaseStorage _storage;
 
         public UploadFilesPage CurrPage {get; set;}
@@ -102,8 +87,6 @@ namespace FlatFleet.ViewModels
 
 
             FilesLoaded?.Invoke(this, new List<FileItem>() { file });
-
-            FilesCount++;
         }
         private async Task<byte[]> ConvertImageSourceToBytes(ImageSource imageSource)
         {
@@ -198,8 +181,6 @@ namespace FlatFleet.ViewModels
                         .PutAsync(stream);
 
                     Debug.WriteLine($"File '{file.FileName}' was successfully uploaded!");
-
-                    FilesCount++;
                 }
             }
 
