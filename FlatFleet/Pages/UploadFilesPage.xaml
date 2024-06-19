@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mtc="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="FlatFleet.Pages.UploadFilesPage"
-             Title="UploadFilesPage" x:FieldModifier ="public">
+             Title="UploadFilesPage">
+
     <ScrollView>
         <VerticalStackLayout>
-            <Frame x:Name="FrameName" x:FieldModifier ="public" IsVisible="False">
-                <cv:CameraView x:Name="cameraView" WidthRequest="300" HeightRequest="300" x:FieldModifier ="public" IsVisible="False"/>
+            <Frame x:Name="FrameName" x:FieldModifier ="public" IsVisible="{Binding IsCameraOn}">
+                <cv:CameraView 
+                    x:Name="cameraView" 
+                    WidthRequest="300" 
+                    HeightRequest="300"
+                    IsVisible="{Binding IsCameraOn}"
+                    x:FieldModifier="public"
+                    CamerasLoaded="cameraView_CamerasLoaded"/>
             </Frame>
             <Button Text="Make photo"
          TextColor="Blue"
@@ -37,14 +43,29 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Label Text="Upload list" Grid.Column="0" TextColor="Gray" HorizontalOptions="Start"/>
+
+                <!-- Тестовий Label для відслідковування к-ті елементів у FilesStackLayout -->
+                <Label 
+                    Text="{Binding FilesCount, StringFormat='Files count: {0}'}" 
+                    Grid.Column="1" 
+                    TextColor="Gray" 
+                    HorizontalOptions="Center"/>
+                
                 <Label Text="Files Ready" Grid.Column="2" TextColor="Gray" HorizontalOptions="End"/>
             </Grid>
             <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
             <ScrollView>
-                <StackLayout x:Name="FilesStackLayout">
+                <StackLayout 
+                    x:Name="FilesStackLayout"
+                    x:FieldModifier="public"
+                    Spacing="10"
+                    Padding="10, 0, 10, 10">
+
                     <!-- Сюди будуть додаватись файли -->
+                    
                 </StackLayout>
             </ScrollView>
         </VerticalStackLayout>
