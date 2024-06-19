@@ -7,10 +7,18 @@ namespace FlatFleet.Pages;
 
 public partial class UploadFilesPage : ContentPage
 {
+    private int _fileId = 0;
+    private UploadFilesViewModel _vm;
+
+    public Dictionary<int, Grid> idFilePair = new();
+
 	public UploadFilesPage(UploadFilesViewModel viewModel)
     {
 		InitializeComponent();
-		BindingContext = viewModel;
+
+        _vm = viewModel;
+
+		BindingContext = _vm;
 
         viewModel.CurrPage = this;
         
@@ -37,40 +45,39 @@ public partial class UploadFilesPage : ContentPage
     {
         var expander = new Expander
         {
-
             Header = new Grid
             {
                 BackgroundColor = Colors.LightGray,
                 Children =
+                {
+                    new Frame
                     {
-                        new Frame
+                        CornerRadius = 360,
+                        Padding = 0,
+                        WidthRequest = 46,
+                        HeightRequest = 46,
+                        HorizontalOptions = LayoutOptions.Start,
+                        Content = new Image                          
                         {
-                            CornerRadius = 360,
-                            Padding = 0,
+                            Source = "folder.png",
                             WidthRequest = 46,
                             HeightRequest = 46,
-                            HorizontalOptions = LayoutOptions.Start,
-                            Content = new Image                          
-                            {
-                                Source = "folder.png",
-                                WidthRequest = 46,
-                                HeightRequest = 46,
-                                HorizontalOptions = LayoutOptions.Start
+                            HorizontalOptions = LayoutOptions.Start
                                 
-                            }
-                        },
-
-                        new VerticalStackLayout
-                        {
-                            Margin = new Thickness(50,10,10,10),
-                            Children =
-                            {
-                                 new Label { Text = "Multiple files", FontSize = 16, VerticalOptions = LayoutOptions.Start, HorizontalOptions = LayoutOptions.Start },
-                                 new Label { Text = $"{files.Count} files", FontSize = 14, HorizontalOptions = LayoutOptions.Start, VerticalOptions = LayoutOptions.Center }
-                            }
                         }
+                    },
 
+                    new VerticalStackLayout
+                    {
+                        Margin = new Thickness(50,10,10,10),
+                        Children =
+                        {
+                                new Label { Text = "Multiple files", FontSize = 16, VerticalOptions = LayoutOptions.Start, HorizontalOptions = LayoutOptions.Start },
+                                new Label { Text = $"{files.Count} files", FontSize = 14, HorizontalOptions = LayoutOptions.Start, VerticalOptions = LayoutOptions.Center }
+                        }
                     }
+
+                }
             }
         };
 
@@ -80,37 +87,52 @@ public partial class UploadFilesPage : ContentPage
             var grid = new Grid
             {
                 Children =
+                {
+                    new Frame
                     {
-                     new Frame
+                        CornerRadius = 360,
+                        Padding = 0,
+                        WidthRequest = 46,
+                        HeightRequest = 46,
+                        HorizontalOptions = LayoutOptions.Start,
+                        Content = new Image
                         {
-                            CornerRadius = 360,
-                            Padding = 0,
-                            WidthRequest = 46,
-                            HeightRequest = 46,
-                            HorizontalOptions = LayoutOptions.Start,
-                            Content = new Image
-                            {
-                                Source = "document.png",
-                                WidthRequest = 24,
-                                HeightRequest = 24
-                            }
-
-                        },
-                        new VerticalStackLayout
-                        {
-                            Margin = new Thickness(50,10,10,10),
-                            Children =
-                            {
-
-                                new Label { Text = file.Title, FontSize = 16, VerticalOptions = LayoutOptions.Start },
-                                new Label { Text = file.Size, FontSize = 14, HorizontalOptions = LayoutOptions.End, VerticalOptions = LayoutOptions.Center },
-                                new Image { Source = "delete.png", WidthRequest = 24, HeightRequest = 24, HorizontalOptions = LayoutOptions.End, VerticalOptions = LayoutOptions.Center }
-                            }
-
-
+                            Source = "document.png",
+                            WidthRequest = 24,
+                            HeightRequest = 24
                         }
-                     }
+
+                    },
+                    new VerticalStackLayout
+                    {
+                        Margin = new Thickness(50,10,10,10),
+                        Children =
+                        {
+                            new Label { Text = file.Title, FontSize = 16, VerticalOptions = LayoutOptions.Start },
+                            new Label { Text = file.GetFormatedSize(), FontSize = 14, HorizontalOptions = LayoutOptions.End, VerticalOptions = LayoutOptions.Center },
+                            new Image 
+                            { 
+                                Source = "delete.png", 
+                                WidthRequest = 24, 
+                                HeightRequest = 24, 
+                                HorizontalOptions = LayoutOptions.End, 
+                                VerticalOptions = LayoutOptions.Center,
+                                GestureRecognizers =
+                                {
+                                    new TapGestureRecognizer()
+                                    {
+                                        Command = _vm.DeleteFile,
+                                        CommandParameter = ++_fileId
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             };
+
+            idFilePair.Add(_fileId, grid);
+
             stackLayout.Children.Add(grid);
         }
         expander.Content = stackLayout;
@@ -119,44 +141,58 @@ public partial class UploadFilesPage : ContentPage
 
     private View CreateSingleFileView(FileItem file)
     {
-        return new Grid
+        var grid = new Grid
         {
-            Margin = new Thickness(20,0,20,10),
+            Margin = new Thickness(20, 0, 20, 10),
             Children =
+            {
+                new Frame
                 {
-                   new Frame
+                    CornerRadius = 360,
+                    Padding = 0,
+                    WidthRequest = 46,
+                    HeightRequest = 46,
+                    HorizontalOptions = LayoutOptions.Start,
+                    Content = new Image
+                    {
+                        Source = "document.png",
+                        Aspect=Aspect.AspectFill
+                    }
+
+                },
+                new VerticalStackLayout
+                {
+                    Margin = new Thickness(50,10,10,10),
+                    Children =
+                    {
+
+                        new Label { Text = file.Title, FontSize = 16, VerticalOptions = LayoutOptions.Center },
+                        new Label { Text = file.GetFormatedSize(), FontSize = 14, HorizontalOptions = LayoutOptions.Start, VerticalOptions = LayoutOptions.End }
+
+                    }
+                },
+                new Image 
+                {
+                    Source = "delete.png",
+                    WidthRequest = 24,
+                    HeightRequest = 24,
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.Center,
+                    GestureRecognizers =
+                    {
+                        new TapGestureRecognizer()
                         {
-                            CornerRadius = 360,
-                            Padding = 0,
-                            WidthRequest = 46,
-                            HeightRequest = 46,
-                            HorizontalOptions = LayoutOptions.Start,
-                            Content = new Image
-                            {
-                                Source = "document.png",
-                                Aspect=Aspect.AspectFill
-                            }
-
-                        },
-                        new VerticalStackLayout
-                        {
-                            Margin = new Thickness(50,10,10,10),
-                            Children =
-                            {
-
-                                new Label { Text = file.Title, FontSize = 16, VerticalOptions = LayoutOptions.Center },
-                                new Label { Text = file.Size, FontSize = 14, HorizontalOptions = LayoutOptions.Start, VerticalOptions = LayoutOptions.End }
-                               
-                            }
-
-
-                        },
-                         new Image { Source = "delete.png", WidthRequest = 24, HeightRequest = 24, HorizontalOptions = LayoutOptions.End, VerticalOptions = LayoutOptions.Center }
-
-                     }
-        
-        
+                            Command = _vm.DeleteFile,
+                            CommandParameter = ++_fileId
+                        }
+                    }
+                }
+            }
         };
+
+        idFilePair.Add(_fileId, grid);
+
+        return grid;
     }
 
     private void cameraView_CamerasLoaded(object sender, EventArgs e)

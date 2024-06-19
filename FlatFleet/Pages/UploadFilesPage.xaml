@@ -43,18 +43,9 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Label Text="Upload list" Grid.Column="0" TextColor="Gray" HorizontalOptions="Start"/>
-
-                <!-- Тестовий Label для відслідковування к-ті елементів у FilesStackLayout -->
-                <Label 
-                    Text="{Binding FilesCount, StringFormat='Files count: {0}'}" 
-                    Grid.Column="1" 
-                    TextColor="Gray" 
-                    HorizontalOptions="Center"/>
-                
-                <Label Text="Files Ready" Grid.Column="2" TextColor="Gray" HorizontalOptions="End"/>
+                <Label Text="Files Ready" Grid.Column="1" TextColor="Gray" HorizontalOptions="End"/>
             </Grid>
             <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
             <ScrollView>
