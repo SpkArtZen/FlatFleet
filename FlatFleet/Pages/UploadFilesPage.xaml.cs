@@ -1,5 +1,6 @@
 using Camera.MAUI;
 using CommunityToolkit.Maui.Views;
+using FlatFleet.Models;
 using FlatFleet.ViewModels;
 
 namespace FlatFleet.Pages;
@@ -10,12 +11,16 @@ public partial class UploadFilesPage : ContentPage
     {
 		InitializeComponent();
 		BindingContext = viewModel;
+
+        viewModel.CurrPage = this;
+        
         viewModel.FilesLoaded += OnFilesLoaded;
     }
 
     private void OnFilesLoaded(object? sender, List<FileItem> files)
     {
-        FilesStackLayout.Children.Clear();
+        // Нащо це потрібно?
+        //FilesStackLayout.Children.Clear();
 
         if (files.Count > 1)
         {
@@ -154,4 +159,8 @@ public partial class UploadFilesPage : ContentPage
         };
     }
 
+    private void cameraView_CamerasLoaded(object sender, EventArgs e)
+    {
+        cameraView.Camera = cameraView.Cameras.First();
+    }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using Camera.MAUI;
 using Firebase.Storage;
+using FlatFleet.Models;
 using FlatFleet.Models.Users;
 using FlatFleet.Pages;
 using Microsoft.Maui.Controls;
@@ -11,10 +12,41 @@ namespace FlatFleet.ViewModels
 {
     public class UploadFilesViewModel : ViewModelBase
     {
-        private bool _isCameraStarted = false;
         private CurrentUserStore _userStore;
+        private bool _isCameraOn = false;
+
+        public bool IsCameraOn
+        {
+            get { return _isCameraOn; }
+            set
+            {
+                if (_isCameraOn != value)
+                {
+                    _isCameraOn = value;
+                    OnPropertyChanged(nameof(IsCameraOn));
+                }
+            }
+        }
+
+        private int _filesCount = 0;
+
+        public int FilesCount
+        {
+            get { return _filesCount; }
+            set
+            {
+                if (_filesCount != value)
+                {
+                    _filesCount = value;
+                    OnPropertyChanged(nameof(FilesCount));
+                }
+            }
+        }
 
         private FirebaseStorage _storage;
+
+        public UploadFilesPage CurrPage {get; set;}
+
         public ICommand CameraOnCommand { get; }
         public ICommand CameraOffCommand { get; }
         public ICommand SaveFilePic { get; }
@@ -36,7 +68,7 @@ namespace FlatFleet.ViewModels
         {
 
             // Отримати зображення як ImageSource
-            ImageSource imageSource = (Application.Current.MainPage as UploadFilesPage).cameraView.GetSnapShot(Camera.MAUI.ImageFormat.PNG);
+            ImageSource imageSource = CurrPage.cameraView.GetSnapShot(Camera.MAUI.ImageFormat.PNG);
 
             // Перетворити ImageSource у байти
             byte[] imageBytes = await ConvertImageSourceToBytes(imageSource);
@@ -55,10 +87,17 @@ namespace FlatFleet.ViewModels
             File.WriteAllBytes(filePath, imageBytes);
             double imageSizeInKB = imageBytes.Length / 1024.0;
 
-            // Оповістити користувача про успішне збереження (опціонально)
-            Console.WriteLine($"Зображення збережено за шляхом: {filePath}");
-            Console.WriteLine($"Розмір зображення: {imageSizeInKB:F2} KB");
-            (Application.Current.MainPage as UploadFilesPage).lblImageSize.Text = $"Розмір зображення: {imageSizeInKB:F2} KB";
+            CurrPage.lblImageSize.Text = $"Розмір зображення: {imageSizeInKB:F2} KB";
+
+            FileItem file = new FileItem()
+            {
+                Title = $"IMG-{DateTime.Now:yyyyMMddHHmmss}",
+                Size = imageSizeInKB.ToString()
+            };
+
+            FilesLoaded?.Invoke(this, new List<FileItem>() { file });
+
+            FilesCount++;
         }
         private async Task<byte[]> ConvertImageSourceToBytes(ImageSource imageSource)
         {
@@ -94,47 +133,33 @@ namespace FlatFleet.ViewModels
             }
         }
 
-
-        private void cameraView_CamerasLoaded(object sender, EventArgs e)
+        private async void CameraOnFunc()
         {
-            (Application.Current.MainPage as UploadFilesPage).cameraView.Camera = (Application.Current.MainPage as UploadFilesPage).cameraView.Cameras.First();
+            if (CurrPage == null)
+                throw new Exception("Page is null");
+
+            if (CurrPage.cameraView == null)
+                throw new Exception("CameraView is null");
+
+            if (CurrPage.FrameName == null)
+                throw new Exception("FrameName is null");
+
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                if (!_isCameraStarted)
+                if (!IsCameraOn)
                 {
-                    await (Application.Current.MainPage as UploadFilesPage).cameraView.StartCameraAsync();
-                    _isCameraStarted = true;
+                    await CurrPage.cameraView.StartCameraAsync();
+                    IsCameraOn = true;
                 }
             });
         }
 
-        private async void CameraOnFunc()
-        {
-            var page = Application.Current.MainPage as UploadFilesPage;
-            if (page != null && page.cameraView != null && page.FrameName != null)
-            {
-                await Task.Delay(100); // Optional delay to ensure elements are fully initialized
-
-                page.cameraView.IsVisible = true;
-                page.FrameName.IsVisible = true;
-                if (!_isCameraStarted)
-                {
-                    await page.cameraView.StartCameraAsync();
-                    _isCameraStarted = true;
-                }
-            }
-            else
-            {
-                Console.WriteLine("Error: cameraView or FrameName is not initialized.");
-            }
-        }
-
         private async void CameraOffFunc()
         {
-            if (_isCameraStarted)
+            if (_isCameraOn)
             {
                 await (Application.Current.MainPage as UploadFilesPage).cameraView.StopCameraAsync();
-                _isCameraStarted = false;
+                _isCameraOn = false;
             }
             (Application.Current.MainPage as UploadFilesPage).cameraView.IsVisible = false;
             (Application.Current.MainPage as UploadFilesPage).FrameName.IsVisible = false;
@@ -163,9 +188,4 @@ namespace FlatFleet.ViewModels
        
     }
 
-    public class FileItem
-    {
-        public string? Title { get; set; }
-        public string? Size { get; set; }
-    }
 }
