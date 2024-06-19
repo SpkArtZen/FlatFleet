@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using Camera.MAUI;
 using Firebase.Storage;
+using FlatFleet.Models.Users;
 using FlatFleet.Pages;
 using Microsoft.Maui.Controls;
 
@@ -11,6 +12,7 @@ namespace FlatFleet.ViewModels
     public class UploadFilesViewModel : ViewModelBase
     {
         private bool _isCameraStarted = false;
+        private CurrentUserStore _userStore;
 
         private FirebaseStorage _storage;
         public ICommand CameraOnCommand { get; }
@@ -20,14 +22,15 @@ namespace FlatFleet.ViewModels
 
         public event EventHandler<List<FileItem>>? FilesLoaded;
         
-        public UploadFilesViewModel(FirebaseStorage storage)
+        public UploadFilesViewModel(FirebaseStorage storage, CurrentUserStore userStore)
         {
-            LoadFiles();
             _storage = storage;
+            _userStore = userStore;
             UploadFileCommand = new Command(Upload);
             CameraOnCommand = new Command(CameraOnFunc);
             CameraOffCommand = new Command(CameraOffFunc);
             SaveFilePic = new Command(SaveVoid);
+            LoadFiles();
         }
         public async void SaveVoid()
         {
@@ -140,6 +143,7 @@ namespace FlatFleet.ViewModels
         {
             LoadFiles();
         }
+        
         private async void LoadFiles()
         {
             var files = await FilePicker.PickAsync();
@@ -151,9 +155,9 @@ namespace FlatFleet.ViewModels
             // Console.WriteLine(filesToUpload);
 
             FilesLoaded?.Invoke(this, FilesToUploadList);
-
+            
             await _storage
-                .Child("documents/" + files.FileName)
+                .Child($"documents/{_userStore.CurrentUser.Uid}/{files.FileName}")
                 .PutAsync(filesToUpload);
         }   
        
