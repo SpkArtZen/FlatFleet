@@ -9,6 +9,9 @@ using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Firebase.Storage;
 using FlatFleet.Models.Users;
 using Google.Cloud.Firestore;
+using System.Reflection;
+using Microsoft.Extensions.Configuration;
+using Google.Cloud.Firestore.V1;
 
 namespace FlatFleet
 {
@@ -16,9 +19,6 @@ namespace FlatFleet
     {
         public static MauiApp CreateMauiApp()
         {
-            string pathToCredentials = "./FlatFleet/Properties/project_credentials.json";
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathToCredentials);
-
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -51,8 +51,8 @@ namespace FlatFleet
             builder.Services.AddSingleton<CurrentUserStore>();
 
             // TODO: перенести ID в окреме місце (клас або json файл)
-            builder.Services.AddSingleton<FirestoreDb>(s => FirestoreDb.Create("flat-fleet"));
-            
+            builder.Services.AddSingleton<FirestoreDb>(s => initFirestore().Result);
+
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<MainPage>();
 
@@ -98,6 +98,23 @@ namespace FlatFleet
             object value = builder.Logging.AddDebug();
 #endif
             return builder.Build();
+        }
+
+        public static async Task<FirestoreDb> initFirestore()
+        {
+            try
+            {
+                var stream = await FileSystem.OpenAppPackageFileAsync("project_credentials.json");
+                var reader = new StreamReader(stream);
+                var contents = reader.ReadToEnd();
+
+                FirestoreClientBuilder fbc = new FirestoreClientBuilder { JsonCredentials = contents };
+                return FirestoreDb.Create("flat-fleet", fbc.Build());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
