@@ -1,31 +1,37 @@
 ﻿using Firebase.Auth;
+using FlatFleet.Models.Users;
 using FlatFleet.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlatFleet.Features.SignIn
 {
     public class SignInCommand : AsyncCommandBase
     {
-        private readonly ViewModels.SignInPageViewModel _viewModel;
+        private readonly SignInPageViewModel _viewModel;
         private readonly FirebaseAuthClient _authClient;
+        private CurrentUserStore _userStore;
 
-        public SignInCommand(ViewModels.SignInPageViewModel viewModel, FirebaseAuthClient authClient)
+        public SignInCommand(SignInPageViewModel viewModel, FirebaseAuthClient authClient, CurrentUserStore userStore)
         {
             _viewModel = viewModel;
             _authClient = authClient;
+            _userStore = userStore;
         }
 
         protected override async Task ExecuteAsync(object parameter)
         {
             try
             {
-                await _authClient.SignInWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password);
-                await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed in!", "Ok");
-                await Shell.Current.GoToAsync("//SelectAccountType");
+                var userCredential = await _authClient.SignInWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password);
+                if (userCredential != null)
+                {
+                    _userStore.CurrentUser = userCredential.User;
+                    await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed in!", "Ok");
+                    await Shell.Current.GoToAsync("//SelectAccountType");
+                }
+            }
+            catch (FirebaseAuthException)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Incorrect password or email! Try again!", "Ok");
             }
             catch (Exception)
             {

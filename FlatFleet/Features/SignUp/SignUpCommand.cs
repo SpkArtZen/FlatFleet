@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using FlatFleet.Models.Users;
 
 namespace FlatFleet.Features.SignUp
 {
@@ -6,20 +7,27 @@ namespace FlatFleet.Features.SignUp
     {
         private readonly SignUpPageViewModel _viewModel;
         private readonly FirebaseAuthClient _authClient;
+        private CurrentUserStore _userStore;
 
-        public SignUpCommand(SignUpPageViewModel viewModel, FirebaseAuthClient authClient)
+        public SignUpCommand(SignUpPageViewModel viewModel, FirebaseAuthClient authClient, CurrentUserStore userStore)
         {
             _viewModel = viewModel;
             _authClient = authClient;
+            _userStore = userStore;
         }
 
         protected override async Task ExecuteAsync(object parameter)
         {
             try
             {
-                await _authClient.CreateUserWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password, _viewModel.FullName);
-                await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed up!", "Ok");
-                await Shell.Current.GoToAsync("//SelectAccountType");
+                var userCredential = await _authClient.CreateUserWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password, _viewModel.FullName);
+
+                if (userCredential != null)
+                {
+                    _userStore.CurrentUser = userCredential.User;
+                    await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed up!", "Ok");
+                    await Shell.Current.GoToAsync("//SelectAccountType");
+                }
             }
             catch (Exception)
             {
