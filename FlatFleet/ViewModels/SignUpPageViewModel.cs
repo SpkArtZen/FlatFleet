@@ -3,6 +3,7 @@ using Firebase.Auth;
 using FlatFleet.Features.SignUp;
 using FlatFleet.ViewModels;
 using FlatFleet.Features.Navigation;
+using FlatFleet.Models.Users;
 
 namespace FlatFleet
 {
@@ -76,9 +77,9 @@ namespace FlatFleet
         public ICommand OnSignInCommand { get; }
         public ICommand SwitchAppearanceOfPassword { get; }
 
-        public SignUpPageViewModel(FirebaseAuthClient authClient)
+        public SignUpPageViewModel(FirebaseAuthClient authClient, CurrentUserStore userStore)
         {
-            SignUpCommand = new SignUpCommand(this, authClient);
+            SignUpCommand = new SignUpCommand(this, authClient, userStore);
             OnTermsOfServiceCommand = new Command(OnTermsOfService);
             OnPrivacePolicyCommand = new Command(OnPrivacePolicy);
             OnSignInCommand = new Command(OnSingIn);

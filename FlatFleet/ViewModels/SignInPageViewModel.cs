@@ -1,6 +1,7 @@
 ﻿using Firebase.Auth;
 using FlatFleet.Features.Navigation;
 using FlatFleet.Features.SignIn;
+using FlatFleet.Models.Users;
 using FlatFleet.Pages;
 using System.Windows.Input;
 
@@ -57,9 +58,9 @@ namespace FlatFleet.ViewModels
 
         // public ICommand SelectAccountCommand { get; }
         
-        public SignInPageViewModel(FirebaseAuthClient authClient)
+        public SignInPageViewModel(FirebaseAuthClient authClient, CurrentUserStore userStore)
         {
-            SignInCommand = new SignInCommand(this, authClient);
+            SignInCommand = new SignInCommand(this, authClient, userStore);
             LoginWithGoogleCommand = new Command(OnLoginWithGoogle);
             LoginWithFacebookCommand = new Command(OnLoginWithFacebook);
             LoginWithAppleCommand = new Command(OnLoginWithApple);
