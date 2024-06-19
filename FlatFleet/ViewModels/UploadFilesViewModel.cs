@@ -54,7 +54,7 @@ namespace FlatFleet.ViewModels
         
         public UploadFilesViewModel(FirebaseStorage storage)
         {
-            //LoadFiles();
+            LoadFiles();
             _storage = storage;
             UploadFileCommand = new Command(Upload);
             CameraOnCommand = new Command(CameraOnFunc);
