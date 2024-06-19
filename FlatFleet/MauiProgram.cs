@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Firebase.Storage;
 using FlatFleet.Models.Users;
+using Google.Cloud.Firestore;
 
 namespace FlatFleet
 {
@@ -15,6 +16,9 @@ namespace FlatFleet
     {
         public static MauiApp CreateMauiApp()
         {
+            string pathToCredentials = "./FlatFleet/Properties/project_credentials.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", pathToCredentials);
+
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -33,6 +37,7 @@ namespace FlatFleet
                 });
 
             // КОД НИЖЧЕ - НЕ ЧІПАТИ! ВІН ПОТРІБЕН ДЛЯ КОРЕКТНОГО СТВОРЕННЯ СТОРІНОК ЧЕРЕЗ DI
+            // TODO: перенести ці значення в окремий json файл
             builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig()
             {
                 ApiKey = "AIzaSyBGFWSnUtDTw0z508FPy5f_z8Z2aFeTw04",
@@ -44,6 +49,9 @@ namespace FlatFleet
             }));
             builder.Services.AddSingleton<FirebaseStorage>(s => new FirebaseStorage("flat-fleet.appspot.com"));
             builder.Services.AddSingleton<CurrentUserStore>();
+
+            // TODO: перенести ID в окреме місце (клас або json файл)
+            builder.Services.AddSingleton<FirestoreDb>(s => FirestoreDb.Create("flat-fleet"));
             
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<MainPage>();
