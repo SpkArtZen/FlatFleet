@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Input;
 using Camera.MAUI;
 using Firebase.Storage;
@@ -51,6 +52,7 @@ namespace FlatFleet.ViewModels
         public ICommand CameraOffCommand { get; }
         public ICommand SaveFilePic { get; }
         public ICommand UploadFileCommand {  get; }
+        public ICommand DeleteFile { get; }
 
         public event EventHandler<List<FileItem>>? FilesLoaded;
         
@@ -62,7 +64,10 @@ namespace FlatFleet.ViewModels
             CameraOnCommand = new Command(CameraOnFunc);
             CameraOffCommand = new Command(CameraOffFunc);
             SaveFilePic = new Command(SaveVoid);
-            LoadFiles();
+            DeleteFile = new Command<int>((int id) => { DeleteFileFunc(id); });
+
+            // Нащо викликати цей метод одразу при завантаженні сторінки?
+            //LoadFiles();
         }
         public async void SaveVoid()
         {
@@ -85,15 +90,16 @@ namespace FlatFleet.ViewModels
 
             // Записати байти зображення у файл
             File.WriteAllBytes(filePath, imageBytes);
-            double imageSizeInKB = imageBytes.Length / 1024.0;
-
-            CurrPage.lblImageSize.Text = $"Розмір зображення: {imageSizeInKB:F2} KB";
+            long sizeInBytes = imageBytes.Length;
 
             FileItem file = new FileItem()
             {
-                Title = $"IMG-{DateTime.Now:yyyyMMddHHmmss}",
-                Size = imageSizeInKB.ToString()
+                Title = $"Photo_{DateTime.Now:yyyyMMddHHmmss}",
+                Size = sizeInBytes
             };
+
+            CurrPage.lblImageSize.Text = $"Розмір зображення: {file.GetFormatedSize()}";
+
 
             FilesLoaded?.Invoke(this, new List<FileItem>() { file });
 
@@ -171,21 +177,41 @@ namespace FlatFleet.ViewModels
         
         private async void LoadFiles()
         {
-            var files = await FilePicker.PickAsync();
-            var filesToUpload = await files.OpenReadAsync();
-            var FilesToUploadList = new List<FileItem>()
-            {
-                new FileItem { Title = files.FileName, Size = filesToUpload.Length.ToString() },
-            };
-            // Console.WriteLine(filesToUpload);
+            var files = await FilePicker.PickMultipleAsync();
 
-            FilesLoaded?.Invoke(this, FilesToUploadList);
+            List<FileItem> filesToUploadList = new();  
+
+            foreach (var file in files)
+            {
+                using (var stream = await file.OpenReadAsync())
+                {
+
+                    filesToUploadList.Add(new FileItem()
+                    {
+                        Title = file.FileName,
+
+                        Size = stream.Length
+                    });
             
-            await _storage
-                .Child($"documents/{_userStore.CurrentUser.Uid}/{files.FileName}")
-                .PutAsync(filesToUpload);
+                    await _storage
+                        .Child($"documents/{_userStore.CurrentUser.Uid}/{file.FileName}")
+                        .PutAsync(stream);
+
+                    Debug.WriteLine($"File '{file.FileName}' was successfully uploaded!");
+
+                    FilesCount++;
+                }
+            }
+
+            FilesLoaded?.Invoke(this, filesToUploadList);
         }   
-       
+
+        private void DeleteFileFunc(int id)
+        {
+            var file = CurrPage.idFilePair[id];
+
+            CurrPage.FilesStackLayout.Children.Remove(file);
+        }
     }
 
 }

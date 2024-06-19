@@ -29,14 +29,14 @@
                    TextColor="Gray"
                    FontSize="18"/>
             <Button Text="Get Started" TextColor="White" Margin="0,-20,0,20"
-                    HorizontalOptions="Fill" BackgroundColor="{StaticResource AddButtonBlue}">
+                    HorizontalOptions="Fill" BackgroundColor="{StaticResource Blue}">
                 <Button.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ToGetStartedCommand}" />
                 </Button.GestureRecognizers>
             </Button>
             <Button Text="Sign In" TextColor="{StaticResource Blue}" Margin="0,-35,0,20"
                     BackgroundColor="White" BorderWidth="1"
-                    HorizontalOptions="Fill" BorderColor="Blue">
+                    HorizontalOptions="Fill" BorderColor="{StaticResource Blue}">
                 <Button.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OnSignInCommand}" />
                 </Button.GestureRecognizers>
