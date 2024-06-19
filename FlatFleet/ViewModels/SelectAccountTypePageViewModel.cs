@@ -82,15 +82,24 @@ namespace FlatFleet.ViewModels
             IsSelected = "\u2713";
             SelectedText = obj.ToString();
 
-            if (SelectedText == "Management company")
+            switch (SelectedText)
             {
-                ContinueWithThisTypeCommand = new Command(ContinueWithCompanyPage);
+                case "Management company":
+                    ContinueWithThisTypeCommand = new Command(ContinueWithCompanyPage);
+                    break;
+                case "The tenant of the house":
+                    ContinueWithThisTypeCommand = new Command(ContinueWithTenantPage);
+                    break;
+                case "Doubt":
+                    ContinueWithThisTypeCommand = new Command(ContinueWithDoubt);
+                    break;
+                case "House committee":
+                    ContinueWithThisTypeCommand = new Command(ContinueWithHouseCommittee);
+                    break;
+                default:
+                    ContinueWithThisTypeCommand = new Command(ContinueWithDefaultPage);
+                    break;
             }
-            else
-            {
-                ContinueWithThisTypeCommand = new Command(ContinueWithDefaultPage);
-            }
-
             OnPropertyChanged(nameof(ContinueWithThisTypeCommand));
         }
 
@@ -98,7 +107,19 @@ namespace FlatFleet.ViewModels
         {
             await Shell.Current.GoToAsync("//SelectManagementCompany");
         }
-
+        private async void ContinueWithTenantPage()
+        {
+            await Shell.Current.GoToAsync("//SelectTenantOfHouse");
+        }
+        private async void ContinueWithDoubt()
+        {
+            await Shell.Current.GoToAsync("//SelectDoubt");
+        }
+        private async void ContinueWithHouseCommittee()
+        {
+            await Shell.Current.GoToAsync("//SelectHouseCommittee");
+        }
+        
         private async void ContinueWithDefaultPage()
         {
             

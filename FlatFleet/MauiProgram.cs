@@ -76,6 +76,15 @@ namespace FlatFleet
 
             builder.Services.AddTransient<UploadFilesViewModel>();
             builder.Services.AddTransient<UploadFilesPage>();
+
+            builder.Services.AddTransient<DoubtPageViewModel>();
+            builder.Services.AddTransient<DoubtPage>();
+
+            builder.Services.AddTransient<HouseCommitteePageViewModel>();
+            builder.Services.AddTransient<HouseCommitteePage>();
+
+            builder.Services.AddTransient<TenantOfHousePageViewModel>();
+            builder.Services.AddTransient<TenantOfHousePage>();
 #if DEBUG
             object value = builder.Logging.AddDebug();
 #endif

@@ -64,4 +64,13 @@
     <ShellContent
         ContentTemplate="{DataTemplate pages:UploadFilesPage}"
         Route="UploadFiles"/>
+    <ShellContent
+        ContentTemplate="{DataTemplate pages:DoubtPage}"
+        Route="SelectDoubt"/>
+    <ShellContent
+        ContentTemplate="{DataTemplate pages:TenantOfHousePage}"
+        Route="SelectTenantOfHouse"/>
+    <ShellContent
+        ContentTemplate="{DataTemplate pages:HouseCommitteePage}"
+        Route="SelectHouseCommittee"/> 
 </Shell>
