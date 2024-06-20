@@ -73,6 +73,36 @@ namespace FlatFleet.ViewModels
 
             SelectedItem = new Command((obj) => SelectedItemAction(obj));
             ContinueWithThisTypeCommand = new Command(ContinueWithDefaultPage);
+            GoToPreviousPageCommand = new Command(BackToPrevPage);
+        }
+        public ICommand GoToPreviousPageCommand { get; }
+        private async void BackToPrevPage()
+        {
+           
+            string currentRoute = Shell.Current.CurrentState.Location.ToString();
+            Console.WriteLine(currentRoute);
+            switch (currentRoute)
+            {
+                case "//RecoverPassword":
+                    await Shell.Current.GoToAsync("//SignIn");
+                    break;
+                case "//VerifyEmail":
+                    await Shell.Current.GoToAsync("//RecoverPassword");
+                    break;
+                case "//EnterNewPassword":
+                    await Shell.Current.GoToAsync("//VerifyEmail");
+                    break;
+                case "//SelectAccountType":
+                    await Shell.Current.GoToAsync("//SignIn");
+                    break;
+                case "//SelectManagementCompany":
+                case "//SelectDoubt":
+                case "//SelectTenantOfHouse":
+                case "//SelectHouseCommittee":
+                case "//UploadFiles":
+                    await Shell.Current.GoToAsync("//SelectAccountType");
+                    break;
+            }
         }
 
         private void SelectedItemAction(object obj)

@@ -4,10 +4,22 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="FlatFleet.Pages.UploadFilesPage"
-             Title="UploadFilesPage">
+             Title=""    Shell.FlyoutBehavior="Disabled">
 
     <ScrollView>
         <VerticalStackLayout>
+            <Grid BackgroundColor="White" Padding="0" VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ImageButton Source="@string/back.png" HeightRequest ="40" WidthRequest="40" Command="{Binding GoToPreviousPageCommand}" Grid.Column="0" />
+                <Label Text="Back" FontSize="24" VerticalOptions="Center" TextColor="{StaticResource Blue}" HorizontalOptions="Start" Grid.Column="1" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToPreviousPageCommand}"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
             <Frame x:Name="FrameName" x:FieldModifier ="public" IsVisible="{Binding IsCameraOn}">
                 <cv:CameraView 
                     x:Name="cameraView" 

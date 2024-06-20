@@ -73,7 +73,7 @@ namespace FlatFleet
                 }
             }
         }
-
+        public ICommand GoToPreviousPageCommand { get; }
         public ICommand SignUpCommand { get; }
         public ICommand OnTermsOfServiceCommand { get; }
         public ICommand OnPrivacePolicyCommand { get; }
@@ -87,6 +87,28 @@ namespace FlatFleet
             OnPrivacePolicyCommand = new Command(OnPrivacePolicy);
             OnSignInCommand = new Command(OnSingIn);
             SwitchAppearanceOfPassword = new Command(OnSwitchAppearanceOfPassword);
+            GoToPreviousPageCommand = new Command(BackToPrevPage);
+        }
+        private async void BackToPrevPage()
+        {
+            string currentRoute = Shell.Current.CurrentState.Location.ToString();
+
+            switch (currentRoute)
+            {
+                case "//RecoverPassword":
+                    await Shell.Current.GoToAsync("//SignIn");
+                    break;
+                case "//SignIn":
+                    await Shell.Current.GoToAsync("//GetStarted");
+                    break;
+                case "//VerifyEmail":
+                    await Shell.Current.GoToAsync("//RecoverPassword");
+                    break;
+                // Додайте всі інші сторінки та їх попередні маршрути тут
+                default:
+                    await Shell.Current.GoToAsync("..");
+                    break;
+            }
         }
         private async void OnTermsOfService()
         {
