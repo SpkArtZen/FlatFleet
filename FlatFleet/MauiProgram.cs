@@ -12,6 +12,7 @@ using Google.Cloud.Firestore;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Google.Cloud.Firestore.V1;
+using FlatFleet.Features.Services;
 
 namespace FlatFleet
 {
@@ -61,6 +62,7 @@ namespace FlatFleet
 
             builder.Services.AddTransient<SignUpPageViewModel>();
             builder.Services.AddTransient<SignUpPage>();
+            builder.Services.AddTransient<AddUserToDbService>();
 
             builder.Services.AddTransient<PrivacyPolicyViewModel>();
             builder.Services.AddTransient<PrivacyPolicyPage>();
