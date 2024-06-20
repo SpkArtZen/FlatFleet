@@ -118,5 +118,20 @@ namespace FlatFleet
                 throw;
             }
         }
+
+        private static void AddAppSetting(this MauiAppBuilder builder)
+        {
+            using Stream stream = Assembly
+                .GetExecutingAssembly()
+                .GetManifestResourceStream("FlatFleet.appsettings.json");
+
+            if (stream != null)
+            {
+                IConfiguration configuration = new ConfigurationBuilder()
+                    .AddJsonStream(stream)
+                    .Build();
+                builder.Configuration.AddConfiguration(configuration);
+            }
+        }
     }
 }
