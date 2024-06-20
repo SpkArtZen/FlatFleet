@@ -1,4 +1,5 @@
 ﻿using Firebase.Auth;
+using FlatFleet.Features.Services;
 using FlatFleet.Models.Users;
 
 namespace FlatFleet.Features.SignUp
@@ -7,12 +8,14 @@ namespace FlatFleet.Features.SignUp
     {
         private readonly SignUpPageViewModel _viewModel;
         private readonly FirebaseAuthClient _authClient;
+        private readonly AddUserToDbService _service;
         private CurrentUserStore _userStore;
 
-        public SignUpCommand(SignUpPageViewModel viewModel, FirebaseAuthClient authClient, CurrentUserStore userStore)
+        public SignUpCommand(SignUpPageViewModel viewModel, FirebaseAuthClient authClient, AddUserToDbService service , CurrentUserStore userStore)
         {
             _viewModel = viewModel;
             _authClient = authClient;
+            _service = service;
             _userStore = userStore;
         }
 
@@ -21,13 +24,16 @@ namespace FlatFleet.Features.SignUp
             try
             {
                 var userCredential = await _authClient.CreateUserWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password, _viewModel.FullName);
+                _userStore.CurrentUser = userCredential.User;
 
-                if (userCredential != null)
-                {
-                    _userStore.CurrentUser = userCredential.User;
-                    await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed up!", "Ok");
-                    await Shell.Current.GoToAsync("//SelectAccountType");
-                }
+                await _service.SaveUserToDb(
+                    fullName: _viewModel.FullName,
+                    email: _viewModel.Email,
+                    phoneNumber: _viewModel.PhoneNumber
+                    );
+                    
+                await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed up!", "Ok");
+                await Shell.Current.GoToAsync("//SelectAccountType");
             }
             catch (Exception)
             {

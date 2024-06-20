@@ -8,6 +8,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Firebase.Storage;
 using FlatFleet.Models.Users;
+using Google.Cloud.Firestore;
+using System.Reflection;
+using Microsoft.Extensions.Configuration;
+using Google.Cloud.Firestore.V1;
+using FlatFleet.Features.Services;
 
 namespace FlatFleet
 {
@@ -31,20 +36,27 @@ namespace FlatFleet
                     fonts.AddFont("SFProText-LightItalic.ttf", "SFProText-LightItalic");
                     fonts.AddFont("SFProText-Medium.ttf", "SFProText-Medium");
                 });
+            builder.AddAppSetting();
 
-            // КОД НИЖЧЕ - НЕ ЧІПАТИ! ВІН ПОТРІБЕН ДЛЯ КОРЕКТНОГО СТВОРЕННЯ СТОРІНОК ЧЕРЕЗ DI
+            string? firebaseApiKey = builder.Configuration.GetValue<string>("FIREBASE_API_KEY");
+            string? firebaseAuthDomain = builder.Configuration.GetValue<string>("FIREBASE_AUTH_DOMAIN");
+            string? firebaseStorageDomain = builder.Configuration.GetValue<string>("FIREBASE_STORAGE_DOMAIN");
+
             builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig()
             {
-                ApiKey = "AIzaSyBGFWSnUtDTw0z508FPy5f_z8Z2aFeTw04",
-                AuthDomain = "flat-fleet.firebaseapp.com",
+                ApiKey = firebaseApiKey,
+                AuthDomain = firebaseAuthDomain,
                 Providers = new FirebaseAuthProvider[]
                 {
                     new EmailProvider()
                 }
             }));
-            builder.Services.AddSingleton<FirebaseStorage>(s => new FirebaseStorage("flat-fleet.appspot.com"));
+            builder.Services.AddSingleton<FirebaseStorage>(s => new FirebaseStorage(firebaseStorageDomain));
             builder.Services.AddSingleton<CurrentUserStore>();
-            
+
+            // TODO: перенести ID в окреме місце (клас або json файл)
+            builder.Services.AddSingleton<FirestoreDb>(s => initFirestore().Result);
+
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<MainPage>();
 
@@ -53,6 +65,7 @@ namespace FlatFleet
 
             builder.Services.AddTransient<SignUpPageViewModel>();
             builder.Services.AddTransient<SignUpPage>();
+            builder.Services.AddTransient<AddUserToDbService>();
 
             builder.Services.AddTransient<PrivacyPolicyViewModel>();
             builder.Services.AddTransient<PrivacyPolicyPage>();
@@ -90,6 +103,38 @@ namespace FlatFleet
             object value = builder.Logging.AddDebug();
 #endif
             return builder.Build();
+        }
+
+        public static async Task<FirestoreDb> initFirestore()
+        {
+            try
+            {
+                var stream = await FileSystem.OpenAppPackageFileAsync("project_credentials.json");
+                var reader = new StreamReader(stream);
+                var contents = reader.ReadToEnd();
+
+                FirestoreClientBuilder fbc = new FirestoreClientBuilder { JsonCredentials = contents };
+                return FirestoreDb.Create("flat-fleet", fbc.Build());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private static void AddAppSetting(this MauiAppBuilder builder)
+        {
+            using Stream? stream = Assembly
+                .GetExecutingAssembly()
+                .GetManifestResourceStream("FlatFleet.appsettings.json");
+
+            if (stream != null)
+            {
+                IConfiguration configuration = new ConfigurationBuilder()
+                    .AddJsonStream(stream)
+                    .Build();
+                builder.Configuration.AddConfiguration(configuration);
+            }
         }
     }
 }
