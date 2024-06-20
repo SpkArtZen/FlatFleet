@@ -24,8 +24,13 @@ namespace FlatFleet.Features.SignUp
             try
             {
                 var userCredential = await _authClient.CreateUserWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password, _viewModel.FullName);
+                _userStore.CurrentUser = userCredential.User;
 
-                await _service.SaveUserToDb();
+                await _service.SaveUserToDb(
+                    fullName: _viewModel.FullName,
+                    email: _viewModel.Email,
+                    phoneNumber: _viewModel.PhoneNumber
+                    );
                     
                 await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed up!", "Ok");
                 await Shell.Current.GoToAsync("//SelectAccountType");
