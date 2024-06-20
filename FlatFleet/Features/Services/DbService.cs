@@ -41,7 +41,7 @@ namespace FlatFleet.Features.Services
                 .SetAsync(new
                 {
                     accountType = accountType
-                });
+                }, SetOptions.MergeAll);
         }
     }
 }
