@@ -3,6 +3,7 @@ using MvvmHelpers;
 using FlatFleet.Features.Navigation;
 using FlatFleet.Pages;
 using System.Windows.Input;
+using FlatFleet.Features.Services;
 
 namespace FlatFleet.ViewModels
 {
@@ -57,12 +58,14 @@ namespace FlatFleet.ViewModels
                 SetProperty(ref _isSelected, value);
             }
         }
+        private DbService _db;
 
         public ICommand SelectedItem { get; }
         public ICommand ContinueWithThisTypeCommand { get; private set; }
 
-        public SelectAccountTypePageViewModel()
+        public SelectAccountTypePageViewModel(DbService db)
         {
+            _db = db;
             TypesOfAccount = new List<string>
             {
                 "House committee",
@@ -135,21 +138,28 @@ namespace FlatFleet.ViewModels
 
         private async void ContinueWithCompanyPage()
         {
+            await _db.ChangeUsersAccountType("Management Company");
             await Shell.Current.GoToAsync("//SelectManagementCompany");
         }
+        
         private async void ContinueWithTenantPage()
         {
+            await _db.ChangeUsersAccountType("Tenant of the house");
             await Shell.Current.GoToAsync("//SelectTenantOfHouse");
         }
+        
         private async void ContinueWithDoubt()
         {
+            await _db.ChangeUsersAccountType("Doubt");
             await Shell.Current.GoToAsync("//SelectDoubt");
         }
+        
         private async void ContinueWithHouseCommittee()
         {
+            await _db.ChangeUsersAccountType("House Committee");
             await Shell.Current.GoToAsync("//SelectHouseCommittee");
         }
-        
+
         private async void ContinueWithDefaultPage()
         {
             
