@@ -36,19 +36,22 @@ namespace FlatFleet
                     fonts.AddFont("SFProText-LightItalic.ttf", "SFProText-LightItalic");
                     fonts.AddFont("SFProText-Medium.ttf", "SFProText-Medium");
                 });
+            builder.AddAppSetting();
 
-            // КОД НИЖЧЕ - НЕ ЧІПАТИ! ВІН ПОТРІБЕН ДЛЯ КОРЕКТНОГО СТВОРЕННЯ СТОРІНОК ЧЕРЕЗ DI
-            // TODO: перенести ці значення в окремий json файл
+            string? firebaseApiKey = builder.Configuration.GetValue<string>("FIREBASE_API_KEY");
+            string? firebaseAuthDomain = builder.Configuration.GetValue<string>("FIREBASE_AUTH_DOMAIN");
+            string? firebaseStorageDomain = builder.Configuration.GetValue<string>("FIREBASE_STORAGE_DOMAIN");
+
             builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig()
             {
-                ApiKey = "AIzaSyBGFWSnUtDTw0z508FPy5f_z8Z2aFeTw04",
-                AuthDomain = "flat-fleet.firebaseapp.com",
+                ApiKey = firebaseApiKey,
+                AuthDomain = firebaseAuthDomain,
                 Providers = new FirebaseAuthProvider[]
                 {
                     new EmailProvider()
                 }
             }));
-            builder.Services.AddSingleton<FirebaseStorage>(s => new FirebaseStorage("flat-fleet.appspot.com"));
+            builder.Services.AddSingleton<FirebaseStorage>(s => new FirebaseStorage(firebaseStorageDomain));
             builder.Services.AddSingleton<CurrentUserStore>();
 
             // TODO: перенести ID в окреме місце (клас або json файл)
@@ -121,7 +124,7 @@ namespace FlatFleet
 
         private static void AddAppSetting(this MauiAppBuilder builder)
         {
-            using Stream stream = Assembly
+            using Stream? stream = Assembly
                 .GetExecutingAssembly()
                 .GetManifestResourceStream("FlatFleet.appsettings.json");
 
