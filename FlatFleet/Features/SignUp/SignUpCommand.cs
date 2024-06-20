@@ -1,6 +1,6 @@
 ﻿using Firebase.Auth;
+using FlatFleet.Features.Services;
 using FlatFleet.Models.Users;
-using Google.Cloud.Firestore;
 
 namespace FlatFleet.Features.SignUp
 {
@@ -8,14 +8,14 @@ namespace FlatFleet.Features.SignUp
     {
         private readonly SignUpPageViewModel _viewModel;
         private readonly FirebaseAuthClient _authClient;
-        private FirestoreDb _db;
+        private readonly AddUserToDbService _service;
         private CurrentUserStore _userStore;
 
-        public SignUpCommand(SignUpPageViewModel viewModel, FirebaseAuthClient authClient, FirestoreDb db , CurrentUserStore userStore)
+        public SignUpCommand(SignUpPageViewModel viewModel, FirebaseAuthClient authClient, AddUserToDbService service , CurrentUserStore userStore)
         {
             _viewModel = viewModel;
             _authClient = authClient;
-            _db = db;
+            _service = service;
             _userStore = userStore;
         }
 
@@ -25,22 +25,10 @@ namespace FlatFleet.Features.SignUp
             {
                 var userCredential = await _authClient.CreateUserWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password, _viewModel.FullName);
 
-                if (userCredential != null)
-                {
-                    await _db.Collection("users")
-                        .AddAsync(new
-                        {
-                            fullName = _viewModel.FullName,
-                            email = _viewModel.Email,
-                            phoneNumber = _viewModel.PhoneNumber,
-                            accountType = "undefined",
-                            documents = Array.Empty<string>()
-                        });
-
-                    _userStore.CurrentUser = userCredential.User;
-                    await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed up!", "Ok");
-                    await Shell.Current.GoToAsync("//SelectAccountType");
-                }
+                await _service.SaveUserToDb();
+                    
+                await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed up!", "Ok");
+                await Shell.Current.GoToAsync("//SelectAccountType");
             }
             catch (Exception)
             {
