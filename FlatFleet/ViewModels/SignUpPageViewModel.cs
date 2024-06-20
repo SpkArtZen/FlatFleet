@@ -80,7 +80,7 @@ namespace FlatFleet
         public ICommand OnSignInCommand { get; }
         public ICommand SwitchAppearanceOfPassword { get; }
 
-        public SignUpPageViewModel(FirebaseAuthClient authClient, AddUserToDbService service, CurrentUserStore userStore)
+        public SignUpPageViewModel(FirebaseAuthClient authClient, DbService service, CurrentUserStore userStore)
         {
             SignUpCommand = new SignUpCommand(this, authClient, service, userStore);
             OnTermsOfServiceCommand = new Command(OnTermsOfService);

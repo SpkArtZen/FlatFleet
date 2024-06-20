@@ -65,7 +65,7 @@ namespace FlatFleet
 
             builder.Services.AddTransient<SignUpPageViewModel>();
             builder.Services.AddTransient<SignUpPage>();
-            builder.Services.AddTransient<AddUserToDbService>();
+            builder.Services.AddTransient<DbService>();
 
             builder.Services.AddTransient<PrivacyPolicyViewModel>();
             builder.Services.AddTransient<PrivacyPolicyPage>();

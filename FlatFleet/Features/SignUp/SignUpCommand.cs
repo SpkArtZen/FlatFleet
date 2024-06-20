@@ -8,10 +8,10 @@ namespace FlatFleet.Features.SignUp
     {
         private readonly SignUpPageViewModel _viewModel;
         private readonly FirebaseAuthClient _authClient;
-        private readonly AddUserToDbService _service;
+        private readonly DbService _service;
         private CurrentUserStore _userStore;
 
-        public SignUpCommand(SignUpPageViewModel viewModel, FirebaseAuthClient authClient, AddUserToDbService service , CurrentUserStore userStore)
+        public SignUpCommand(SignUpPageViewModel viewModel, FirebaseAuthClient authClient, DbService service , CurrentUserStore userStore)
         {
             _viewModel = viewModel;
             _authClient = authClient;
