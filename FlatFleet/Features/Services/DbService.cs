@@ -2,12 +2,12 @@
 using Google.Cloud.Firestore;
 namespace FlatFleet.Features.Services
 {
-    public class AddUserToDbService
+    public class DbService
     {
         private FirestoreDb _db;
         private CurrentUserStore _userStore;
 
-        public AddUserToDbService( FirestoreDb db, CurrentUserStore userStore)
+        public DbService(FirestoreDb db, CurrentUserStore userStore)
         {
             _db = db;
             _userStore = userStore;
@@ -32,6 +32,16 @@ namespace FlatFleet.Features.Services
             {
                 await Application.Current.MainPage.DisplayAlert("Error", $"Cannot add user to database: {ex.Message}", "Ok");
             }
+        }
+
+        public async Task ChangeUsersAccountType(string accountType)
+        {
+            await _db.Collection("users")
+                .Document(_userStore.CurrentUser.Uid)
+                .SetAsync(new
+                {
+                    accountType = accountType
+                }, SetOptions.MergeAll);
         }
     }
 }
