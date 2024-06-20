@@ -6,6 +6,7 @@ using FlatFleet.Features.Navigation;
 using FlatFleet.Models.Users;
 using Google.Cloud.Firestore.V1;
 using Google.Cloud.Firestore;
+using FlatFleet.Features.Services;
 
 namespace FlatFleet
 {
@@ -79,9 +80,9 @@ namespace FlatFleet
         public ICommand OnSignInCommand { get; }
         public ICommand SwitchAppearanceOfPassword { get; }
 
-        public SignUpPageViewModel(FirebaseAuthClient authClient, FirestoreDb db, CurrentUserStore userStore)
+        public SignUpPageViewModel(FirebaseAuthClient authClient, AddUserToDbService service, CurrentUserStore userStore)
         {
-            SignUpCommand = new SignUpCommand(this, authClient, db, userStore);
+            SignUpCommand = new SignUpCommand(this, authClient, service, userStore);
             OnTermsOfServiceCommand = new Command(OnTermsOfService);
             OnPrivacePolicyCommand = new Command(OnPrivacePolicy);
             OnSignInCommand = new Command(OnSingIn);
