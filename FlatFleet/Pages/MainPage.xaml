@@ -15,12 +15,17 @@
                 </Frame>
             </AbsoluteLayout>
             <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Frame CornerRadius="360" WidthRequest="100" HeightRequest="100"
+                <Frame CornerRadius="360" WidthRequest="103" HeightRequest="103"
                        AbsoluteLayout.LayoutBounds="0.1,12,40,300"
                        AbsoluteLayout.LayoutFlags="PositionProportional"
                        Padding="0"
-                       IsClippedToBounds="True">
-                    <Image Source="@string/logo_white.png" Aspect="AspectFill"/>
+                       IsClippedToBounds="True"
+                       Background="{StaticResource Blue}">
+                    <Image 
+                        WidthRequest="77.02"
+                        HeightRequest="77.02"
+                        Source="@string/logo.svg" 
+                        Aspect="AspectFit"/>
                 </Frame>
             </AbsoluteLayout>
             <Label Text="FlatFleet" FontSize="41"/>

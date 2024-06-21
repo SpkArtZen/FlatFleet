@@ -149,6 +149,9 @@
 	  <MauiXaml Update="Views\LoadingScreenPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\WelcomePopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionFlatFleetHideInfoBar="True" /></VisualStudio></ProjectExtensions>
