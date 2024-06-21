@@ -38,6 +38,7 @@ namespace FlatFleet.ViewModels
         public ICommand SaveFilePic { get; }
         public ICommand UploadFileCommand {  get; }
         public ICommand DeleteFile { get; }
+        public ICommand HideCameraUICommand {  get; }
 
         public event EventHandler<List<FileItem>>? FilesLoaded;
         
@@ -49,6 +50,7 @@ namespace FlatFleet.ViewModels
             CameraOnCommand = new Command(CameraOnFunc);
             CameraOffCommand = new Command(CameraOffFunc);
             SaveFilePic = new Command(SaveVoid);
+            HideCameraUICommand = new Command(HideCameraUi);
             DeleteFile = new Command<int>((int id) => { DeleteFileFunc(id); });
 
             GoToPreviousPageCommand = new Command(BackToPrevPage);
@@ -69,17 +71,18 @@ namespace FlatFleet.ViewModels
                 case "//VerifyEmail":
                     await Shell.Current.GoToAsync("//RecoverPassword");
                     break;
-                case "//EntryNewPasswordPage":
+                case "//EnterNewPassword":
                     await Shell.Current.GoToAsync("//VerifyEmail");
                     break;
-                case "//SelectAccountTypePage":
+                case "//SelectAccountType":
                     await Shell.Current.GoToAsync("//SignIn");
                     break;
-                case "//ManagementCompanyPage":
-                case "//DoubtPage":
-                case "//TenantOfHousePage":
-                case "//HouseCommitteePage":
-                    await Shell.Current.GoToAsync("//GetStarted");
+                case "//SelectManagementCompany":
+                case "//SelectDoubt":
+                case "//SelectTenantOfHouse":
+                case "//SelectHouseCommittee":
+                case "//UploadFiles":
+                    await Shell.Current.GoToAsync("//SelectAccountType");
                     break;
             }
         }
@@ -150,9 +153,13 @@ namespace FlatFleet.ViewModels
                 throw new InvalidOperationException("Unsupported ImageSource type.");
             }
         }
-
+        private async void HideCameraUi()
+        {
+           
+        }
         private async void CameraOnFunc()
         {
+            Console.WriteLine(IsCameraOn);
             if (CurrPage == null)
                 throw new Exception("Page is null");
 
@@ -166,6 +173,8 @@ namespace FlatFleet.ViewModels
             {
                 if (!IsCameraOn)
                 {
+                    CurrPage.cameraView.IsVisible = true;
+                    CurrPage.FrameName.IsVisible = true;
                     await CurrPage.cameraView.StartCameraAsync();
                     IsCameraOn = true;
                 }
@@ -176,11 +185,12 @@ namespace FlatFleet.ViewModels
         {
             if (_isCameraOn)
             {
-                await (Application.Current.MainPage as UploadFilesPage).cameraView.StopCameraAsync();
+                await CurrPage.cameraView.StopCameraAsync();
                 _isCameraOn = false;
+                IsCameraOn = false;
             }
-            (Application.Current.MainPage as UploadFilesPage).cameraView.IsVisible = false;
-            (Application.Current.MainPage as UploadFilesPage).FrameName.IsVisible = false;
+            CurrPage.cameraView.IsVisible = false;
+            CurrPage.FrameName.IsVisible = false;
         }
         private async void Upload()
         {

@@ -27,17 +27,18 @@ namespace FlatFleet.ViewModels
                 case "//VerifyEmail":
                     await Shell.Current.GoToAsync("//RecoverPassword");
                     break;
-                case "//EntryNewPasswordPage":
+                case "//EnterNewPassword":
                     await Shell.Current.GoToAsync("//VerifyEmail");
                     break;
-                case "//SelectAccountTypePage":
+                case "//SelectAccountType":
                     await Shell.Current.GoToAsync("//SignIn");
                     break;
-                case "//ManagementCompanyPage":
-                case "//DoubtPage":
-                case "//TenantOfHousePage":
-                case "//HouseCommitteePage":
-                    await Shell.Current.GoToAsync("//GetStarted");
+                case "//SelectManagementCompany":
+                case "//SelectDoubt":
+                case "//SelectTenantOfHouse":
+                case "//SelectHouseCommittee":
+                case "//UploadFiles":
+                    await Shell.Current.GoToAsync("//SelectAccountType");
                     break;
             }
         }

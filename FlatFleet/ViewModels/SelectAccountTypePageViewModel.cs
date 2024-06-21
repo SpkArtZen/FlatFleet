@@ -89,6 +89,9 @@ namespace FlatFleet.ViewModels
                 case "//RecoverPassword":
                     await Shell.Current.GoToAsync("//SignIn");
                     break;
+                case "//SignIn":
+                    await Shell.Current.GoToAsync("//GetStarted");
+                    break;
                 case "//VerifyEmail":
                     await Shell.Current.GoToAsync("//RecoverPassword");
                     break;

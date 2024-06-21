@@ -104,9 +104,18 @@ namespace FlatFleet
                 case "//VerifyEmail":
                     await Shell.Current.GoToAsync("//RecoverPassword");
                     break;
-                // Додайте всі інші сторінки та їх попередні маршрути тут
-                default:
-                    await Shell.Current.GoToAsync("..");
+                case "//EnterNewPassword":
+                    await Shell.Current.GoToAsync("//VerifyEmail");
+                    break;
+                case "//SelectAccountType":
+                    await Shell.Current.GoToAsync("//SignIn");
+                    break;
+                case "//SelectManagementCompany":
+                case "//SelectDoubt":
+                case "//SelectTenantOfHouse":
+                case "//SelectHouseCommittee":
+                case "//UploadFiles":
+                    await Shell.Current.GoToAsync("//SelectAccountType");
                     break;
             }
         }

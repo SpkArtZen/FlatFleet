@@ -86,49 +86,51 @@ public partial class UploadFilesPage : ContentPage
         {
             var grid = new Grid
             {
+                Margin = new Thickness(20, 0, 20, 10),
                 Children =
+            {
+                new Frame
                 {
-                    new Frame
+                    CornerRadius = 360,
+                    Padding = 0,
+                    WidthRequest = 46,
+                    HeightRequest = 46,
+                    HorizontalOptions = LayoutOptions.Start,
+                    Content = new Image
                     {
-                        CornerRadius = 360,
-                        Padding = 0,
-                        WidthRequest = 46,
-                        HeightRequest = 46,
-                        HorizontalOptions = LayoutOptions.Start,
-                        Content = new Image
-                        {
-                            Source = "document.png",
-                            WidthRequest = 24,
-                            HeightRequest = 24
-                        }
+                        Source = "document.png",
+                        Aspect=Aspect.AspectFill
+                    }
 
-                    },
-                    new VerticalStackLayout
+                },
+                new VerticalStackLayout
+                {
+                    Margin = new Thickness(50,10,10,10),
+                    Children =
                     {
-                        Margin = new Thickness(50,10,10,10),
-                        Children =
+
+                        new Label { Text = file.Title, FontSize = 16, VerticalOptions = LayoutOptions.Center },
+                        new Label { Text = file.GetFormatedSize(), FontSize = 14, HorizontalOptions = LayoutOptions.Start, VerticalOptions = LayoutOptions.End }
+
+                    }
+                },
+                new Image
+                {
+                    Source = "delete.png",
+                    WidthRequest = 24,
+                    HeightRequest = 24,
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.Center,
+                    GestureRecognizers =
+                    {
+                        new TapGestureRecognizer()
                         {
-                            new Label { Text = file.Title, FontSize = 16, VerticalOptions = LayoutOptions.Start },
-                            new Label { Text = file.GetFormatedSize(), FontSize = 14, HorizontalOptions = LayoutOptions.End, VerticalOptions = LayoutOptions.Center },
-                            new Image 
-                            { 
-                                Source = "delete.png", 
-                                WidthRequest = 24, 
-                                HeightRequest = 24, 
-                                HorizontalOptions = LayoutOptions.End, 
-                                VerticalOptions = LayoutOptions.Center,
-                                GestureRecognizers =
-                                {
-                                    new TapGestureRecognizer()
-                                    {
-                                        Command = _vm.DeleteFile,
-                                        CommandParameter = ++_fileId
-                                    }
-                                }
-                            }
+                            Command = _vm.DeleteFile,
+                            CommandParameter = ++_fileId
                         }
                     }
                 }
+            }
             };
 
             idFilePair.Add(_fileId, grid);

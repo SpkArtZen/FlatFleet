@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:FlatFleet"
     xmlns:pages="clr-namespace:FlatFleet.Pages"
     Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
     Title="FlatFleet">
 
     <!--
