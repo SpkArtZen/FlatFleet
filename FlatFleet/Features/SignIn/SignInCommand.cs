@@ -1,6 +1,9 @@
-﻿using Firebase.Auth;
+﻿using CommunityToolkit.Maui.Views;
+using Firebase.Auth;
 using FlatFleet.Models.Users;
 using FlatFleet.ViewModels;
+using FlatFleet.Views;
+using System.Diagnostics;
 
 namespace FlatFleet.Features.SignIn
 {
@@ -19,13 +22,25 @@ namespace FlatFleet.Features.SignIn
 
         protected override async Task ExecuteAsync(object parameter)
         {
+            var popup = new LoadingScreenPopUp();
+
+            Application.Current.MainPage.ShowPopupAsync(popup);
+            
+            Debug.WriteLine("Popup was opened");
+
             try
             {
                 var userCredential = await _authClient.SignInWithEmailAndPasswordAsync(_viewModel.Email, _viewModel.Password);
+                
+                await popup.CloseAsync();
+
+                Debug.WriteLine("Popup was closed");
+                
                 if (userCredential != null)
                 {
                     _userStore.CurrentUser = userCredential.User;
                     await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed in!", "Ok");
+                    
                     await Shell.Current.GoToAsync("//SelectAccountType");
                 }
             }
