@@ -1,0 +1,52 @@
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:vm="clr-namespace:FlatFleet.ViewModels"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="FlatFleet.Views.WelcomePopUp">
+
+    <toolkit:Popup.BindingContext>
+        <vm:PopupScreenViewModel/>
+    </toolkit:Popup.BindingContext>
+
+    <Grid
+        Background="{StaticResource Blue}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding ScreenHeight}"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding ScreenWidth}"/>
+        </Grid.ColumnDefinitions>
+
+        <VerticalStackLayout
+            VerticalOptions="Center"
+            Margin="0,0,0,100">
+            <Border
+                Stroke="{StaticResource Blue}"
+                StrokeThickness="6.18"
+                StrokeShape="RoundRectangle 100"
+                WidthRequest="103"
+                HeightRequest="103"
+                Background="White"
+                Margin="0,0,0,10"
+                HorizontalOptions="Center">
+                <Image
+                    WidthRequest="77.02"
+                    HeightRequest="77.02"
+                    Aspect="AspectFit"
+                    Source="logo">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior TintColor="{StaticResource Blue}" />
+                    </Image.Behaviors>
+                </Image>
+            </Border>
+            <Label
+                Text="Welcome"
+                TextColor="White"
+                FontSize="36"
+                FontFamily="SFProText-Bold"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Grid>
+</toolkit:Popup>

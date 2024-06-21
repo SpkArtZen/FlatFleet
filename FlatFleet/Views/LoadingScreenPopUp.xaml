@@ -1,0 +1,54 @@
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:vm="clr-namespace:FlatFleet.ViewModels"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+               x:Class="FlatFleet.Views.LoadingScreenPopUp">
+
+    <toolkit:Popup.BindingContext>
+        <vm:PopupScreenViewModel/>
+    </toolkit:Popup.BindingContext>
+    
+    <Grid
+        Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding ScreenHeight}"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding ScreenWidth}"/>
+        </Grid.ColumnDefinitions>
+
+        <VerticalStackLayout
+            VerticalOptions="Center"
+            Margin="0,0,0,100">
+            <Border
+                Stroke="White"
+                StrokeThickness="6.18"
+                StrokeShape="RoundRectangle 100"
+                WidthRequest="103"
+                HeightRequest="103"
+                Background="{StaticResource Blue}"
+                Margin="0,0,0,10"
+                HorizontalOptions="Center">
+                <Image
+                    WidthRequest="77.02"
+                    HeightRequest="77.02"
+                    Aspect="AspectFit"
+                    Source="logo"/>
+            </Border>
+            <Label
+                Text="Loading.."
+                TextColor="Black"
+                FontSize="36"
+                FontFamily="SFProText-Bold"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="Wait a couple of minutes"
+                TextColor="#48484A"
+                FontSize="16"
+                Margin="0,5,0,0"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </Grid>
+</toolkit:Popup>
