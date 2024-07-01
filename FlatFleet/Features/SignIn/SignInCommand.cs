@@ -49,7 +49,7 @@ namespace FlatFleet.Features.SignIn
 
                     await welcomePopup.CloseAsync();
 
-                    await Shell.Current.GoToAsync("//SelectAccountType");
+                    await Shell.Current.GoToAsync("SelectAccountType");
                 }
             }
             catch (FirebaseAuthException)
