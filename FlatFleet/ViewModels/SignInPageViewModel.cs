@@ -72,7 +72,7 @@ namespace FlatFleet.ViewModels
 
         private async void SelectAccountType()
         {
-            await Shell.Current.GoToAsync("SelectAccountType");
+            await Shell.Current.GoToAsync("//SelectAccountType");
             // await NavigationService.NavigateTo(typeof(SelectAccountTypePage));
         }
 
