@@ -8,6 +8,8 @@ namespace FlatFleet
         {
             InitializeComponent();
             Routing.RegisterRoute("SignUp", typeof(SignUpPage));
+            Routing.RegisterRoute("TermsOfService", typeof(TermsOfServicePage));
+            Routing.RegisterRoute("PrivacyPolicy", typeof(PrivacyPolicyPage));
         }
     }
 }
