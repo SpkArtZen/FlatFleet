@@ -17,6 +17,7 @@ namespace FlatFleet
             InitializeComponent();
             Routing.RegisterRoute("GetStarted", typeof(GetStartedPage));
             Routing.RegisterRoute("SignUp", typeof(SignUpPage));
+            Routing.RegisterRoute("RecoverPassword", typeof(RecoverPasswordPage));
             Routing.RegisterRoute("TermsOfService", typeof(TermsOfServicePage));
             Routing.RegisterRoute("PrivacyPolicy", typeof(PrivacyPolicyPage));
             Routing.RegisterRoute("SelectDoubt", typeof(DoubtPage));
