@@ -15,7 +15,7 @@ namespace FlatFleet.ViewModels
         }
         public static async void OnGetStartedBtn_Click()
         {
-            await Shell.Current.GoToAsync("//GetStarted");
+            await Shell.Current.GoToAsync("GetStarted");
         }
 
         private async void OnSignIn()

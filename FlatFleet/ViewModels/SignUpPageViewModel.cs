@@ -121,13 +121,13 @@ namespace FlatFleet
         }
         private async void OnTermsOfService()
         {
-            await Shell.Current.GoToAsync("//TermsOfService");
+            await Shell.Current.GoToAsync("TermsOfService");
             // await NavigationService.NavigateTo(typeof(TermsOfServicePage));
         }
 
         private async void OnPrivacePolicy()
         {
-            await Shell.Current.GoToAsync("//PrivacyPolicy");
+            await Shell.Current.GoToAsync("PrivacyPolicy");
             // await NavigationService.NavigateTo(typeof(PrivacyPolicyPage));
         }
 

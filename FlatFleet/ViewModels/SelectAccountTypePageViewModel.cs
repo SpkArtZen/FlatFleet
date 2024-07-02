@@ -142,25 +142,25 @@ namespace FlatFleet.ViewModels
         private async void ContinueWithCompanyPage()
         {
             await _db.ChangeUsersAccountType("Management Company");
-            await Shell.Current.GoToAsync("//SelectManagementCompany");
+            await Shell.Current.GoToAsync("SelectManagementCompany");
         }
         
         private async void ContinueWithTenantPage()
         {
             await _db.ChangeUsersAccountType("Tenant of the house");
-            await Shell.Current.GoToAsync("//SelectTenantOfHouse");
+            await Shell.Current.GoToAsync("SelectTenantOfHouse");
         }
         
         private async void ContinueWithDoubt()
         {
             await _db.ChangeUsersAccountType("Doubt");
-            await Shell.Current.GoToAsync("//SelectDoubt");
+            await Shell.Current.GoToAsync("SelectDoubt");
         }
         
         private async void ContinueWithHouseCommittee()
         {
             await _db.ChangeUsersAccountType("House Committee");
-            await Shell.Current.GoToAsync("//SelectHouseCommittee");
+            await Shell.Current.GoToAsync("SelectHouseCommittee");
         }
 
         private async void ContinueWithDefaultPage()

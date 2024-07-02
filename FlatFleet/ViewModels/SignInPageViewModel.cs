@@ -96,12 +96,12 @@ namespace FlatFleet.ViewModels
 
         private async void OnCreateAccount()
         {
-            await Shell.Current.GoToAsync("//SignUp");
+            await Shell.Current.GoToAsync("SignUp");
             // await NavigationService.NavigateTo(typeof(SignUpPage));
         }
         private async void OnForgotPassword()
         {
-            await Shell.Current.GoToAsync("//RecoverPassword");
+            await Shell.Current.GoToAsync("RecoverPassword");
             // await NavigationService.NavigateTo(typeof(RecoverPasswordPage));
         }
 
