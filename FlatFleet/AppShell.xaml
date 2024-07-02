@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FlatFleet"
     xmlns:pages="clr-namespace:FlatFleet.Pages"
-    Title="FlatFleet">
+    Title="FlatFleet"
+    NavigationPage.HasNavigationBar="False">
 
     <!--
     Навігацію робимо через Shell.Current.GoToAsync("//RouteToPage"), тому нові сторінки треба додати сюди
@@ -15,6 +16,7 @@
     -->
     
     <ShellContent
+        NavigationPage.HasNavigationBar="False"
         ContentTemplate="{DataTemplate pages:MainPage}"
         Route="MainPage"/>
 
