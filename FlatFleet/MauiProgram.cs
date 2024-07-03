@@ -5,7 +5,16 @@ using Firebase.Auth.Providers;
 using FlatFleet.Pages;
 using FlatFleet.ViewModels;
 using Microsoft.Extensions.Logging;
+#if ANDROID
 using Microsoft.Maui.Controls.Compatibility.Hosting;
+using Android.Graphics;
+using AndroidX.AppCompat.Widget;
+using Microsoft.Maui.Handlers;
+using Android.Content;
+using Android.Graphics.Drawables;
+using Android.Content.Res;
+
+#endif
 using Firebase.Storage;
 using FlatFleet.Models.Users;
 using Google.Cloud.Firestore;
@@ -13,6 +22,7 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Google.Cloud.Firestore.V1;
 using FlatFleet.Features.Services;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace FlatFleet
 {
@@ -102,6 +112,21 @@ namespace FlatFleet
 #if DEBUG
             object value = builder.Logging.AddDebug();
 #endif
+#if ANDROID
+Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) => 
+{
+    Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
+    {
+        if (handler.PlatformView is AndroidX.AppCompat.Widget.AppCompatEditText editText)
+        {
+            // Зміна underline на прозорий
+            editText.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+        }
+    });
+});
+#endif
+
+
             return builder.Build();
         }
 
