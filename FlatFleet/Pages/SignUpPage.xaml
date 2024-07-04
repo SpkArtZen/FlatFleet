@@ -2,9 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"           
              x:Class="FlatFleet.Pages.SignUpPage"
-             >
+             Shell.NavBarIsVisible="False">
     <VerticalStackLayout>
-       
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Frame CornerRadius="25" WidthRequest="400" HeightRequest="500" 
                AbsoluteLayout.LayoutBounds="0.2,0.3,400,-550"

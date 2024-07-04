@@ -58,6 +58,7 @@
 
 	<ItemGroup>
 	  <None Remove="appsettings.json" />
+	  <None Remove="Resources\Images\back.png" />
 	  <None Remove="Resources\Images\ff_main.png" />
 	  <None Remove="Resources\Images\ff_main_copy.png" />
 	  <None Remove="Resources\Images\flafleet_main.png" />

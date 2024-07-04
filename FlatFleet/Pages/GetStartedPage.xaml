@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlatFleet.Pages.GetStartedPage"
              xmlns:s="clr-namespace:FlatFleet.Models.Selectors"
-             xmlns:vm="clr-namespace:FlatFleet.ViewModels"
-             NavigationPage.HasNavigationBar="False">
+             xmlns:vm="clr-namespace:FlatFleet.ViewModels">
 
     <ContentPage.BindingContext>
         <vm:GetStartedViewModel />

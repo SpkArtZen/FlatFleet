@@ -106,7 +106,7 @@ namespace FlatFleet.ViewModels
         }
         private async void UploadFiles()
         {
-            await Shell.Current.GoToAsync("//UploadFiles");
+            await Shell.Current.GoToAsync("UploadFiles");
         }
     }
 }

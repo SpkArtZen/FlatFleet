@@ -44,7 +44,7 @@ namespace FlatFleet.ViewModels
         }
         private async void CheckEmailCode()
         {
-            await Shell.Current.GoToAsync("//EnterNewPassword");
+            await Shell.Current.GoToAsync("EnterNewPassword");
             // await NavigationService.NavigateTo(typeof(EntryNewPasswordPage));
         }
     }

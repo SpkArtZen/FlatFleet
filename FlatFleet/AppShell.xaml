@@ -16,7 +16,6 @@
     -->
     
     <ShellContent
-        NavigationPage.HasNavigationBar="False"
         ContentTemplate="{DataTemplate pages:MainPage}"
         Route="MainPage"/>
 
@@ -57,21 +56,30 @@
         Route="PrivacyPolicy"/>
 
     <ShellContent 
+        Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:SelectAccountTypePage}"
         Route="SelectAccountType"/>
+    
     <ShellContent
+        Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:ManagementCompanyPage}"
         Route="SelectManagementCompany"/>
+    
     <ShellContent
+        Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:UploadFilesPage}"
         Route="UploadFiles"/>
+    
     <ShellContent
+        Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:DoubtPage}"
         Route="SelectDoubt"/>
     <ShellContent
+        Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:TenantOfHousePage}"
         Route="SelectTenantOfHouse"/>
     <ShellContent
+        Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:HouseCommitteePage}"
         Route="SelectHouseCommittee"/> 
 </Shell>
