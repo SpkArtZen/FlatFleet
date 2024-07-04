@@ -4,10 +4,23 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="FlatFleet.Pages.UploadFilesPage"
-             Title="UploadFilesPage">
+             Title="Upload files">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label
+                Text="Upload files"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"
+                FontSize="22"
+                HeightRequest="50"
+                Margin="60,0,20,0"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
 
     <ScrollView>
         <VerticalStackLayout>
+            <!--
             <Grid BackgroundColor="White" Padding="0" VerticalOptions="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -20,6 +33,7 @@
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
+            -->
             <Frame x:Name="FrameName" x:FieldModifier ="public" IsVisible="{Binding IsCameraOn}" WidthRequest="300" HeightRequest="400" Padding="0" BorderColor="White">
                 <VerticalStackLayout Spacing="10">
                     <cv:CameraView 
@@ -98,6 +112,19 @@
 
                 </StackLayout>
             </ScrollView>
+            <!--
+            <Button Text="Complete onboarding" TextColor="White" BackgroundColor="{StaticResource Blue}"  
+    FontFamily="SFproText-SemiBold" FontAttributes="Bold" FontSize="16" BorderColor="{StaticResource Blue}" Margin="15,225,15,0"/>
+            -->
+            <Button 
+                Text="Submit"
+                TextColor="White" 
+                BackgroundColor="{StaticResource Blue}" 
+                FontFamily="SFproText-Semibold" 
+                FontAttributes="Bold" 
+                FontSize="16"
+                BorderColor="{StaticResource Blue}"
+                Margin="15, 300, 15, 0"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
