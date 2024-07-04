@@ -4,6 +4,7 @@
              x:Class="FlatFleet.Pages.HouseCommitteePage"
              Title=""    Shell.FlyoutBehavior="Disabled">
     <VerticalStackLayout>
+        <!--
         <Grid BackgroundColor="White" Padding="0" VerticalOptions="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -16,5 +17,6 @@
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
+        -->
     </VerticalStackLayout>
 </ContentPage>

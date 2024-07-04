@@ -4,6 +4,7 @@
              x:Class="FlatFleet.Pages.ManagementCompanyPage"
              Title=""    Shell.FlyoutBehavior="Disabled">
     <VerticalStackLayout>
+        <!--
         <Grid BackgroundColor="White" Padding="0" VerticalOptions="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -16,6 +17,7 @@
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
+        -->
         <Frame Padding="0" HorizontalOptions="Center" VerticalOptions="Center" BorderColor="White" HeightRequest="100" Margin="0,0,0,25">
             <Image Source="@string/account_icon.png" Aspect="AspectFill"/>
         </Frame>
