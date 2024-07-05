@@ -7,7 +7,6 @@ using Firebase.Storage;
 using FlatFleet.Models;
 using FlatFleet.Models.Users;
 using FlatFleet.Pages;
-using Microsoft.Maui.Controls;
 
 namespace FlatFleet.ViewModels
 {
@@ -15,6 +14,7 @@ namespace FlatFleet.ViewModels
     {
         private CurrentUserStore _userStore;
         private bool _isCameraOn = false;
+        private IEnumerable<FileResult> _files;
 
         public bool IsCameraOn
         {
@@ -39,6 +39,7 @@ namespace FlatFleet.ViewModels
         public ICommand UploadFileCommand {  get; }
         public ICommand DeleteFile { get; }
         public ICommand HideCameraUICommand {  get; }
+        public ICommand SubmitCommand { get; }
 
         public event EventHandler<List<FileItem>>? FilesLoaded;
         
@@ -52,6 +53,7 @@ namespace FlatFleet.ViewModels
             SaveFilePic = new Command(SaveVoid);
             HideCameraUICommand = new Command(HideCameraUi);
             DeleteFile = new Command<int>((int id) => { DeleteFileFunc(id); });
+            SubmitCommand = new Command(Submit);
 
             GoToPreviousPageCommand = new Command(BackToPrevPage);
         }
@@ -199,11 +201,11 @@ namespace FlatFleet.ViewModels
         
         private async void LoadFiles()
         {
-            var files = await FilePicker.PickMultipleAsync();
+            _files = await FilePicker.PickMultipleAsync();
 
             List<FileItem> filesToUploadList = new();  
 
-            foreach (var file in files)
+            foreach (var file in _files)
             {
                 using (var stream = await file.OpenReadAsync())
                 {
@@ -214,12 +216,14 @@ namespace FlatFleet.ViewModels
 
                         Size = stream.Length
                     });
-            
+
+                    /*
                     await _storage
                         .Child($"documents/{_userStore.CurrentUser.Uid}/{file.FileName}")
                         .PutAsync(stream);
 
                     Debug.WriteLine($"File '{file.FileName}' was successfully uploaded!");
+                    */
                 }
             }
 
@@ -231,6 +235,29 @@ namespace FlatFleet.ViewModels
             var file = CurrPage.idFilePair[id];
 
             CurrPage.FilesStackLayout.Children.Remove(file);
+        }
+
+        private async void Submit()
+        {
+            if (_files != null)
+            {
+                foreach(var file in _files)
+                {
+                    using (var stream = await file.OpenReadAsync())
+                    {
+                        await _storage 
+                            .Child($"documents/{_userStore.CurrentUser.Uid}/{file.FileName}")
+                            .PutAsync(stream);
+
+                        await Application.Current.MainPage.DisplayAlert("Success", "Files were successfully loaded!", "Ok");
+                    }
+                    await Shell.Current.GoToAsync("..");
+                }
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "No files", "Ok");
+            }
         }
     }
 
