@@ -47,7 +47,7 @@ public partial class UploadFilesPage : ContentPage
         {
             Header = new Grid
             {
-                BackgroundColor = Colors.LightGray,
+                BackgroundColor = Colors.Transparent,
                 Children =
                 {
                     new Frame

@@ -101,17 +101,19 @@
                 <Label Text="Files Ready" Grid.Column="1" TextColor="Gray" HorizontalOptions="End"/>
             </Grid>
             <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-            <ScrollView>
-                <StackLayout 
+            <Frame Padding="0" BorderColor="Transparent" HeightRequest="300">
+                <ScrollView>
+                    <StackLayout 
                     x:Name="FilesStackLayout"
                     x:FieldModifier="public"
                     Spacing="10"
                     Padding="10, 0, 10, 10">
 
-                    <!-- Сюди будуть додаватись файли -->
+                        <!-- Сюди будуть додаватись файли -->
 
-                </StackLayout>
-            </ScrollView>
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
             <!--
             <Button Text="Complete onboarding" TextColor="White" BackgroundColor="{StaticResource Blue}"  
     FontFamily="SFproText-SemiBold" FontAttributes="Bold" FontSize="16" BorderColor="{StaticResource Blue}" Margin="15,225,15,0"/>
@@ -124,7 +126,7 @@
                 FontAttributes="Bold" 
                 FontSize="16"
                 BorderColor="{StaticResource Blue}"
-                Margin="15, 300, 15, 0"/>
+                Margin="15, 15, 15, 0"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

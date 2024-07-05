@@ -84,7 +84,7 @@
                     Grid.Column="1" 
                     VerticalOptions="Center" 
                     Margin="0,0,40,0" 
-                    Text="{Binding Email}" />
+                    Text="{Binding Email}"  TextColor="Black"/>
             </Grid>
         </Frame>
 
@@ -102,7 +102,7 @@
                     VerticalOptions="Center" 
                     Margin="0,0,40,0" 
                     Text="{Binding Password}"
-                    IsPassword="{Binding IsPasswordHidden}"/>
+                    IsPassword="{Binding IsPasswordHidden}" TextColor="Black"/>
                 <Image 
                     Source="@string/hide_icon.png" 
                     WidthRequest="30" 

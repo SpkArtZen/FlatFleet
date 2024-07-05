@@ -61,6 +61,7 @@ namespace FlatFleet.ViewModels
         private DbService _db;
 
         public ICommand SelectedItem { get; }
+
         public ICommand ContinueWithThisTypeCommand { get; private set; }
 
         public SelectAccountTypePageViewModel(DbService db)
