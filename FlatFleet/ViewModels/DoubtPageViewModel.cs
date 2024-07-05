@@ -52,6 +52,8 @@ namespace FlatFleet.ViewModels
 
         public ICommand SelectedItem { get; }
         public ICommand UploadFilesCommand { get; }
+        
+        public ICommand CompleteOnboardingCommand { get; }
         public DoubtPageViewModel()
         {
             UploadFilesCommand = new Command(UploadFiles);
@@ -65,7 +67,9 @@ namespace FlatFleet.ViewModels
 
             SelectedItem = new Command((obj) => SelectedItemAction(obj));
             GoToPreviousPageCommand = new Command(BackToPrevPage);
+            CompleteOnboardingCommand = new Command(CompleteOnboarding);
         }
+
         public ICommand GoToPreviousPageCommand { get; }
         private async void BackToPrevPage()
         {
@@ -104,9 +108,15 @@ namespace FlatFleet.ViewModels
             IsSelected = "\u2713";
             SelectedText = obj.ToString();          
         }
+
         private async void UploadFiles()
         {
             await Shell.Current.GoToAsync("UploadFiles");
+        }
+
+        private async void CompleteOnboarding()
+        {
+            await Shell.Current.GoToAsync("//AccountDashboard");
         }
     }
 }
