@@ -15,8 +15,10 @@
     
     <Color x:Key="Blue">#0A84FF</Color>
     <Color x:Key="AddButtonBlue">#0071EC</Color>
+    <Color x:Key="SelectedItem">#D4D8EA</Color>
+    <Color x:Key="ComboBoxBackGround">#FFFBFE</Color>
     
-    <Color x:Key="White">White</Color>
+        <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>
     <Color x:Key="Magenta">#D600AA</Color>
     <Color x:Key="MidnightBlue">#190649</Color>
@@ -34,6 +36,7 @@
     <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}"/>
     <SolidColorBrush x:Key="AddButtonBlueBrush" Color="{StaticResource AddButtonBlue}"/>
 
+    
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>

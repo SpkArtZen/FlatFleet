@@ -25,34 +25,36 @@
         <Label Text="Select account type" FontFamily="SFProText-Bold" FontSize="34" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,5"/>
         <Label Text="Select the user category you want to continue registering with" TextColor="Grey" FontFamily="SFProText-Regular" FontSize="16" 
                HorizontalOptions="Center" HorizontalTextAlignment ="Center"/>
-        <Frame Padding="0" CornerRadius="5" BorderColor="Gray" Margin="20,30,20,20">
-            <mtc:Expander IsExpanded="{Binding IsOpened}">
-                <mtc:Expander.Header>
-                    <StackLayout Orientation="Horizontal" HeightRequest="42" Padding="10">
+        <mtc:Expander IsExpanded="{Binding IsOpened}" Margin="20">
+            <mtc:Expander.Header>
+                <Frame>
+                    <Grid>
                         <Label Text="{Binding SearchIcon}" HorizontalOptions="Start"/>
                         <Label HorizontalOptions="Start" Text="{Binding SelectedText}"/>
                         <Label Text="&#9660;" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-                    </StackLayout>
-                </mtc:Expander.Header>
-                <mtc:Expander.Content>
-                    <ContentView>
-                        <CollectionView ItemsSource ="{Binding TypesOfAccount}" HeightRequest="130" >
-                            <CollectionView.ItemTemplate BorderColor="Gray">
-                                <DataTemplate>
-                                    <Label x:Name ="TypePage" Text="{Binding}" Margin="10,2,10,10">
-                                        <Label.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding BindingContext.SelectedItem, Source={x:Reference SelectAccountType}}"
-                                                              CommandParameter="{Binding .}"
+                    </Grid>
+                </Frame>
+            </mtc:Expander.Header>
+            <mtc:Expander.Content>
+                <Frame Padding="10" BackgroundColor="{StaticResource ComboBoxBackGround}" BorderColor="LightGray" HasShadow="True" >
+                <ContentView>
+                    <CollectionView ItemsSource ="{Binding TypesOfAccount}" HeightRequest="130" >
+                        <CollectionView.ItemTemplate BorderColor="Gray">
+                            <DataTemplate>
+                                <Label x:Name ="TypePage" Text="{Binding}" Margin="10,2,10,10">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.SelectedItem, Source={x:Reference SelectAccountType}}"
+                                                              CommandParameter="{Binding .}" 
                                         ></TapGestureRecognizer>
-                                        </Label.GestureRecognizers>
-                                    </Label>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </ContentView>
-                </mtc:Expander.Content>
-            </mtc:Expander>
-        </Frame>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ContentView>
+                </Frame>
+            </mtc:Expander.Content>
+        </mtc:Expander>
         <Button Text="Submit" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" FontFamily="SFProText-Semibold" 
                 FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"
                 Command="{Binding ContinueWithThisTypeCommand}">
