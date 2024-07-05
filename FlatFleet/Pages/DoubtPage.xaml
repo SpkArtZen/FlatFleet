@@ -13,15 +13,18 @@
         <Label Text="Your data" HorizontalOptions="Center" FontSize="34" FontFamily="SFproText-Bold" FontAttributes="Bold"/>
         <Label Text="Fill in the fields with personal information" HorizontalOptions="Center"
            FontSize="16" FontFamily="SFproText-Regular" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Margin="10"/>
-         <Frame Padding="0" CornerRadius="5" BorderColor="Gray" Margin="20,30,20,10">
-            <mtc:Expander IsExpanded="{Binding IsOpened}">
-                <mtc:Expander.Header>
-                    <StackLayout Orientation="Horizontal" HeightRequest="42" Padding="10">
+
+        <mtc:Expander IsExpanded="{Binding IsOpened}">
+            <mtc:Expander.Header>
+                <Frame BackgroundColor="Transparent" BorderColor="Gray" Margin="20,0,20,0">
+                    <Grid>
                         <Label HorizontalOptions="Start" Text="{Binding SelectedText}"/>
                         <Label Text="&#9660;" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
-                    </StackLayout>
-                </mtc:Expander.Header>
-                <mtc:Expander.Content>
+                    </Grid>
+                </Frame>
+            </mtc:Expander.Header>
+            <mtc:Expander.Content>
+                <Frame BackgroundColor="Transparent" BorderColor="Gray" Margin="20,0,20,0">
                     <ContentView>
                         <CollectionView ItemsSource ="{Binding TypesOfProfessions}" HeightRequest="130" >
                             <CollectionView.ItemTemplate BorderColor="Gray">
@@ -37,13 +40,13 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                     </ContentView>
-                </mtc:Expander.Content>
-            </mtc:Expander>
-        </Frame>
+                </Frame>
+            </mtc:Expander.Content>
+        </mtc:Expander>
         <BoxView Color="LightGray" WidthRequest="360" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Margin="10, 10"/>
         <Label Text="Add PI or company registration certificate" HorizontalOptions="Center"/>
-        <Frame Padding="0" HeightRequest="50" Margin="20" BorderColor="White">
-            <Image Source="@string/attach_files_icon.png" Aspect="AspectFill" HorizontalOptions="Center">
+        <Frame Padding="0" HeightRequest="50" Margin="20" BorderColor="Transparent" BackgroundColor="Transparent">
+            <Image Source="@string/attach_files_icon.png" Aspect="AspectFill" HorizontalOptions="Center" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding UploadFilesCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>

@@ -27,7 +27,7 @@
                HorizontalOptions="Center" HorizontalTextAlignment ="Center"/>
         <mtc:Expander IsExpanded="{Binding IsOpened}" Margin="20">
             <mtc:Expander.Header>
-                <Frame>
+                <Frame BackgroundColor="Transparent" BorderColor="LightGray">
                     <Grid>
                         <Label Text="{Binding SearchIcon}" HorizontalOptions="Start"/>
                         <Label HorizontalOptions="Start" Text="{Binding SelectedText}"/>
@@ -36,7 +36,7 @@
                 </Frame>
             </mtc:Expander.Header>
             <mtc:Expander.Content>
-                <Frame Padding="10" BackgroundColor="{StaticResource ComboBoxBackGround}" BorderColor="LightGray" HasShadow="True" >
+                <Frame Padding="10" BackgroundColor="Transparent" BorderColor="LightGray" HasShadow="True" >
                 <ContentView>
                     <CollectionView ItemsSource ="{Binding TypesOfAccount}" HeightRequest="130" >
                         <CollectionView.ItemTemplate BorderColor="Gray">

@@ -101,7 +101,7 @@
                 <Label Text="Files Ready" Grid.Column="1" TextColor="Gray" HorizontalOptions="End"/>
             </Grid>
             <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" VerticalOptions="Center" Margin="10"/>
-            <Frame Padding="0" BorderColor="Transparent" HeightRequest="300">
+            <Frame Padding="0" BorderColor="Transparent" HeightRequest="300" BackgroundColor="Transparent">
                 <ScrollView>
                     <StackLayout 
                     x:Name="FilesStackLayout"

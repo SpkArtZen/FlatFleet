@@ -2,12 +2,17 @@
 using FlatFleet.Features.Navigation;
 using FlatFleet.Features.SignIn;
 using FlatFleet.Models.Users;
+using CommunityToolkit.Mvvm.ComponentModel;
 using FlatFleet.Pages;
 using System.Windows.Input;
+using Microsoft.Maui.Controls;
+using MvvmHelpers;
+using CommunityToolkit.Maui.ImageSources;
+using FlatFleet.Features.Services;
 
 namespace FlatFleet.ViewModels
 {
-    public class SignInPageViewModel : ViewModelBase
+    public class SignInPageViewModel : BaseViewModel
     {
         private string _email;
 
@@ -67,9 +72,37 @@ namespace FlatFleet.ViewModels
             CreateAccountCommand = new Command(OnCreateAccount);
             ForgotPasswordCommand = new Command(OnForgotPassword);
             SwitchAppearanceOfPassword = new Command(OnSwitchAppearanceOfPassword);
-            // SelectAccountCommand = new Command(SelectAccountType);
-        }
 
+            // Initialize the current theme
+            UpdateCurrentTheme();
+            // Subscribe to theme changes
+            Application.Current.RequestedThemeChanged += OnRequestedThemeChanged;
+        }
+        private void OnRequestedThemeChanged(object sender, AppThemeChangedEventArgs e)
+        {
+            UpdateCurrentTheme();
+        }
+        private string _currentTheme;
+        public string CurrentTheme
+        {
+            get { return _currentTheme; }
+            set { SetProperty(ref _currentTheme, value); }
+        }
+        private void UpdateCurrentTheme()
+        {
+            switch (Application.Current.RequestedTheme)
+            {
+                case AppTheme.Dark:
+                    CurrentTheme = "Dark";
+                    break;
+                case AppTheme.Light:
+                    CurrentTheme = "Light";
+                    break;
+                default:
+                    CurrentTheme = "Unknown";
+                    break;
+            }
+        }
         private async void SelectAccountType()
         {
             await Shell.Current.GoToAsync("SelectAccountType");

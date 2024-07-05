@@ -19,7 +19,7 @@
                 Padding="20">
 
                 <Grid
-                    Margin="0,40,0,0"
+                    Margin="0,0,0,0"
                     HorizontalOptions="Center"
                     WidthRequest="380"
                     HeightRequest="380"
@@ -46,7 +46,7 @@
                         WidthRequest="100"
                         Grid.Row="3"
                         Grid.Column="0"
-                        Stroke="White"
+                        Stroke="Transparent"
                         StrokeThickness="6.18"
                         StrokeShape="RoundRectangle 360"
                         Background="{StaticResource Blue}">
@@ -92,8 +92,8 @@
 
         <DataTemplate
             x:Key="item4">
-
-            <Frame x:Name="Frame4" Padding ="0" HeightRequest="690" BorderColor="White">
+            
+            <Frame x:Name="Frame4" Padding ="0" HeightRequest="600" BorderColor="Transparent" BackgroundColor="Transparent">
                 <VerticalStackLayout Spacing="10" Padding="10">
                     <Grid ColumnSpacing ="20">
                         <Grid.ColumnDefinitions>
@@ -101,7 +101,7 @@
                             <ColumnDefinition Width="110" />
                             <ColumnDefinition Width="110" />
                         </Grid.ColumnDefinitions>
-                        <Frame HorizontalOptions="Start" VerticalOptions="Start" Grid.Column= "0" CornerRadius="15" HeightRequest="320" WidthRequest="110" Padding="0" BorderColor="White">
+                        <Frame HorizontalOptions="Start" VerticalOptions="Start" Grid.Column= "0" CornerRadius="15" HeightRequest="320" WidthRequest="110" Padding="0" BorderColor="Transparent">
                             <VerticalStackLayout Spacing="10">
 
                                 <Frame Padding="0" CornerRadius="15" HeightRequest="200">
@@ -117,7 +117,7 @@
                         <Frame HorizontalOptions="Center" Grid.Column= "1" CornerRadius="15" HeightRequest="320" WidthRequest="110" Padding="0">
                             <Image Source="@string/get_started_pic2.jpg" Aspect="AspectFill"/>
                         </Frame>
-                        <Frame HorizontalOptions="Start" VerticalOptions="Start" Grid.Column= "2" CornerRadius="15" HeightRequest="320" WidthRequest="110" Padding="0" BorderColor="White">
+                        <Frame HorizontalOptions="Start" VerticalOptions="Start" Grid.Column= "2" CornerRadius="15" HeightRequest="320" WidthRequest="110" Padding="0" BorderColor="Transparent">
                             <VerticalStackLayout Spacing="10">
 
                                 <Frame Padding="0" CornerRadius="15" HeightRequest="200">
@@ -200,7 +200,7 @@
         <Button 
             Grid.Row="2"
             Text="Get started"
-            Margin="10,60,10,0"
+            Margin="10,50,10,0"
             BackgroundColor="{StaticResource Blue}"
             FontAttributes="Bold"
             Command="{Binding GetStartedCommand}"/>
