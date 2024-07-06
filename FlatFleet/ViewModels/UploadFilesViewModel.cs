@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Windows.Input;
 using Camera.MAUI;
 using Firebase.Storage;
+using FlatFleet.Features.Services;
 using FlatFleet.Models;
 using FlatFleet.Models.Users;
 using FlatFleet.Pages;
@@ -12,7 +13,8 @@ namespace FlatFleet.ViewModels
 {
     public class UploadFilesViewModel : ViewModelBase
     {
-        private CurrentUserStore _userStore;
+        private readonly StorageService _storageService;
+        private readonly CurrentUserStore _userStore;
         private bool _isCameraOn = false;
         private IEnumerable<FileResult>? _files = null;
 
@@ -29,8 +31,6 @@ namespace FlatFleet.ViewModels
             }
         }
 
-        private FirebaseStorage _storage;
-
         public UploadFilesPage CurrPage {get; set;}
 
         public ICommand CameraOnCommand { get; }
@@ -43,9 +43,9 @@ namespace FlatFleet.ViewModels
 
         public event EventHandler<List<FileItem>>? FilesLoaded;
         
-        public UploadFilesViewModel(FirebaseStorage storage, CurrentUserStore userStore)
+        public UploadFilesViewModel(StorageService storageService, CurrentUserStore userStore)
         {
-            _storage = storage;
+            _storageService = storageService;
             _userStore = userStore;
             UploadFileCommand = new Command(LoadFiles);
             CameraOnCommand = new Command(CameraOnFunc);
@@ -237,18 +237,7 @@ namespace FlatFleet.ViewModels
         {
             if (_files != null)
             {
-                foreach(var file in _files)
-                {
-                    using (var stream = await file.OpenReadAsync())
-                    {
-                        await _storage 
-                            .Child($"documents/{_userStore.CurrentUser.Uid}/{file.FileName}")
-                            .PutAsync(stream);
-
-                        await Application.Current.MainPage.DisplayAlert("Success", "Files were successfully loaded!", "Ok");
-                    }
-                    await Shell.Current.GoToAsync("..");
-                }
+               await _storageService.LoadFilesToStorage(_files);
             }
             else
             {
