@@ -81,5 +81,9 @@
     <ShellContent
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:HouseCommitteePage}"
-        Route="SelectHouseCommittee"/> 
+        Route="SelectHouseCommittee"/>
+
+    <ShellContent 
+        ContentTemplate="{DataTemplate pages:AccountDashboardPage}"
+        Route="AccountDashboard"/>
 </Shell>
