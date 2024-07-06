@@ -88,6 +88,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\BuildingLocationPage.xaml.cs">
+	    <DependentUpon>BuildingLocationPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\DoubtPage.xaml.cs">
 	    <DependentUpon>DoubtPage.xaml</DependentUpon>
 	  </Compile>
@@ -107,6 +110,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Pages\AccountDashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\BuildingLocationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\DoubtPage.xaml">

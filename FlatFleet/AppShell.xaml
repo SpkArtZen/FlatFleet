@@ -78,10 +78,16 @@
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:TenantOfHousePage}"
         Route="SelectTenantOfHouse"/>
+    
     <ShellContent
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:HouseCommitteePage}"
         Route="SelectHouseCommittee"/>
+
+    <ShellContent
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:BuildingLocationPage}"
+        Route="BuildingLocation"/>
 
     <ShellContent 
         ContentTemplate="{DataTemplate pages:AccountDashboardPage}"

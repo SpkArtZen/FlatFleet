@@ -25,7 +25,7 @@ namespace FlatFleet
             Routing.RegisterRoute("SelectDoubt", typeof(DoubtPage));
             Routing.RegisterRoute("SelectManagementCompany", typeof(ManagementCompanyPage));
             Routing.RegisterRoute("SelectTenantOfHouse", typeof(TenantOfHousePage));
-            Routing.RegisterRoute("SelectHouseCommittee", typeof(HouseCommitteePage));
+            Routing.RegisterRoute("BuildingLocation", typeof(BuildingLocationPage));
 
             Routing.RegisterRoute("UploadFiles", typeof(UploadFilesPage));
         }
