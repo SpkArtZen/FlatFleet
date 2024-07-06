@@ -14,7 +14,7 @@ namespace FlatFleet.ViewModels
     {
         private CurrentUserStore _userStore;
         private bool _isCameraOn = false;
-        private IEnumerable<FileResult> _files;
+        private IEnumerable<FileResult>? _files = null;
 
         public bool IsCameraOn
         {
