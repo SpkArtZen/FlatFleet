@@ -126,6 +126,7 @@
                 FontAttributes="Bold" 
                 FontSize="16"
                 BorderColor="{StaticResource Blue}"
+                Command="{Binding SubmitCommand}"/>
                 Margin="15, 15, 15, 0"/>
         </VerticalStackLayout>
     </ScrollView>

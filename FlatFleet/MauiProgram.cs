@@ -109,6 +109,9 @@ namespace FlatFleet
 
             builder.Services.AddTransient<TenantOfHousePageViewModel>();
             builder.Services.AddTransient<TenantOfHousePage>();
+
+            builder.Services.AddTransient<AccountDashboardPageViewModel>();
+            builder.Services.AddTransient<AccountDashboardPage>();
 #if DEBUG
             object value = builder.Logging.AddDebug();
 #endif

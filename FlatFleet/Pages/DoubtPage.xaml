@@ -53,7 +53,14 @@
             </Image>
         </Frame>
         <Label x:Name="FilesUploadingStatus" Text="{Binding FilesStatus}" TextColor="LightGray" FontFamily="SFproText-SemiBold" FontAttributes="Bold" FontSize="22"/>
-        <Button Text="Complete onboarding" TextColor="White" BackgroundColor="{StaticResource Blue}"  
-            FontFamily="SFproText-SemiBold" FontAttributes="Bold" FontSize="16" BorderColor="{StaticResource Blue}" Margin="15,225,15,0"/>
+        <Button Text="Complete onboarding" 
+                TextColor="White" 
+                BackgroundColor="{StaticResource Blue}"  
+                FontFamily="SFproText-SemiBold" 
+                FontAttributes="Bold" 
+                FontSize="16" 
+                BorderColor="{StaticResource Blue}" 
+                Margin="15,225,15,0"
+                Command="{Binding CompleteOnboardingCommand}"/>
     </VerticalStackLayout>
 </ContentPage>
