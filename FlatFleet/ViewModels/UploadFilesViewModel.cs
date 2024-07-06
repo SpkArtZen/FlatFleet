@@ -47,7 +47,7 @@ namespace FlatFleet.ViewModels
         {
             _storage = storage;
             _userStore = userStore;
-            UploadFileCommand = new Command(Upload);
+            UploadFileCommand = new Command(LoadFiles);
             CameraOnCommand = new Command(CameraOnFunc);
             CameraOffCommand = new Command(CameraOffFunc);
             SaveFilePic = new Command(SaveVoid);
@@ -193,10 +193,6 @@ namespace FlatFleet.ViewModels
             }
             CurrPage.cameraView.IsVisible = false;
             CurrPage.FrameName.IsVisible = false;
-        }
-        private async void Upload()
-        {
-            LoadFiles();
         }
         
         private async void LoadFiles()
