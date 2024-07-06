@@ -101,6 +101,8 @@ namespace FlatFleet
             builder.Services.AddTransient<UploadFilesViewModel>();
             builder.Services.AddTransient<UploadFilesPage>();
 
+            builder.Services.AddTransient<StorageService>();
+
             builder.Services.AddTransient<DoubtPageViewModel>();
             builder.Services.AddTransient<DoubtPage>();
 
