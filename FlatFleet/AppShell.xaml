@@ -86,4 +86,8 @@
     <ShellContent 
         ContentTemplate="{DataTemplate pages:AccountDashboardPage}"
         Route="AccountDashboard"/>
+    <ShellContent 
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:ConfirmAdressOnMapPage}"
+        Route="ConfirmAdressOnMap"/>
 </Shell>

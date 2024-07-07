@@ -35,6 +35,7 @@ namespace FlatFleet
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
                 .UseMauiCameraView()
+                .UseMauiMaps()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("SFProText-Regular.ttf", "SFProText-Regular");
@@ -114,6 +115,14 @@ namespace FlatFleet
 
             builder.Services.AddTransient<AccountDashboardPageViewModel>();
             builder.Services.AddTransient<AccountDashboardPage>();
+
+            builder.Services.AddTransient<ConfirmAdressOnMapPage>();
+            // Реєстрація ViewModel та ILogger
+            builder.Services.AddSingleton<ConfirmAdressOnMapPageViewModel>();
+            builder.Services.AddSingleton<ConfirmAdressOnMapPage>();
+            builder.Services.AddLogging();
+
+            builder.Services.AddTransient<ConfirmAdressOnMapPageViewModel>();
 #if DEBUG
             object value = builder.Logging.AddDebug();
 #endif

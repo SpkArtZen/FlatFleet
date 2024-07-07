@@ -1,0 +1,21 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="FlatFleet.Pages.ConfirmAdressOnMapPage">
+
+    <StackLayout Padding="10">
+        <Entry Text="{Binding Address}" Placeholder="Введіть адресу" />
+        <CollectionView ItemsSource="{Binding AddressSuggestions}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding .}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Встановити мітку" Command="{Binding PinCommand}" />
+        <maps:Map x:Name="Map"
+                  HeightRequest="300" IsTrafficEnabled="True" 
+                  WidthRequest="300" IsZoomEnabled="True"
+                  />
+    </StackLayout>
+</ContentPage>
