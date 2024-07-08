@@ -161,7 +161,7 @@ namespace FlatFleet.ViewModels
         private async void ContinueWithHouseCommittee()
         {
             await _db.ChangeUsersAccountType("House Committee");
-            await Shell.Current.GoToAsync("SelectHouseCommittee");
+            await Shell.Current.GoToAsync("BuildingLocation");
         }
 
         private async void ContinueWithDefaultPage()
