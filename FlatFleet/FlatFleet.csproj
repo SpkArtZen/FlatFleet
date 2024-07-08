@@ -63,6 +63,7 @@
 	  <None Remove="Resources\Images\ff_main_copy.png" />
 	  <None Remove="Resources\Images\flafleet_main.png" />
 	  <None Remove="Resources\Images\Logo_white.png" />
+	  <None Remove="Resources\Images\select_building_icon.png" />
 	  <None Remove="Resources\Raw\project_credentials.json" />
 	</ItemGroup>
 
