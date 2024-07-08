@@ -5,20 +5,6 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="FlatFleet.Pages.SelectAccountTypePage" x:Name ="SelectAccountType">
     <VerticalStackLayout>
-        <!--
-        <Grid BackgroundColor="White" Padding="0" VerticalOptions="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <ImageButton Source="@string/back.png" HeightRequest ="40" WidthRequest="40" Command="{Binding GoToPreviousPageCommand}" Grid.Column="0" />
-            <Label Text="Back" FontSize="24" VerticalOptions="Center" TextColor="{StaticResource Blue}" HorizontalOptions="Start" Grid.Column="1" >
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoToPreviousPageCommand}"></TapGestureRecognizer>
-                </Label.GestureRecognizers>
-            </Label>
-        </Grid>
-        -->
         <Frame Padding="0" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,110,0,10">
             <Image Source="@string/account_icon.png" Aspect="AspectFill"/>
         </Frame>
@@ -27,7 +13,7 @@
                HorizontalOptions="Center" HorizontalTextAlignment ="Center"/>
         <mtc:Expander IsExpanded="{Binding IsOpened}" Margin="20">
             <mtc:Expander.Header>
-                <Frame BackgroundColor="Transparent" BorderColor="LightGray">
+                <Frame>
                     <Grid>
                         <Label Text="{Binding SearchIcon}" HorizontalOptions="Start"/>
                         <Label HorizontalOptions="Start" Text="{Binding SelectedText}"/>
@@ -36,7 +22,7 @@
                 </Frame>
             </mtc:Expander.Header>
             <mtc:Expander.Content>
-                <Frame Padding="10" BackgroundColor="Transparent" BorderColor="LightGray" HasShadow="True" >
+                <Frame Padding="10" HasShadow="True" >
                 <ContentView>
                     <CollectionView ItemsSource ="{Binding TypesOfAccount}" HeightRequest="130" >
                         <CollectionView.ItemTemplate BorderColor="Gray">
@@ -55,7 +41,7 @@
                 </Frame>
             </mtc:Expander.Content>
         </mtc:Expander>
-        <Button Text="Submit" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" FontFamily="SFProText-Semibold" 
+        <Button Text="Submit" FontFamily="SFProText-Semibold" 
                 FontSize="22" HorizontalOptions="Center" VerticalOptions="Center"
                 Command="{Binding ContinueWithThisTypeCommand}">
         </Button>

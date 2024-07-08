@@ -34,7 +34,7 @@
                    TextColor="Gray"
                    FontSize="18"/>
             <Button Text="Get Started" TextColor="White" Margin="0,-20,0,20"
-                    HorizontalOptions="Fill" BackgroundColor="{StaticResource Blue}">
+                    HorizontalOptions="Fill">
                 <Button.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ToGetStartedCommand}" />
                 </Button.GestureRecognizers>

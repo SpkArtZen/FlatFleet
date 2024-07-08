@@ -12,6 +12,7 @@
     <Color x:Key="Secondary">#DFD8F7</Color>
     <Color x:Key="SecondaryDarkText">#9880e5</Color>
     <Color x:Key="Tertiary">#2B0B98</Color>
+    <Color x:Key="Transparent">#00FFFFFF</Color>
     
     <Color x:Key="Blue">#0A84FF</Color>
     <Color x:Key="AddButtonBlue">#0071EC</Color>
@@ -32,7 +33,7 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
-
+    <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Transparent}"/>
     <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}"/>
     <SolidColorBrush x:Key="AddButtonBlueBrush" Color="{StaticResource AddButtonBlue}"/>
 

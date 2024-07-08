@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Microsoft.Maui.Controls.Maps;  // Використовуємо Maps з Microsoft.Maui.Controls.Maps
+using Microsoft.Maui.Controls.Maps; 
 using System.Collections.Generic;
 using Microsoft.Maui.Maps;
 

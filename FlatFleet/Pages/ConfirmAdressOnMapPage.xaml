@@ -13,9 +13,9 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
         <Button Text="Встановити мітку" Command="{Binding PinCommand}" />
-        <maps:Map x:Name="Map"
-                  HeightRequest="300" IsTrafficEnabled="True" 
-                  WidthRequest="300" IsZoomEnabled="True"
+        <maps:Map x:Name="Map" MapType="Street"
+                  HeightRequest="400" 
+                  WidthRequest="400" IsZoomEnabled="True"
                   />
     </StackLayout>
 </ContentPage>

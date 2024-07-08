@@ -11,7 +11,7 @@
         <Label Text="Verify your email" FontSize="32" FontAttributes="Bold" Margin="0,10,0,0" HorizontalOptions="Center"/>
         <Label Text="Please enter the 4 code sent to onepiaceisreal.temple@mail.com" 
        VerticalOptions="Center" HorizontalOptions="Center" TextColor="Gray" FontSize="17" LineBreakMode="WordWrap" Margin="70,10,60,20"/>
-        <Frame BorderColor="White" Padding="10" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0" BackgroundColor="Transparent">
+        <Frame BorderColor="White" Padding="10" CornerRadius="10" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0">
             <HorizontalStackLayout Spacing="10">
                 <Entry x:Name="Entry1"
                            MaxLength="1"
@@ -59,7 +59,7 @@
                 <TapGestureRecognizer Command="{Binding SendMessageOnEmailCommand}"></TapGestureRecognizer>
             </Label.GestureRecognizers>
         </Label>
-        <Button Text="Submit" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" Margin="20,10,20,0">
+        <Button Text="Submit" Margin="20,10,20,0">
             <Button.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding VerifyCodeOnEmail}"/>
             </Button.GestureRecognizers>

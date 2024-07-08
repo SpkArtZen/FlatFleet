@@ -4,27 +4,13 @@
              x:Class="FlatFleet.Pages.ManagementCompanyPage"
              Title=""    Shell.FlyoutBehavior="Disabled">
     <VerticalStackLayout>
-        <!--
-        <Grid BackgroundColor="White" Padding="0" VerticalOptions="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <ImageButton Source="@string/back.png" HeightRequest ="40" WidthRequest="40" Command="{Binding GoToPreviousPageCommand}" Grid.Column="0" />
-            <Label Text="Back" FontSize="24" VerticalOptions="Center" TextColor="{StaticResource Blue}" HorizontalOptions="Start" Grid.Column="1" >
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoToPreviousPageCommand}"></TapGestureRecognizer>
-                </Label.GestureRecognizers>
-            </Label>
-        </Grid>
-        -->
-        <Frame Padding="0" HorizontalOptions="Center" VerticalOptions="Center" BorderColor="White" HeightRequest="100" Margin="0,0,0,25">
+        <Frame Padding="0" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100" Margin="0,0,0,25">
             <Image Source="@string/account_icon.png" Aspect="AspectFill"/>
         </Frame>
         <Label Text="Your data" HorizontalOptions="Center" FontSize="34" FontFamily="SFproText-Bold" FontAttributes="Bold"/>
         <Label Text="Fill in the fields with personal information" HorizontalOptions="Center"
                FontSize="16" FontFamily="SFproText-Regular" LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Margin="10"/>
-        <Frame Grid.ColumnSpan="2" BackgroundColor="Transparent" CornerRadius="10" Padding="10" HeightRequest="58" WidthRequest="350" HasShadow="False" Margin="10,0,10,5">
+        <Frame Grid.ColumnSpan="2" CornerRadius="10" Padding="10" HeightRequest="58" WidthRequest="350" HasShadow="False" Margin="10,0,10,5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -37,7 +23,7 @@
         </Frame>
         <BoxView Color="LightGray" WidthRequest="360" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Margin="10, 10"/>
         <Label Text="Attach document providing your status" HorizontalOptions="Center"/>
-        <Frame Padding="0" HeightRequest="50" Margin="20" BorderColor="Transparent" BackgroundColor="Transparent" >
+        <Frame Padding="0" HeightRequest="50" Margin="20">
             <Image Source="@string/attach_files_icon.png" Aspect="AspectFill" HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding AttachFilesCommand}"></TapGestureRecognizer>
@@ -45,8 +31,8 @@
             </Image>
         </Frame>
         <Label x:Name="FilesUploadingStatus" Text="{Binding FilesStatus}" TextColor="LightGray" FontFamily="SFproText-SemiBold" FontAttributes="Bold" FontSize="22"/>
-        <Button Text="Complete onboarding" TextColor="White" BackgroundColor="{StaticResource Blue}"  
-                FontFamily="SFproText-SemiBold" FontAttributes="Bold" FontSize="16" BorderColor="{StaticResource Blue}" Margin="15,240,15,0"/>
+        <Button Text="Complete onboarding"  
+                FontFamily="SFproText-SemiBold" FontAttributes="Bold" FontSize="16" Margin="15,240,15,0"/>
 
     </VerticalStackLayout>
 </ContentPage>

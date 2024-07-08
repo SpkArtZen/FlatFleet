@@ -93,7 +93,7 @@
         <DataTemplate
             x:Key="item4">
             
-            <Frame x:Name="Frame4" Padding ="0" HeightRequest="600" BorderColor="Transparent" BackgroundColor="Transparent">
+            <Frame x:Name="Frame4" Padding ="0" HeightRequest="600">
                 <VerticalStackLayout Spacing="10" Padding="10">
                     <Grid ColumnSpacing ="20">
                         <Grid.ColumnDefinitions>
