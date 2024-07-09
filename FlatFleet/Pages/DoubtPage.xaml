@@ -7,7 +7,7 @@
              Title="" 
              Shell.FlyoutBehavior="Disabled">
     <VerticalStackLayout>
-        <Frame Padding="0" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100" Margin="0,0,0,25">
+        <Frame Padding="0" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100" Margin="0,0,0,25">
             <Image Source="@string/account_icon.png" Aspect="AspectFill"/>
         </Frame>
         <Label Text="Your data" HorizontalOptions="Center" FontSize="34" FontFamily="SFproText-Bold" FontAttributes="Bold"/>
@@ -45,7 +45,7 @@
         </mtc:Expander>
         <BoxView Color="LightGray" WidthRequest="360" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Margin="10, 10"/>
         <Label Text="Add PI or company registration certificate" HorizontalOptions="Center"/>
-        <Frame Padding="0" HeightRequest="50" Margin="20">
+        <Frame Padding="0" HeightRequest="50" Margin="20" BorderColor="Gray">
             <Image Source="@string/attach_files_icon.png" Aspect="AspectFill" HorizontalOptions="Center" >
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding UploadFilesCommand}"></TapGestureRecognizer>

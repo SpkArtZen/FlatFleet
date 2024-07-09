@@ -33,7 +33,7 @@
     <Color x:Key="Gray600">#404040</Color>
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
-    <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Transparent}"/>
+    <SolidColorBrush x:Key="TransparentBrush" Color="{StaticResource Transparent}"/>
     <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}"/>
     <SolidColorBrush x:Key="AddButtonBlueBrush" Color="{StaticResource AddButtonBlue}"/>
 

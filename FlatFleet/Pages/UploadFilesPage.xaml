@@ -20,20 +20,6 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            <!--
-            <Grid BackgroundColor="White" Padding="0" VerticalOptions="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <ImageButton Source="@string/back.png" HeightRequest ="40" WidthRequest="40" Command="{Binding GoToPreviousPageCommand}" Grid.Column="0" />
-                <Label Text="Back" FontSize="24" VerticalOptions="Center" TextColor="{StaticResource Blue}" HorizontalOptions="Start" Grid.Column="1" >
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToPreviousPageCommand}"></TapGestureRecognizer>
-                    </Label.GestureRecognizers>
-                </Label>
-            </Grid>
-            -->
             <Frame x:Name="FrameName" x:FieldModifier ="public" IsVisible="{Binding IsCameraOn}" WidthRequest="300" HeightRequest="400" Padding="0" BorderColor="White">
                 <VerticalStackLayout Spacing="10">
                     <cv:CameraView 
@@ -54,7 +40,7 @@
                                 <TapGestureRecognizer Command="{Binding CameraOffCommand}"></TapGestureRecognizer>
                             </Frame.GestureRecognizers>
                         </Frame>
-                        <Frame CornerRadius="360" Margin="50,5,50,20" BorderColor="Blue" Grid.Column="1"  WidthRequest ="56" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="56" BackgroundColor="{StaticResource Blue}">
+                        <Frame CornerRadius="360" Margin="50,5,50,20" BorderColor="Blue"  Grid.Column="1"  WidthRequest ="56" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="56" BackgroundColor="{StaticResource Blue}">
                             <Image Source="@string/camera_icon.png"  HorizontalOptions="Center" >
                             </Image>
                             <Frame.GestureRecognizers>

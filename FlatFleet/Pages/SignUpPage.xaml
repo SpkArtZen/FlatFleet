@@ -15,7 +15,7 @@
             </Frame>
         </AbsoluteLayout>
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Frame CornerRadius="360" WidthRequest="110" HeightRequest="110"
+            <Frame CornerRadius="360" WidthRequest="110" HeightRequest="110" BackgroundColor="White"
            AbsoluteLayout.LayoutBounds="0.5,0.1,100,280"
            AbsoluteLayout.LayoutFlags="PositionProportional"
            Padding="5"
@@ -37,7 +37,7 @@
         FontSize="17"
         LineBreakMode="WordWrap"
         HorizontalTextAlignment ="Center"/>
-        <Frame Grid.ColumnSpan="2" BackgroundColor="White" CornerRadius="5" Padding="6" HeightRequest="50" WidthRequest="350" HasShadow="False" Margin="10,10,10,0">
+        <Frame Grid.ColumnSpan="2" BorderColor="Gray" CornerRadius="5" Padding="6" HeightRequest="50" WidthRequest="350" HasShadow="False" Margin="10,10,10,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -53,7 +53,7 @@
                     Text="{Binding FullName}"/>
             </Grid>
         </Frame>
-        <Frame Grid.ColumnSpan="2" CornerRadius="5" Padding="5" HeightRequest="44" WidthRequest="350" HasShadow="False" Margin="10,10,10,0">
+        <Frame Grid.ColumnSpan="2" CornerRadius="5" BorderColor="Gray" Padding="5" HeightRequest="44" WidthRequest="350" HasShadow="False" Margin="10,10,10,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -70,7 +70,7 @@
                     Text="{Binding PhoneNumber}"/>
             </Grid>
         </Frame>
-        <Frame Grid.ColumnSpan="2" CornerRadius="5" Padding="5" HeightRequest="44" WidthRequest="350" HasShadow="False" Margin="10,10,10,0">
+        <Frame Grid.ColumnSpan="2" CornerRadius="5" Padding="5" BorderColor="Gray" HeightRequest="44" WidthRequest="350" HasShadow="False" Margin="10,10,10,0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -87,7 +87,7 @@
                     Text="{Binding Email}"/>
             </Grid>
         </Frame>
-        <Frame Grid.ColumnSpan="3" CornerRadius="5" Padding="5" HeightRequest="44" WidthRequest="350" HasShadow="False" Margin="10,10,10,10">
+        <Frame Grid.ColumnSpan="3" CornerRadius="5" Padding="5" BorderColor="Gray" HeightRequest="44" WidthRequest="350" HasShadow="False" Margin="10,10,10,10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />

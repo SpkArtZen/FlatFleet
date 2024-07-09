@@ -4,8 +4,8 @@
              x:Class="FlatFleet.Pages.VerifyEmailPage"
              Title="">
     <VerticalStackLayout>
-       
-        <Frame Padding="0" HeightRequest="120" WidthRequest="120" BorderColor="White" Margin="0,90,0,0">
+
+        <Frame Padding="0" HeightRequest="120" WidthRequest="120" BorderColor="White" BackgroundColor="White" Margin="0,90,0,0">
             <Image Source="@string/email_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
         </Frame>
         <Label Text="Verify your email" FontSize="32" FontAttributes="Bold" Margin="0,10,0,0" HorizontalOptions="Center"/>

@@ -13,7 +13,7 @@
                HorizontalOptions="Center" HorizontalTextAlignment ="Center"/>
         <mtc:Expander IsExpanded="{Binding IsOpened}" Margin="20">
             <mtc:Expander.Header>
-                <Frame>
+                <Frame BorderColor="Gray">
                     <Grid>
                         <Label Text="{Binding SearchIcon}" HorizontalOptions="Start"/>
                         <Label HorizontalOptions="Start" Text="{Binding SelectedText}"/>
@@ -22,7 +22,7 @@
                 </Frame>
             </mtc:Expander.Header>
             <mtc:Expander.Content>
-                <Frame Padding="10" HasShadow="True" >
+                <Frame Padding="10" HasShadow="True" BorderColor="Gray">
                 <ContentView>
                     <CollectionView ItemsSource ="{Binding TypesOfAccount}" HeightRequest="130" >
                         <CollectionView.ItemTemplate BorderColor="Gray">

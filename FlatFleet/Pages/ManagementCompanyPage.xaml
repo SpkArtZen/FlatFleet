@@ -23,7 +23,7 @@
         </Frame>
         <BoxView Color="LightGray" WidthRequest="360" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Margin="10, 10"/>
         <Label Text="Attach document providing your status" HorizontalOptions="Center"/>
-        <Frame Padding="0" HeightRequest="50" Margin="20">
+        <Frame Padding="0" HeightRequest="50" Margin="20" BorderColor="Transparent">
             <Image Source="@string/attach_files_icon.png" Aspect="AspectFill" HorizontalOptions="Center">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding AttachFilesCommand}"></TapGestureRecognizer>
