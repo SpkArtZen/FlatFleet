@@ -4,6 +4,31 @@
              x:Class="FlatFleet.Pages.TenantOfHousePage"
              Title=""    Shell.FlyoutBehavior="Disabled">
     <VerticalStackLayout>
+        
         <Button Command="{Binding GoToMapCommand}"/>
+        <!-- Logo Image -->
+        <Image Source="your_logo_here.png" WidthRequest="100" HeightRequest="100" Margin="0,20,0,20" />
+
+        <!-- Title -->
+        <Label Text="Tenant registration" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <!-- Subtitle -->
+        <Label Text="Fill in the fields to continue registration" FontSize="14" HorizontalOptions="Center" />
+
+        <!-- Location Input -->
+        <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,10">
+            <Entry Placeholder="Your home's location" WidthRequest="200" />
+            <Button Text="🔍" WidthRequest="30" HeightRequest="30" Grid.Column="1" />
+        </Grid>
+
+        <!-- Apartment Number Input -->
+        <Entry Placeholder="Apartment number" WidthRequest="240" />
+
+        <!-- Submit Button -->
+        <Button Text="Submit" WidthRequest="240" BackgroundColor="Blue" TextColor="White" />
+
+        <!-- QR Code Registration Text -->
+        <Label Text="Is your apartment already in the system?" FontSize="12" HorizontalOptions="Center" />
+        <Label Text="Registration via QR code" FontSize="12" TextColor="Blue" HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>

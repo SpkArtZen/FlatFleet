@@ -139,7 +139,7 @@
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Transparent}, Dark={StaticResource Transparent}}" />
         <Setter Property="CornerRadius" Value="8" />
     </Style>
-
+    
     <Style TargetType="ImageButton">
         <Setter Property="Opacity" Value="1" />
         <Setter Property="BorderColor" Value="Transparent"/>

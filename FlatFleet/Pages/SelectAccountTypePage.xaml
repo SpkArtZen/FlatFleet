@@ -5,7 +5,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="FlatFleet.Pages.SelectAccountTypePage" x:Name ="SelectAccountType">
     <VerticalStackLayout>
-        <Frame Padding="0" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,110,0,10">
+        <Frame Padding="0" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" BorderColor ="White" VerticalOptions="Center" Margin="0,110,0,10">
             <Image Source="@string/account_icon.png" Aspect="AspectFill"/>
         </Frame>
         <Label Text="Select account type" FontFamily="SFProText-Bold" FontSize="34" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,5"/>
@@ -14,11 +14,19 @@
         <mtc:Expander IsExpanded="{Binding IsOpened}" Margin="20">
             <mtc:Expander.Header>
                 <Frame BorderColor="Gray">
-                    <Grid>
-                        <Label Text="{Binding SearchIcon}" HorizontalOptions="Start"/>
-                        <Label HorizontalOptions="Start" Text="{Binding SelectedText}"/>
-                        <Label Text="&#9660;" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                    <Grid Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width ="20"></ColumnDefinition>
+                            <ColumnDefinition Width ="*"></ColumnDefinition>
+                            <ColumnDefinition Width ="20"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding SearchIcon}" Grid.Column="0" HorizontalOptions="Start"/>
+                        <Label HorizontalOptions="Start" Grid.Column="1" Text="{Binding SelectedText}"/>
+                        <Image Source="{Binding ArrowIcon}" HorizontalOptions="EndAndExpand" Grid.Column="2" VerticalOptions="Center"/>
                     </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenList}"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
                 </Frame>
             </mtc:Expander.Header>
             <mtc:Expander.Content>

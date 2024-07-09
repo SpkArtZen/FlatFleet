@@ -9,7 +9,18 @@ namespace FlatFleet.ViewModels
 {
     public class SelectAccountTypePageViewModel : BaseViewModel
     {
+        public string _arrowIcon = @"arrow_down.png";
+
+        public string ArrowIcon
+        {
+            get { return _arrowIcon; }
+            set
+            {
+                SetProperty(ref _arrowIcon, value);
+            }
+        }
         public string _searchIcon = "";
+        
         public string SearchIcon
         {
             get { return _searchIcon; }
@@ -19,7 +30,7 @@ namespace FlatFleet.ViewModels
             }
         }
 
-        private string _selectedText = "Select the item";
+        private string _selectedText = "Select category";
         public string SelectedText
         {
             get { return _selectedText; }
@@ -78,6 +89,7 @@ namespace FlatFleet.ViewModels
             SelectedItem = new Command((obj) => SelectedItemAction(obj));
             ContinueWithThisTypeCommand = new Command(ContinueWithDefaultPage);
             GoToPreviousPageCommand = new Command(BackToPrevPage);
+            OpenList = new Command(OpenComboBox);
         }
         public ICommand GoToPreviousPageCommand { get; }
         private async void BackToPrevPage()
@@ -111,13 +123,27 @@ namespace FlatFleet.ViewModels
                     break;
             }
         }
-
+         
+        public ICommand OpenList { get; set; }
+        private async void OpenComboBox()
+        {
+            if(ArrowIcon == "arrow_up.png")
+            {
+                ArrowIcon = "arrow_down.png";
+            }
+            else
+            {
+                ArrowIcon = @"arrow_up.png";
+            }
+            
+        }
         private void SelectedItemAction(object obj)
         {
             IsOpened = false;
-            SearchIcon = "\U0001F50E";
-            IsSelected = "\u2713";
+            SearchIcon = @"search_icon.png";
+            ArrowIcon = @"arrow_down.png";
             SelectedText = obj.ToString();
+            
 
             switch (SelectedText)
             {
