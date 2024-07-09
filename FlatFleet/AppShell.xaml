@@ -89,6 +89,11 @@
         ContentTemplate="{DataTemplate pages:BuildingLocationPage}"
         Route="BuildingLocation"/>
 
+    <ShellContent
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:BuildingDefinitionsPage}"
+        Route="BuildingDefinitions"/>
+
     <ShellContent 
         ContentTemplate="{DataTemplate pages:AccountDashboardPage}"
         Route="AccountDashboard"/>
@@ -96,4 +101,6 @@
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:ConfirmAdressOnMapPage}"
         Route="ConfirmAdressOnMap"/>
+    
+    
 </Shell>
