@@ -95,6 +95,11 @@
         Route="BuildingDefinitions"/>
 
     <ShellContent 
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:StatusCheckPage}"
+        Route="StatusCheck"/>
+
+    <ShellContent 
         ContentTemplate="{DataTemplate pages:AccountDashboardPage}"
         Route="AccountDashboard"/>
     <ShellContent 
