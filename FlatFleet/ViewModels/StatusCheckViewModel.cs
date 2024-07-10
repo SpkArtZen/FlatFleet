@@ -113,7 +113,7 @@ public class StatusCheckViewModel : BaseViewModel
             case Status.DOCUMENT:
             case Status.FIRST_TENANT:
             case Status.VOTE:
-                await Shell.Current.GoToAsync("AccountDashboard");
+                await Shell.Current.GoToAsync("//AccountDashboard");
                 break;
 
         }
