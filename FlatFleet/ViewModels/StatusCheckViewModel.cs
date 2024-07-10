@@ -27,7 +27,7 @@ public class StatusCheckViewModel : BaseViewModel
         }
     }
 
-    private static Dictionary<Status, string> _statusVal = new()
+    private Dictionary<Status, string> _statusVal = new()
     {
         { Status.DOCUMENT, "I have a document" },
         { Status.FIRST_TENANT, "I am the first tenent to install app" },
@@ -35,7 +35,7 @@ public class StatusCheckViewModel : BaseViewModel
         { Status.UNDEFINED, "Select" }
     };
 
-    private string _selectedText = _statusVal.GetValueOrDefault(Status.UNDEFINED);
+    private string _selectedText = "Select";
     public string SelectedText
     {
         get { return _selectedText; }
