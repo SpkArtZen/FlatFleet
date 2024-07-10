@@ -124,6 +124,9 @@ namespace FlatFleet
             builder.Services.AddTransient<BuildingDefinitionsViewModel>();
             builder.Services.AddTransient<BuildingDefinitionsPage>();
 
+            builder.Services.AddTransient<StatusCheckViewModel>();
+            builder.Services.AddTransient<StatusCheckPage>();
+            
             builder.Services.AddLogging();
 
             builder.Services.AddTransient<ConfirmAdressOnMapPageViewModel>();
