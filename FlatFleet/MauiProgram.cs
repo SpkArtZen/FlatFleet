@@ -23,6 +23,7 @@ using Microsoft.Extensions.Configuration;
 using Google.Cloud.Firestore.V1;
 using FlatFleet.Features.Services;
 using Microsoft.Maui.Controls.PlatformConfiguration;
+using ZXing.Net.Maui.Controls;
 
 namespace FlatFleet
 {
@@ -46,7 +47,8 @@ namespace FlatFleet
                     fonts.AddFont("SFProText-Light.ttf", "SFProText-Light");
                     fonts.AddFont("SFProText-LightItalic.ttf", "SFProText-LightItalic");
                     fonts.AddFont("SFProText-Medium.ttf", "SFProText-Medium");
-                });
+                })
+                .UseBarcodeReader();
             builder.AddAppSetting();
 
             string? firebaseApiKey = builder.Configuration.GetValue<string>("FIREBASE_API_KEY");
@@ -115,7 +117,8 @@ namespace FlatFleet
 
             builder.Services.AddTransient<AccountDashboardPageViewModel>();
             builder.Services.AddTransient<AccountDashboardPage>();
-
+            builder.Services.AddTransient<QRScannerPageViewModel>();
+            builder.Services.AddTransient<QRScannerPage>();
             builder.Services.AddTransient<ConfirmAdressOnMapPage>();
             // Реєстрація ViewModel та ILogger
             builder.Services.AddSingleton<ConfirmAdressOnMapPageViewModel>();

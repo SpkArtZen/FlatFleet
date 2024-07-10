@@ -30,7 +30,7 @@
                 </Frame>
             </mtc:Expander.Header>
             <mtc:Expander.Content>
-                <Frame Padding="10" HasShadow="True" BackgroundColor="{StaticResource ComboBoxBackGround}" BorderColor="{StaticResource ComboBoxBackGround}">
+                <Frame Padding="10" HasShadow="True" BackgroundColor="{StaticResource Transparent}" BorderColor="{StaticResource ComboBoxBackGround}">
                 <ContentView>
                     <CollectionView ItemsSource ="{Binding TypesOfAccount}" HeightRequest="130" >
                         <CollectionView.ItemTemplate BorderColor="Gray">

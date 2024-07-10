@@ -33,6 +33,10 @@
         </Frame>
         <Button Text="Submit" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" Margin="15" CornerRadius="15"></Button>
         <Label Text="Is your apartment already in the system?" TextColor="Gray" HorizontalOptions="Center"></Label>
-        <Label Text="Registration via QR code" TextColor="{StaticResource Blue}" HorizontalOptions="Center"></Label>
+        <Label Text="Registration via QR code" TextColor="{StaticResource Blue}" HorizontalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoToQRReaderCommand}"></TapGestureRecognizer>
+            </Label.GestureRecognizers>
+        </Label>
     </VerticalStackLayout>
 </ContentPage>
