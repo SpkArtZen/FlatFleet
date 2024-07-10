@@ -4,31 +4,35 @@
              x:Class="FlatFleet.Pages.TenantOfHousePage"
              Title=""    Shell.FlyoutBehavior="Disabled">
     <VerticalStackLayout>
-        
-        <Button Command="{Binding GoToMapCommand}"/>
-        <!-- Logo Image -->
-        <Image Source="your_logo_here.png" WidthRequest="100" HeightRequest="100" Margin="0,20,0,20" />
 
-        <!-- Title -->
-        <Label Text="Tenant registration" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
-
-        <!-- Subtitle -->
-        <Label Text="Fill in the fields to continue registration" FontSize="14" HorizontalOptions="Center" />
-
-        <!-- Location Input -->
-        <Grid ColumnDefinitions="*, Auto" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,10,0,10">
-            <Entry Placeholder="Your home's location" WidthRequest="200" />
-            <Button Text="🔍" WidthRequest="30" HeightRequest="30" Grid.Column="1" />
-        </Grid>
-
-        <!-- Apartment Number Input -->
-        <Entry Placeholder="Apartment number" WidthRequest="240" />
-
-        <!-- Submit Button -->
-        <Button Text="Submit" WidthRequest="240" BackgroundColor="Blue" TextColor="White" />
-
-        <!-- QR Code Registration Text -->
-        <Label Text="Is your apartment already in the system?" FontSize="12" HorizontalOptions="Center" />
-        <Label Text="Registration via QR code" FontSize="12" TextColor="Blue" HorizontalOptions="Center" />
+        <Frame Padding="0" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" BorderColor ="White" VerticalOptions="Center" Margin="0,110,0,10">
+            <Image Source="@string/account_icon.png" Aspect="AspectFill"/>
+        </Frame>
+        <Label Text="Tenant registration" FontSize="34"  FontFamily="SFProText-Bold" HorizontalOptions="Center"/>
+        <Label Text="Fill in the fields to continue registration" FontSize="16" HorizontalOptions="Center"/>
+        <Frame Grid.ColumnSpan="3" Margin="10" Padding="5">
+            <Grid Grid.ColumnSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="@string/search_icon.png" Grid.Column="0" HorizontalOptions="Start" HeightRequest="33" />
+                <Entry Placeholder="Your home's location" Grid.Column="1" HorizontalOptions="Start"/>
+                <Frame HorizontalOptions="End" HeightRequest="33" Grid.Column="2" Padding="0" BorderColor="Transparent" BackgroundColor="Transparent">
+                    <ImageButton Source="@string/geo_icon.png" Command="{Binding GoToMapCommand}" HorizontalOptions="End" HeightRequest="33" 
+                                 Grid.Column="2"/>
+                </Frame>
+                
+            </Grid>
+        </Frame>
+        <Frame Margin="10" HeightRequest="50" Padding="5">
+            <Entry Placeholder="Apartmment number" HeightRequest="55">
+                
+            </Entry>
+        </Frame>
+        <Button Text="Submit" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" Margin="15" CornerRadius="15"></Button>
+        <Label Text="Is your apartment already in the system?" TextColor="Gray" HorizontalOptions="Center"></Label>
+        <Label Text="Registration via QR code" TextColor="{StaticResource Blue}" HorizontalOptions="Center"></Label>
     </VerticalStackLayout>
 </ContentPage>
