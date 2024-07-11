@@ -1,4 +1,5 @@
 using FlatFleet.ViewModels;
+using Microsoft.Maui.Controls.Shapes;
 
 namespace FlatFleet.Pages;
 
@@ -13,6 +14,7 @@ public partial class StatusCheckPage : ContentPage
 
 	private void OnSelectedStatusChange(object sender, Status status)
 	{
+		PageLayout.Children.Clear();
 		switch (status) 	
 		{ 
 			case Status.DOCUMENT:
@@ -29,12 +31,41 @@ public partial class StatusCheckPage : ContentPage
 	 <Image.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding UploadFilesCommand}"></TapGestureRecognizer>
                 </Image.GestureRecognizers>
+
+	<Line Stroke="LightGray" X1="16" X2="375" Y1="20" Y2="20" HorizontalOptions="Fill" StrokeThickness="1"/>
+            <Label 
+                TextColor="DimGray"
+                Text="Attach documents providing your status"
+                HorizontalOptions="Center"
+                FontSize="15"/>
 	 */
 
     private void LoadFileUploadOnPage()
     {
 		var viewModel = BindingContext as StatusCheckViewModel;
-        var image = new Image()
+
+		var line = new Line()
+		{
+			Stroke = Colors.LightGray,
+			X1 = 16,
+			X2 = 375,
+			Y1 = 20,
+			Y2 = 20,
+			HorizontalOptions = LayoutOptions.Fill,
+			StrokeThickness = 1
+		};
+		PageLayout.Children.Add(line);
+
+		var label = new Label()
+		{
+			TextColor = Colors.DimGray,
+			Text = "Attach documents providing your status",
+			HorizontalOptions = LayoutOptions.Center,
+			FontSize = 15,
+		};
+		PageLayout.Children.Add(label);
+
+		var image = new Image()
 		{
 			Source = "@string/attach_files_icon.png",
 			HeightRequest = 60,

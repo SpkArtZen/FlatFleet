@@ -8,7 +8,7 @@
     <VerticalStackLayout>
         <Image Source="check.png"
                HorizontalOptions="Center"
-               Margin="100, 120, 100, 15"/>
+               Margin="100, 15"/>
 
         <Label
             Text="Status check"
@@ -34,7 +34,7 @@
                 </Frame>
             </mtc:Expander.Header>
             <mtc:Expander.Content>
-                <Frame Padding="10" HasShadow="True" >
+                <Frame Padding="10" HasShadow="True" Margin="15, 0, 15, 0">
                     <ContentView>
                         <CollectionView ItemsSource ="{Binding TypesOfStatus}" HeightRequest="110">
                             <CollectionView.ItemTemplate BorderColor="Gray">

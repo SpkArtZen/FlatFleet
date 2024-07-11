@@ -85,28 +85,6 @@ public class StatusCheckViewModel : BaseViewModel
     {
         IsOpened = false;
         SelectedText = obj.ToString();
-
-        switch (SelectedStatus)
-        {
-            case Status.DOCUMENT:
-                break;
-            /*case "Management company":
-                ContinueWithThisTypeCommand = new Command(ContinueWithCompanyPage);
-                break;
-            case "The tenant of the house":
-                ContinueWithThisTypeCommand = new Command(ContinueWithTenantPage);
-                break;
-            case "Doubt":
-                ContinueWithThisTypeCommand = new Command(ContinueWithDoubt);
-                break;
-            case "House committee":
-                ContinueWithThisTypeCommand = new Command(ContinueWithHouseCommittee);
-                break;
-            default:
-                ContinueWithThisTypeCommand = new Command(ContinueWithDefaultPage);
-                break;*/
-        }
-        OnPropertyChanged(nameof(ContinueWithThisTypeCommand));
         SelectedStatusChanged?.Invoke(this, SelectedStatus);
     }
 
