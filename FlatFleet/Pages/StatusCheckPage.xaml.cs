@@ -24,35 +24,33 @@ public partial class StatusCheckPage : ContentPage
 				LoadFirstTenantOnPage();
 				break;
 			case Status.VOTE:
+				LoadTenantEmailsOnPage();
+				break;
 			case Status.UNDEFINED:
 				break;
 		}
 	}
 
+    private void LoadTenantEmailsOnPage()
+    {
+        LoadLineAndLabel("Specify tenant emails confirming your status");
+
+        var frame = new Frame()
+        {
+            HeightRequest = 48,
+            WidthRequest = 370,
+            Margin = 20,
+        };
+        frame.Content = new Entry() 
+        {
+            Placeholder = "Tenant email #1"
+        };
+        PageLayout.Children.Add(frame);
+    }
+
     private void LoadFirstTenantOnPage()
     {
-		var viewModel = BindingContext as StatusCheckViewModel;
-        
-		var line = new Line()
-        {
-            Stroke = Colors.LightGray,
-            X1 = 16,
-            X2 = 375,
-            Y1 = 20,
-            Y2 = 20,
-            HorizontalOptions = LayoutOptions.Fill,
-            StrokeThickness = 1
-        };
-        PageLayout.Children.Add(line);
-
-        var label = new Label()
-        {
-            TextColor = Colors.DimGray,
-            Text = "The system will check if you are the only tenant of",
-            HorizontalOptions = LayoutOptions.Center,
-            FontSize = 15,
-        };
-        PageLayout.Children.Add(label);
+        LoadLineAndLabel("The system will check if you are the only tenant of");
     }
 
     /*
@@ -70,39 +68,44 @@ public partial class StatusCheckPage : ContentPage
 
     private void LoadFileUploadOnPage()
     {
-		var viewModel = BindingContext as StatusCheckViewModel;
+        var viewModel = BindingContext as StatusCheckViewModel;
 
-		var line = new Line()
-		{
-			Stroke = Colors.LightGray,
-			X1 = 16,
-			X2 = 375,
-			Y1 = 20,
-			Y2 = 20,
-			HorizontalOptions = LayoutOptions.Fill,
-			StrokeThickness = 1
-		};
-		PageLayout.Children.Add(line);
+        LoadLineAndLabel("Attach documents providing your status");
 
-		var label = new Label()
-		{
-			TextColor = Colors.DimGray,
-			Text = "Attach documents providing your status",
-			HorizontalOptions = LayoutOptions.Center,
-			FontSize = 15,
-		};
-		PageLayout.Children.Add(label);
-
-		var image = new Image()
-		{
-			Source = "@string/attach_files_icon.png",
-			HeightRequest = 60,
-			WidthRequest = 60,
-			Margin = 10,
+        var image = new Image()
+        {
+            Source = "@string/attach_files_icon.png",
+            HeightRequest = 60,
+            WidthRequest = 60,
+            Margin = 10,
         };
-		image.GestureRecognizers.Add(new TapGestureRecognizer { Command = viewModel.UploadFilesCommand });
-		PageLayout.Children.Add(image);
-		
-		SubmitButton.Text = "Complete onboarding";
+        image.GestureRecognizers.Add(new TapGestureRecognizer { Command = viewModel.UploadFilesCommand });
+        PageLayout.Children.Add(image);
+
+        SubmitButton.Text = "Complete onboarding";
+    }
+
+    private void LoadLineAndLabel(string labelText)
+    {
+        var line = new Line()
+        {
+            Stroke = Colors.LightGray,
+            X1 = 16,
+            X2 = 375,
+            Y1 = 20,
+            Y2 = 20,
+            HorizontalOptions = LayoutOptions.Fill,
+            StrokeThickness = 1
+        };
+        PageLayout.Children.Add(line);
+
+        var label = new Label()
+        {
+            TextColor = Colors.DimGray,
+            Text = labelText,
+            HorizontalOptions = LayoutOptions.Center,
+            FontSize = 15,
+        };
+        PageLayout.Children.Add(label);
     }
 }
