@@ -89,6 +89,17 @@
         ContentTemplate="{DataTemplate pages:BuildingLocationPage}"
         Route="BuildingLocation"/>
 
+    <ShellContent
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:BuildingDefinitionsPage}"
+        Route="BuildingDefinitions"/>
+
+    <ShellContent 
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:StatusCheckPage}"
+        Route="StatusCheck"/>
+
+    <ShellContent 
     <ShellContent 
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:AccountDashboardPage}"
@@ -97,6 +108,8 @@
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:ConfirmAdressOnMapPage}"
         Route="ConfirmAdressOnMap"/>
+    
+    
     <ShellContent 
     Shell.NavBarIsVisible="True"
     ContentTemplate="{DataTemplate pages:QRScannerPage}"

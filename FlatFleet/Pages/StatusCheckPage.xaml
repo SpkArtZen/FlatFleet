@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mtc="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="FlatFleet.Pages.StatusCheckPage"
+             Title=""
+             x:Name ="StatusCheck">
+    <VerticalStackLayout>
+        <Image Source="check.png"
+               HorizontalOptions="Center"
+               Margin="100, 120, 100, 15"/>
+
+        <Label
+            Text="Status check"
+            FontSize="32"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"/>
+
+        <Label
+            Text="Fill in the field by selecting the condition that suits your case"
+            FontSize="16"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            WidthRequest="380"/>
+
+        <mtc:Expander>
+            <mtc:Expander.Header>
+                <Frame>
+                    <Grid>
+                        <Label Text="{Binding SearchIcon}" HorizontalOptions="Start"/>
+                        <Label HorizontalOptions="Start" Text="{Binding SelectedText}"/>
+                        <Label Text="&#9660;" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+                    </Grid>
+                </Frame>
+            </mtc:Expander.Header>
+            <mtc:Expander.Content>
+                <Frame Padding="10" HasShadow="True" >
+                    <ContentView>
+                        <CollectionView ItemsSource ="{Binding TypesOfStatus}" HeightRequest="110">
+                            <CollectionView.ItemTemplate BorderColor="Gray">
+                                <DataTemplate>
+                                    <Label x:Name ="TypePage" Text="{Binding}" Margin="10,0,10,10">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.SelectedItem, Source={x:Reference StatusCheck}}"
+                                                  CommandParameter="{Binding .}" 
+                            ></TapGestureRecognizer>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ContentView>
+                </Frame>
+            </mtc:Expander.Content>
+        </mtc:Expander>
+
+        <Button
+            BackgroundColor="{StaticResource AddButtonBlue}"
+            Text="Submit"
+            FontAttributes="Bold"
+            Margin="15, 230, 15, 0"
+            Command="{Binding SubmitCommand}"
+            VerticalOptions="EndAndExpand"/>
+    </VerticalStackLayout>
+</ContentPage>
