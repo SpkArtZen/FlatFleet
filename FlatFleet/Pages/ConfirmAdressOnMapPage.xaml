@@ -15,7 +15,7 @@
         <Button Text="Встановити мітку" Command="{Binding PinCommand}" />
         <maps:Map x:Name="Map" MapType="Street"
                   HeightRequest="400" 
-                  WidthRequest="400" IsZoomEnabled="True"
+                  WidthRequest="400" IsZoomEnabled="True" MapClicked="OnMapClicked"
                   />
     </StackLayout>
 </ContentPage>
