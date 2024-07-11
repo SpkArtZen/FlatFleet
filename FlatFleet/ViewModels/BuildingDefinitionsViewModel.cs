@@ -34,12 +34,13 @@ namespace FlatFleet.ViewModels
 
         private async void Submit()
         {
-            if (IsFrameEmpty) 
+            // TODO: Remove comments after adding IsFrameEmpty logic 
+            /* if (IsFrameEmpty) 
             {
                 FrameColor = Colors.Red;
             }
-            else 
-                await Shell.Current.GoToAsync("StatusCheck");
+            else { } */
+            await Shell.Current.GoToAsync("StatusCheck");
         }
 
         private async void GoToFloorDefinition()
