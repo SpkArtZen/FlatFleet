@@ -100,18 +100,17 @@
         Route="StatusCheck"/>
 
     <ShellContent 
-    <ShellContent 
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:AccountDashboardPage}"
         Route="AccountDashboard"/>
+    
     <ShellContent 
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:ConfirmAdressOnMapPage}"
         Route="ConfirmAdressOnMap"/>
     
-    
     <ShellContent 
-    Shell.NavBarIsVisible="True"
-    ContentTemplate="{DataTemplate pages:QRScannerPage}"
-    Route="QRScanner"/>
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:QRScannerPage}"
+        Route="QRScanner"/>
 </Shell>
