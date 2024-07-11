@@ -21,11 +21,39 @@ public partial class StatusCheckPage : ContentPage
 				LoadFileUploadOnPage();
 				break;
 			case Status.FIRST_TENANT:
+				LoadFirstTenantOnPage();
+				break;
 			case Status.VOTE:
 			case Status.UNDEFINED:
 				break;
 		}
 	}
+
+    private void LoadFirstTenantOnPage()
+    {
+		var viewModel = BindingContext as StatusCheckViewModel;
+        
+		var line = new Line()
+        {
+            Stroke = Colors.LightGray,
+            X1 = 16,
+            X2 = 375,
+            Y1 = 20,
+            Y2 = 20,
+            HorizontalOptions = LayoutOptions.Fill,
+            StrokeThickness = 1
+        };
+        PageLayout.Children.Add(line);
+
+        var label = new Label()
+        {
+            TextColor = Colors.DimGray,
+            Text = "The system will check if you are the only tenant of",
+            HorizontalOptions = LayoutOptions.Center,
+            FontSize = 15,
+        };
+        PageLayout.Children.Add(label);
+    }
 
     /*
 	 <Image.GestureRecognizers>
