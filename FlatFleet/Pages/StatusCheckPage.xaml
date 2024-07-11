@@ -23,7 +23,7 @@
             HorizontalTextAlignment="Center"
             WidthRequest="380"/>
 
-        <mtc:Expander Margin="0, 0, 0, 175">
+        <mtc:Expander>
             <mtc:Expander.Header>
                 <Frame>
                     <Grid>
@@ -36,10 +36,10 @@
             <mtc:Expander.Content>
                 <Frame Padding="10" HasShadow="True" >
                     <ContentView>
-                        <CollectionView ItemsSource ="{Binding TypesOfStatus}" HeightRequest="130" >
+                        <CollectionView ItemsSource ="{Binding TypesOfStatus}" HeightRequest="110">
                             <CollectionView.ItemTemplate BorderColor="Gray">
                                 <DataTemplate>
-                                    <Label x:Name ="TypePage" Text="{Binding}" Margin="10,2,10,10">
+                                    <Label x:Name ="TypePage" Text="{Binding}" Margin="10,0,10,10">
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding BindingContext.SelectedItem, Source={x:Reference StatusCheck}}"
                                                   CommandParameter="{Binding .}" 
@@ -58,7 +58,8 @@
             BackgroundColor="{StaticResource AddButtonBlue}"
             Text="Submit"
             FontAttributes="Bold"
-            Margin="15, 20, 15, 0"
-            Command="{Binding SubmitCommand}"/>
+            Margin="15, 230, 15, 0"
+            Command="{Binding SubmitCommand}"
+            VerticalOptions="EndAndExpand"/>
     </VerticalStackLayout>
 </ContentPage>
