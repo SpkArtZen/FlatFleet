@@ -23,7 +23,7 @@
             HorizontalTextAlignment="Center"
             WidthRequest="380"/>
 
-        <mtc:Expander>
+        <mtc:Expander IsExpanded="{Binding IsOpened}">
             <mtc:Expander.Header>
                 <Frame>
                     <Grid>
@@ -54,7 +54,12 @@
             </mtc:Expander.Content>
         </mtc:Expander>
 
+        <VerticalStackLayout x:Name="PageLayout">
+            
+        </VerticalStackLayout>
+
         <Button
+            x:Name="SubmitButton"
             BackgroundColor="{StaticResource AddButtonBlue}"
             Text="Submit"
             FontAttributes="Bold"

@@ -69,21 +69,27 @@ public class StatusCheckViewModel : BaseViewModel
     public ICommand SubmitCommand { get; }
     public ICommand SelectedItem { get; }
     public ICommand ContinueWithThisTypeCommand { get; private set; }
+    public ICommand UploadFilesCommand { get; }
 
     public StatusCheckViewModel()
     {
         TypesOfStatus = _statusVal.Values.ToList();
         SelectedItem = new Command((obj) => SelectedItemAction(obj));
         SubmitCommand = new Command(Submit);
+        UploadFilesCommand = new Command(UploadFiles);
     }
+
+    public event EventHandler <Status>? SelectedStatusChanged;
 
     private void SelectedItemAction(object obj)
     {
         IsOpened = false;
         SelectedText = obj.ToString();
 
-        switch (SelectedText)
+        switch (SelectedStatus)
         {
+            case Status.DOCUMENT:
+                break;
             /*case "Management company":
                 ContinueWithThisTypeCommand = new Command(ContinueWithCompanyPage);
                 break;
@@ -101,6 +107,7 @@ public class StatusCheckViewModel : BaseViewModel
                 break;*/
         }
         OnPropertyChanged(nameof(ContinueWithThisTypeCommand));
+        SelectedStatusChanged?.Invoke(this, SelectedStatus);
     }
 
     private async void Submit()
@@ -119,4 +126,8 @@ public class StatusCheckViewModel : BaseViewModel
         }
     }
 
+    private async void UploadFiles()
+    {
+        await Shell.Current.GoToAsync("UploadFiles");
+    }
 }
