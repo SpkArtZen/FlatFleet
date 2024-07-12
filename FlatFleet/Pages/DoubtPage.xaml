@@ -58,7 +58,7 @@
                 FontFamily="SFproText-SemiBold" 
                 FontAttributes="Bold" 
                 FontSize="16" 
-                Margin="15,225,15,0"
+                Margin="15,200,15,0"
                 Command="{Binding CompleteOnboardingCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

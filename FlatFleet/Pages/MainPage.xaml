@@ -3,49 +3,47 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlatFleet.Pages.MainPage"
              Shell.FlyoutBehavior="Disabled">
-    <ScrollView>
-        <VerticalStackLayout Padding="15,0" Spacing="30">
-            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Frame CornerRadius="20" WidthRequest="600" HeightRequest="600" Rotation="25"
+    <VerticalStackLayout Padding="15,0" Spacing="30">
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Frame CornerRadius="20" WidthRequest="600" HeightRequest="600" Rotation="25"
                        AbsoluteLayout.LayoutBounds="0.1,1,400,100"
                        AbsoluteLayout.LayoutFlags="PositionProportional"
                        Padding="0"
                        IsClippedToBounds="True">
-                    <Image Source="@string/ff_main_cop.png" Aspect="AspectFill"/>
-                </Frame>
-            </AbsoluteLayout>
-            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Frame CornerRadius="360" WidthRequest="103" HeightRequest="103"
+                <Image Source="@string/ff_main_cop.png" Aspect="AspectFill"/>
+            </Frame>
+        </AbsoluteLayout>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Frame CornerRadius="360" WidthRequest="103" HeightRequest="103"
                        AbsoluteLayout.LayoutBounds="0.1,12,40,300"
                        AbsoluteLayout.LayoutFlags="PositionProportional"
                        Padding="0"
                        IsClippedToBounds="True"
                        Background="{StaticResource Blue}">
-                    <Image 
+                <Image 
                         WidthRequest="77.02"
                         HeightRequest="77.02"
                         Source="@string/logo.svg" 
                         Aspect="AspectFit"/>
-                </Frame>
-            </AbsoluteLayout>
-            <Label Text="FlatFleet" FontSize="41"/>
-            <Label Text="Lorem ipsum dolor sit amet consectetur. Mi enim dignissim vitae quam quis fringilla sodales. Sed vel pellentesque nec proin"
+            </Frame>
+        </AbsoluteLayout>
+        <Label Text="FlatFleet" FontSize="41"/>
+        <Label Text="Lorem ipsum dolor sit amet consectetur. Mi enim dignissim vitae quam quis fringilla sodales. Sed vel pellentesque nec proin"
                    Margin="2,-20,20,20"
                    TextColor="Gray"
                    FontSize="18"/>
-            <Button Text="Get Started" TextColor="White" Margin="0,-20,0,20"
+        <Button Text="Get Started" TextColor="White" Margin="0,-20,0,20"
                     HorizontalOptions="Fill">
-                <Button.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ToGetStartedCommand}" />
-                </Button.GestureRecognizers>
-            </Button>
-            <Button Text="Sign In" TextColor="{StaticResource Blue}" Margin="0,-35,0,20"
+            <Button.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ToGetStartedCommand}" />
+            </Button.GestureRecognizers>
+        </Button>
+        <Button Text="Sign In" TextColor="{StaticResource Blue}" Margin="0,-35,0,20"
                     BackgroundColor="White" BorderWidth="1"
                     HorizontalOptions="Fill" BorderColor="{StaticResource Blue}">
-                <Button.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OnSignInCommand}" />
-                </Button.GestureRecognizers>
-            </Button>
-        </VerticalStackLayout>
-    </ScrollView>
+            <Button.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding OnSignInCommand}" />
+            </Button.GestureRecognizers>
+        </Button>
+    </VerticalStackLayout>
 </ContentPage>

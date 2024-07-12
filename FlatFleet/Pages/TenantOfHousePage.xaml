@@ -27,7 +27,7 @@
             </Grid>
         </Frame>
         <Frame Margin="10" HeightRequest="50" Padding="5">
-            <Entry Placeholder="Apartmment number" HeightRequest="55">
+            <Entry Placeholder="Apartment number" HeightRequest="55" Margin="10,0,0,0">
                 
             </Entry>
         </Frame>

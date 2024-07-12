@@ -32,7 +32,7 @@
         </Frame>
         <Label x:Name="FilesUploadingStatus" Text="{Binding FilesStatus}" TextColor="LightGray" FontFamily="SFproText-SemiBold" FontAttributes="Bold" FontSize="22"/>
         <Button Text="Complete onboarding"  
-                FontFamily="SFproText-SemiBold" FontAttributes="Bold" FontSize="16" Margin="15,240,15,0"/>
+                FontFamily="SFproText-SemiBold" FontAttributes="Bold" FontSize="16" Margin="15,200,15,0"/>
 
     </VerticalStackLayout>
 </ContentPage>

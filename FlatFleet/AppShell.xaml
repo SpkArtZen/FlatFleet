@@ -20,6 +20,7 @@
         Route="MainPage"/>
 
     <ShellContent
+        Shell.NavBarIsVisible="False"
         ContentTemplate="{DataTemplate pages:GetStartedPage}"
         Route="GetStarted"/>
 
