@@ -58,11 +58,15 @@
 
 	<ItemGroup>
 	  <None Remove="appsettings.json" />
+	  <None Remove="Resources\Images\add.png" />
 	  <None Remove="Resources\Images\back.png" />
+	  <None Remove="Resources\Images\check.png" />
 	  <None Remove="Resources\Images\ff_main.png" />
 	  <None Remove="Resources\Images\ff_main_copy.png" />
 	  <None Remove="Resources\Images\flafleet_main.png" />
+	  <None Remove="Resources\Images\house.png" />
 	  <None Remove="Resources\Images\Logo_white.png" />
+	  <None Remove="Resources\Images\plus.png" />
 	  <None Remove="Resources\Images\select_building_icon.png" />
 	  <None Remove="Resources\Raw\project_credentials.json" />
 	</ItemGroup>
@@ -119,6 +123,9 @@
 	  <MauiXaml Update="Pages\AccountDashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\BuildingDefinitionsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\BuildingLocationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -147,6 +154,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\RecoverPasswordPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\StatusCheckPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\TenantOfHousePage.xaml">
