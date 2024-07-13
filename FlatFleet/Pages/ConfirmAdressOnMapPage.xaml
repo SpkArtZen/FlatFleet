@@ -3,19 +3,37 @@
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
              x:Class="FlatFleet.Pages.ConfirmAdressOnMapPage">
 
-    <StackLayout Padding="10">
-        <Entry Text="{Binding Address}" Placeholder="Введіть адресу" />
-        <CollectionView ItemsSource="{Binding AddressSuggestions}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding .}" />
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Button Text="Встановити мітку" Command="{Binding PinCommand}" />
-        <maps:Map x:Name="Map" MapType="Street"
-                  HeightRequest="400" 
-                  WidthRequest="400" IsZoomEnabled="True" MapClicked="OnMapClicked"
-                  />
+    <StackLayout Padding="0">
+        <maps:Map x:Name="Map" MapType="Street" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+          HeightRequest="443" 
+          WidthRequest="400" IsZoomEnabled="True" MapClicked="OnMapClicked" IsShowingUser="True"
+          />
+        <Frame HorizontalOptions="FillAndExpand" BorderColor="Transparent" Margin="0,0,0,50"> 
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Select a location" FontSize="31"></Label>
+                <Label Text="Write down the address and select the location on the map" FontSize="16" TextColor="Gray" HorizontalTextAlignment="Start" ></Label>
+                <Frame HeightRequest="60" >
+                    <Grid Grid.ColumnSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="@string/search_icon.png" HorizontalOptions="Start" Grid.Column="0"></Image>
+                        <Entry HeightRequest="50" HorizontalOptions="Start" Text="{Binding Address}" Grid.Column="1" Placeholder="Your home's location"/>
+                        <CollectionView Grid.Column="2" ItemsSource="{Binding AddressSuggestions}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextCell Text="{Binding .}" />
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Grid>
+                </Frame>
+                <Button Text="Встановити мітку" BackgroundColor="{StaticResource Blue}" Command="{Binding PinCommand}" />
+            </VerticalStackLayout>
+        </Frame>
+        
+        
     </StackLayout>
 </ContentPage>
