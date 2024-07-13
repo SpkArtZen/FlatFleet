@@ -55,7 +55,20 @@
         </mtc:Expander>
 
         <VerticalStackLayout x:Name="PageLayout">
-            
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="20">
+                <Label
+                    Text="Add values "
+                    TextColor="{StaticResource AddButtonBlue}"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center">
+                </Label>
+                <Image Source="plus.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddTenantEmailCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
         </VerticalStackLayout>
 
         <Button

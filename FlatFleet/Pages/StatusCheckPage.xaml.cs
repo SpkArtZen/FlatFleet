@@ -1,5 +1,7 @@
 using FlatFleet.ViewModels;
+using Microsoft.Maui;
 using Microsoft.Maui.Controls.Shapes;
+using System.Windows.Input;
 
 namespace FlatFleet.Pages;
 
@@ -10,9 +12,27 @@ public partial class StatusCheckPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 		viewModel.SelectedStatusChanged += OnSelectedStatusChange;
+        viewModel.TenantEmailAdding += TenantEmailAdding;
 	}
 
-	private void OnSelectedStatusChange(object sender, Status status)
+    private void TenantEmailAdding(object? sender, int num)
+    {
+            var frame = new Frame()
+            {
+                HeightRequest = 48,
+                WidthRequest = 370,
+                Margin = 20,
+                Content = new Entry()
+                {
+                    Placeholder = $"Tenant email #{num}",
+                    FontSize = 16,
+                    HeightRequest = 60,
+                }
+            };
+            PageLayout.Children.Add(frame);
+    }
+
+    private void OnSelectedStatusChange(object sender, Status status)
 	{
 		PageLayout.Children.Clear();
 		switch (status) 	
@@ -31,21 +51,53 @@ public partial class StatusCheckPage : ContentPage
 		}
 	}
 
+    /*
+     <Frame
+                HeightRequest="48"
+                WidthRequest="370"
+                Margin="20">
+                <Entry
+                    Placeholder="Tenant email #1"
+                    FontSize="16"
+                    HeightRequest="60"/>
+     */
+
     private void LoadTenantEmailsOnPage()
     {
         LoadLineAndLabel("Specify tenant emails confirming your status");
 
-        var frame = new Frame()
+        var firstFrame = new Frame()
         {
             HeightRequest = 48,
             WidthRequest = 370,
             Margin = 20,
+            Content = new Entry()
+            {
+                Placeholder = "Tenant email #1",
+                FontSize = 16,
+                HeightRequest = 60,
+            }
         };
-        frame.Content = new Entry() 
+        PageLayout.Children.Add(firstFrame);
+        
+        var secondFrame = new Frame()
         {
-            Placeholder = "Tenant email #1"
+            HeightRequest = 48,
+            WidthRequest = 370,
+            Margin = 20,
+            Content = new Entry()
+            {
+                Placeholder = "Tenant email #2",
+                FontSize = 16,
+                HeightRequest = 60,
+            }
         };
-        PageLayout.Children.Add(frame);
+        PageLayout.Children.Add(secondFrame);
+
+        /*var addValuesLabel = new Label()
+        {
+
+        }*/
     }
 
     private void LoadFirstTenantOnPage()

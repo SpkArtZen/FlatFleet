@@ -13,6 +13,7 @@ public enum Status
 
 public class StatusCheckViewModel : BaseViewModel
 {
+    private int _tenantNumber = 3;
     private List<string> _statuses; 
     public List<string> TypesOfStatus
     {
@@ -70,6 +71,7 @@ public class StatusCheckViewModel : BaseViewModel
     public ICommand SelectedItem { get; }
     public ICommand ContinueWithThisTypeCommand { get; private set; }
     public ICommand UploadFilesCommand { get; }
+    public ICommand AddTenantEmailCommand { get; }
 
     public StatusCheckViewModel()
     {
@@ -77,15 +79,23 @@ public class StatusCheckViewModel : BaseViewModel
         SelectedItem = new Command((obj) => SelectedItemAction(obj));
         SubmitCommand = new Command(Submit);
         UploadFilesCommand = new Command(UploadFiles);
+        AddTenantEmailCommand = new Command(AddTenantEmail);
     }
 
     public event EventHandler <Status>? SelectedStatusChanged;
+    public event EventHandler <int>? TenantEmailAdding;
 
     private void SelectedItemAction(object obj)
     {
         IsOpened = false;
         SelectedText = obj.ToString();
         SelectedStatusChanged?.Invoke(this, SelectedStatus);
+    }
+
+    private void AddTenantEmail()
+    {
+        TenantEmailAdding?.Invoke(this, _tenantNumber);
+        _tenantNumber++;
     }
 
     private async void Submit()
