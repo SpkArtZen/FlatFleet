@@ -15,24 +15,42 @@ public partial class StatusCheckPage : ContentPage
         viewModel.TenantEmailAdding += TenantEmailAdding;
 	}
 
+    /*
+     <VerticalStackLayout x:Name="PageLayout">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="20">
+                <Label
+                    Text="Add values "
+                    TextColor="{StaticResource AddButtonBlue}"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center">
+                </Label>
+                <Image Source="plus.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddTenantEmailCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+     */
+
     private void TenantEmailAdding(object? sender, int num)
     {
-            var frame = new Frame()
+        var frame = new Frame()
+        {  
+            HeightRequest = 48, 
+            WidthRequest = 370, 
+            Margin = 10,
+            Content = new Entry()  
             {
-                HeightRequest = 48,
-                WidthRequest = 370,
-                Margin = 20,
-                Content = new Entry()
-                {
-                    Placeholder = $"Tenant email #{num}",
-                    FontSize = 16,
-                    HeightRequest = 60,
-                }
-            };
-            PageLayout.Children.Add(frame);
+                Placeholder = $"Tenant email #{num}", 
+                FontSize = 16,
+                HeightRequest = 60,
+            }
+        }; 
+        PageLayout.Children.Add(frame);
     }
 
-    private void OnSelectedStatusChange(object sender, Status status)
+    private void OnSelectedStatusChange(object? sender, Status status)
 	{
 		PageLayout.Children.Clear();
 		switch (status) 	
@@ -70,7 +88,7 @@ public partial class StatusCheckPage : ContentPage
         {
             HeightRequest = 48,
             WidthRequest = 370,
-            Margin = 20,
+            Margin = 10,
             Content = new Entry()
             {
                 Placeholder = "Tenant email #1",
@@ -84,7 +102,7 @@ public partial class StatusCheckPage : ContentPage
         {
             HeightRequest = 48,
             WidthRequest = 370,
-            Margin = 20,
+            Margin = 10,
             Content = new Entry()
             {
                 Placeholder = "Tenant email #2",
@@ -94,10 +112,34 @@ public partial class StatusCheckPage : ContentPage
         };
         PageLayout.Children.Add(secondFrame);
 
-        /*var addValuesLabel = new Label()
-        {
+        var viewModel = BindingContext as StatusCheckViewModel;
 
-        }*/
+        var stackLayout = new StackLayout()
+        {
+            Orientation = StackOrientation.Horizontal,
+            HorizontalOptions = LayoutOptions.Center,
+            VerticalOptions = LayoutOptions.CenterAndExpand,
+            Margin = 20
+        };
+        stackLayout.Children.Add(new Label
+        {
+            Text = "Add values ",
+            TextColor = Colors.Blue,
+            FontAttributes = FontAttributes.Bold,
+            FontSize = 16,
+            HorizontalOptions = LayoutOptions.Center
+        });
+        var image = new Image()
+        {
+            Source = "plus.png"
+        };
+        image.GestureRecognizers.Add(new TapGestureRecognizer()
+        {
+            Command = viewModel.AddTenantEmailCommand
+        });
+        stackLayout.Children.Add(image);
+
+        AddTenantLayout.Children.Add(stackLayout);
     }
 
     private void LoadFirstTenantOnPage()

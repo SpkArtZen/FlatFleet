@@ -43,7 +43,7 @@
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding BindingContext.SelectedItem, Source={x:Reference StatusCheck}}"
                                                   CommandParameter="{Binding .}" 
-                            ></TapGestureRecognizer>
+                                                                  ></TapGestureRecognizer>
                                         </Label.GestureRecognizers>
                                     </Label>
                                 </DataTemplate>
@@ -53,30 +53,24 @@
                 </Frame>
             </mtc:Expander.Content>
         </mtc:Expander>
+        
+        <ScrollView>
+            <VerticalStackLayout 
+                x:Name="PageLayout"
+                Spacing="10"
+                Padding="10, 0, 10, 10">
 
-        <VerticalStackLayout x:Name="PageLayout">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="20">
-                <Label
-                    Text="Add values "
-                    TextColor="{StaticResource AddButtonBlue}"
-                    FontSize="16"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center">
-                </Label>
-                <Image Source="plus.png">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding AddTenantEmailCommand}"/>
-                    </Image.GestureRecognizers>
-                </Image>
-            </StackLayout>
-        </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <StackLayout x:Name="AddTenantLayout"/>
 
         <Button
             x:Name="SubmitButton"
             BackgroundColor="{StaticResource AddButtonBlue}"
             Text="Submit"
             FontAttributes="Bold"
-            Margin="15, 230, 15, 0"
+            Margin="15, 15, 15, 0"
             Command="{Binding SubmitCommand}"
             VerticalOptions="EndAndExpand"/>
     </VerticalStackLayout>

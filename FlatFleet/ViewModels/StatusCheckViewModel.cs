@@ -28,12 +28,12 @@ public class StatusCheckViewModel : BaseViewModel
         }
     }
 
-    private Dictionary<Status, string> _statusVal = new()
+    private Dictionary<Status, string?> _statusVal = new()
     {
         { Status.DOCUMENT, "I have a document" },
         { Status.FIRST_TENANT, "I am the first tenent to install app" },
         { Status.VOTE, "I was elected by vote" },
-        { Status.UNDEFINED, "Select" }
+        { Status.UNDEFINED, null }
     };
 
     private string _selectedText = "Select";
