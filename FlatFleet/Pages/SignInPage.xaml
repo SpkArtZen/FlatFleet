@@ -81,7 +81,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="@string/email_logo.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Grid.Column="0" Margin="20,0" />
-                <Entry 
+                <Entry x:Name="emailEntry"
                     Placeholder="Email" 
                     Grid.Column="1" 
                     VerticalOptions="Center" 
@@ -98,7 +98,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="@string/password_logo.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" Grid.Column="0" Margin="20,0" />
-                <Entry 
+                <Entry x:Name="passwordEntry"
                     Placeholder="Password" 
                     Grid.Column="1" 
                     VerticalOptions="Center" 
