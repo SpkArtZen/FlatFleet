@@ -1,9 +1,86 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mtc="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="FlatFleet.Pages.FloorDefinitionPage"
-             Title="FloorDefinitionPage">
+             x:Name="FloorDefinition"
+             Title="">
     <VerticalStackLayout>
-        
+        <Label 
+            Text="Building definitions"
+            FontSize="32"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"/>
+
+        <Label
+            Text="Please provide information about the apartments and residents on each floor"
+            FontSize="16"
+            TextColor="DimGray"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            WidthRequest="373"/>
+
+        <mtc:Expander IsExpanded="{Binding IsOpened}" Margin="20">
+            <mtc:Expander.Header>
+                <Frame BorderColor="Gray">
+                    <Grid Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width ="20"></ColumnDefinition>
+                            <ColumnDefinition Width ="*"></ColumnDefinition>
+                            <ColumnDefinition Width ="20"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label HorizontalOptions="Start" Grid.Column="1" Text="{Binding SelectedText}"/>
+                        <Image Source="arrow_down.png" HorizontalOptions="EndAndExpand" Grid.Column="2" VerticalOptions="Center"/>
+                    </Grid>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenList}"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </mtc:Expander.Header>
+            <mtc:Expander.Content>
+                <Frame Padding="10" HasShadow="True" BackgroundColor="{StaticResource Transparent}" BorderColor="{StaticResource ComboBoxBackGround}">
+                    <ContentView>
+                        <CollectionView ItemsSource ="{Binding Floors}" HeightRequest="130" >
+                            <CollectionView.ItemTemplate BorderColor="Gray">
+                                <DataTemplate>
+                                    <Label x:Name ="TypePage" Text="{Binding}" Margin="10,2,10,10">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.SelectedItem, Source={x:Reference FloorDefinition}}"
+                                                  CommandParameter="{Binding .}" 
+                            ></TapGestureRecognizer>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </ContentView>
+                </Frame>
+            </mtc:Expander.Content>
+        </mtc:Expander>
+
+        <ScrollView>
+            <HorizontalStackLayout 
+                x:Name="HorizontalLayout"
+                Spacing="10"
+                Padding="10, 0, 10, 10">
+                <Frame/>
+                <Frame></Frame>
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <StackLayout x:Name="AddTenantLayout" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="15">
+            <Label
+                Text="Add values "
+                TextColor="{StaticResource AddButtonBlue}"
+                FontSize="16"
+                FontAttributes="Bold"
+                HorizontalOptions="Center">
+            </Label>
+            <Image Source="plus.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding AddApartment}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
     </VerticalStackLayout>
 </ContentPage>
