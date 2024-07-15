@@ -141,6 +141,9 @@ Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (hand
             builder.Services.AddTransient<BuildingDefinitionsViewModel>();
             builder.Services.AddTransient<BuildingDefinitionsPage>();
 
+            builder.Services.AddTransient<FloorDefinitionViewModel>();
+            builder.Services.AddTransient<FloorDefinitionPage>();
+
             builder.Services.AddTransient<StatusCheckViewModel>();
             builder.Services.AddTransient<StatusCheckPage>();
             
