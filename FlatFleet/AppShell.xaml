@@ -114,4 +114,9 @@
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:QRScannerPage}"
         Route="QRScanner"/>
+
+    <ShellContent
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:FloorDefinitionPage}"
+        Route="FloorDefinition"/>
 </Shell>
