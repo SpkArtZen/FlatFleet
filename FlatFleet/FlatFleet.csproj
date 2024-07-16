@@ -61,6 +61,7 @@
 	  <None Remove="Resources\Images\add.png" />
 	  <None Remove="Resources\Images\back.png" />
 	  <None Remove="Resources\Images\check.png" />
+	  <None Remove="Resources\Images\close_icon_outline.png" />
 	  <None Remove="Resources\Images\ff_main.png" />
 	  <None Remove="Resources\Images\ff_main_copy.png" />
 	  <None Remove="Resources\Images\flafleet_main.png" />
