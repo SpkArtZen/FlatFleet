@@ -63,8 +63,21 @@
                 x:Name="HorizontalLayout"
                 Spacing="10"
                 Padding="10, 0, 10, 10">
-                <Frame/>
-                <Frame></Frame>
+                <Frame
+                    WidthRequest="152"
+                    HeightRequest="48"
+                    Margin="10"/>
+                
+                <Frame
+                    WidthRequest="152"
+                    HeightRequest="48"/>
+
+                <Image
+                    Source="close_icon_outline.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RemoveApartment}"/>
+                    </Image.GestureRecognizers>
+                </Image>
             </HorizontalStackLayout>
         </ScrollView>
 
