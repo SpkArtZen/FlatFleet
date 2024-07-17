@@ -3,40 +3,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FlatFleet.Pages.TenantOfHousePage"
              Title=""    Shell.FlyoutBehavior="Disabled">
+    <ScrollView>
     <VerticalStackLayout>
-
-        <Frame Padding="0" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" BorderColor ="White" VerticalOptions="Center" Margin="0,110,0,10">
+        
+            <Frame Padding="0" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" BorderColor ="White" VerticalOptions="Center" Margin="0,110,0,10">
             <Image Source="@string/account_icon.png" Aspect="AspectFill"/>
-        </Frame>
-        <Label Text="Tenant registration" FontSize="34"  FontFamily="SFProText-Bold" HorizontalOptions="Center"/>
-        <Label Text="Fill in the fields to continue registration" FontSize="16" HorizontalOptions="Center"/>
-        <Frame Grid.ColumnSpan="3" Margin="10" Padding="5">
-            <Grid Grid.ColumnSpan="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="30"/>
-                </Grid.ColumnDefinitions>
-                <Image Source="@string/search_icon.png" Grid.Column="0" HorizontalOptions="Start" HeightRequest="33" />
-                <Entry Placeholder="Your home's location" Grid.Column="1" HorizontalOptions="Start"/>
-                <Frame HorizontalOptions="End" HeightRequest="33" Grid.Column="2" Padding="0" BorderColor="Transparent" BackgroundColor="Transparent">
-                    <ImageButton Source="@string/geo_icon.png" Command="{Binding GoToMapCommand}" HorizontalOptions="End" HeightRequest="33" 
-                                 Grid.Column="2"/>
-                </Frame>
-                
-            </Grid>
-        </Frame>
-        <Frame Margin="10" HeightRequest="50" Padding="5">
-            <Entry Placeholder="Apartmment number" HeightRequest="55">
-                
-            </Entry>
-        </Frame>
-        <Button Text="Submit" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" Margin="15" CornerRadius="15"></Button>
-        <Label Text="Is your apartment already in the system?" TextColor="Gray" HorizontalOptions="Center"></Label>
-        <Label Text="Registration via QR code" TextColor="{StaticResource Blue}" HorizontalOptions="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding GoToQRReaderCommand}"></TapGestureRecognizer>
-            </Label.GestureRecognizers>
-        </Label>
+            </Frame>
+            <Label Text="Tenant registration" FontSize="34"  FontFamily="SFProText-Bold" HorizontalOptions="Center"/>
+            <Label Text="Fill in the fields to continue registration" FontSize="16" HorizontalOptions="Center"/>
+            <Frame Grid.ColumnSpan="3" Margin="10" Padding="5">
+                <Grid Grid.ColumnSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="@string/search_icon.png" Grid.Column="0" HorizontalOptions="Start" HeightRequest="33" />
+                    <Entry x:Name="AddressEntry" Text="{Binding AddressInput}" Placeholder="Your home's location" Grid.Column="1" HorizontalOptions="Start"/>
+                    <Frame HorizontalOptions="End" HeightRequest="33" Grid.Column="2" Padding="0" BorderColor="Transparent" BackgroundColor="Transparent">
+                        <ImageButton Source="@string/geo_icon.png" Command="{Binding GoToMapCommand}" HorizontalOptions="End" HeightRequest="33" Grid.Column="2"/>
+                    </Frame>
+                </Grid>
+            </Frame>
+            <Frame BorderColor="Black">
+                <CollectionView x:Name="SuggestionsCollectionView"
+                        WidthRequest="400"
+                        HeightRequest="200"
+                        ItemsSource="{Binding Suggestions}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+            <Frame Margin="10" HeightRequest="50" Padding="5">
+                <Entry Placeholder="Apartment number" HeightRequest="55" Margin="10,0,0,0"/>
+            </Frame>
+            <Button Text="Submit" BackgroundColor="{StaticResource AddButtonBlue}" TextColor="White" Margin="15" CornerRadius="15"></Button>
+            <Label Text="Is your apartment already in the system?" TextColor="Gray" HorizontalOptions="Center"></Label>
+            <Label Text="Registration via QR code" TextColor="{StaticResource Blue}" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToQRReaderCommand}"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

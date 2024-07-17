@@ -28,6 +28,9 @@ namespace FlatFleet
             Routing.RegisterRoute("BuildingLocation", typeof(BuildingLocationPage));
 
             Routing.RegisterRoute("UploadFiles", typeof(UploadFilesPage));
+            Routing.RegisterRoute("StatusCheck", typeof(StatusCheckPage));
+
+            Routing.RegisterRoute("FloorDefinition", typeof(FloorDefinitionPage));
         }
     }
 }

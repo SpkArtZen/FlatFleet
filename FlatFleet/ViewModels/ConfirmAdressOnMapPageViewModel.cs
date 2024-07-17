@@ -105,11 +105,10 @@ namespace FlatFleet.ViewModels
             if (placemark != null)
             {
                 var addressParts = new[]
-                {   placemark.CountryName,
-                    placemark.AdminArea,
+                {  
                     placemark.Locality,
                     placemark.Thoroughfare,
-                    placemark.SubThoroughfare
+                    placemark.SubThoroughfare                   
                 };
                 var address = string.Join(", ", addressParts.Where(part => !string.IsNullOrWhiteSpace(part)));
                 Address = address;
@@ -120,6 +119,7 @@ namespace FlatFleet.ViewModels
                     Address = address,
                     Type = PinType.Place,
                     Location = location
+                    
                 };
 
                 Map.Pins.Clear(); // Clear existing pins

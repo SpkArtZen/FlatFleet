@@ -31,6 +31,19 @@ namespace FlatFleet
     {
         public static MauiApp CreateMauiApp()
         {
+#if ANDROID
+Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) => 
+{
+    Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
+    {
+        if (handler.PlatformView is AndroidX.AppCompat.Widget.AppCompatEditText editText)
+        {
+            // Зміна underline на прозорий
+            editText.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
+        }
+    });
+});
+#endif
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -49,6 +62,7 @@ namespace FlatFleet
                     fonts.AddFont("SFProText-Medium.ttf", "SFProText-Medium");
                 })
                 .UseBarcodeReader();
+                
             builder.AddAppSetting();
 
             string? firebaseApiKey = builder.Configuration.GetValue<string>("FIREBASE_API_KEY");
@@ -123,25 +137,23 @@ namespace FlatFleet
             // Реєстрація ViewModel та ILogger
             builder.Services.AddSingleton<ConfirmAdressOnMapPageViewModel>();
             builder.Services.AddSingleton<ConfirmAdressOnMapPage>();
+
+            builder.Services.AddTransient<BuildingDefinitionsViewModel>();
+            builder.Services.AddTransient<BuildingDefinitionsPage>();
+
+            builder.Services.AddTransient<FloorDefinitionViewModel>();
+            builder.Services.AddTransient<FloorDefinitionPage>();
+
+            builder.Services.AddTransient<StatusCheckViewModel>();
+            builder.Services.AddTransient<StatusCheckPage>();
+            
             builder.Services.AddLogging();
 
             builder.Services.AddTransient<ConfirmAdressOnMapPageViewModel>();
 #if DEBUG
             object value = builder.Logging.AddDebug();
 #endif
-#if ANDROID
-Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) => 
-{
-    Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
-    {
-        if (handler.PlatformView is AndroidX.AppCompat.Widget.AppCompatEditText editText)
-        {
-            // Зміна underline на прозорий
-            editText.BackgroundTintList = ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-        }
-    });
-});
-#endif
+
 
 
             return builder.Build();

@@ -20,6 +20,7 @@
         Route="MainPage"/>
 
     <ShellContent
+        Shell.NavBarIsVisible="False"
         ContentTemplate="{DataTemplate pages:GetStartedPage}"
         Route="GetStarted"/>
 
@@ -89,16 +90,33 @@
         ContentTemplate="{DataTemplate pages:BuildingLocationPage}"
         Route="BuildingLocation"/>
 
+    <ShellContent
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:BuildingDefinitionsPage}"
+        Route="BuildingDefinitions"/>
+
+    <ShellContent 
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:StatusCheckPage}"
+        Route="StatusCheck"/>
+
     <ShellContent 
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:AccountDashboardPage}"
         Route="AccountDashboard"/>
+    
     <ShellContent 
         Shell.NavBarIsVisible="True"
         ContentTemplate="{DataTemplate pages:ConfirmAdressOnMapPage}"
         Route="ConfirmAdressOnMap"/>
+    
     <ShellContent 
-    Shell.NavBarIsVisible="True"
-    ContentTemplate="{DataTemplate pages:QRScannerPage}"
-    Route="QRScanner"/>
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:QRScannerPage}"
+        Route="QRScanner"/>
+
+    <ShellContent
+        Shell.NavBarIsVisible="True"
+        ContentTemplate="{DataTemplate pages:FloorDefinitionPage}"
+        Route="FloorDefinition"/>
 </Shell>

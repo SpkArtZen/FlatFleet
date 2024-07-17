@@ -5,20 +5,21 @@
              Shell.NavBarIsVisible="False">
     <VerticalStackLayout>
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Frame CornerRadius="25" WidthRequest="400" HeightRequest="500" 
-               AbsoluteLayout.LayoutBounds="0.2,0.3,400,-550"
-               AbsoluteLayout.LayoutFlags="PositionProportional"
-               Padding="0"
-               IsClippedToBounds="True">
+            <Frame CornerRadius="25" WidthRequest="400" HeightRequest="500"
+   AbsoluteLayout.LayoutBounds="0.2,0.3,400,-550"
+   AbsoluteLayout.LayoutFlags="PositionProportional"
+   Padding="0"
+   IsClippedToBounds="True">
                 <Image Source="@string/sign.jpg" Aspect="AspectFill"
-         ZIndex="-2"/>
+         ZIndex="0"/>
             </Frame>
         </AbsoluteLayout>
         <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Frame CornerRadius="360" WidthRequest="110" HeightRequest="110" BackgroundColor="White"
+            <Frame CornerRadius="360" WidthRequest="80" HeightRequest="80" BackgroundColor="White"
            AbsoluteLayout.LayoutBounds="0.5,0.1,100,280"
            AbsoluteLayout.LayoutFlags="PositionProportional"
-           Padding="5"
+           Padding="2"
+           
            BorderColor="White"
            IsClippedToBounds="True">
                 <Image Source="@string/icon_build.jpg" Aspect="AspectFill"/>
@@ -143,7 +144,7 @@
         <Button 
             Text="Continue" 
           
-            HorizontalOptions="FillAndExpand" Margin ="20" 
+            HorizontalOptions="FillAndExpand" Margin ="20,-20,20,20" 
             VerticalOptions="Center" 
             Command="{Binding SignUpCommand}"/>
         <Grid HorizontalOptions="Center" ColumnSpacing="5">

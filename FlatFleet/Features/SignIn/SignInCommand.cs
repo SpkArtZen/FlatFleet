@@ -39,7 +39,7 @@ namespace FlatFleet.Features.SignIn
                 if (userCredential != null)
                 {
                     _userStore.CurrentUser = userCredential.User;
-                    await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed in!", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Success", "Successfully signed in!", "OK");
 
                     var welcomePopup = new WelcomePopUp();
 
@@ -56,13 +56,13 @@ namespace FlatFleet.Features.SignIn
             {
                 await loadingPopup.CloseAsync();
 
-                await Application.Current.MainPage.DisplayAlert("Error", "Incorrect password or email! Try again!", "Ok");
+                await Application.Current.MainPage.DisplayAlert("Error", "Incorrect password or email! Try again!", "OK");
             }
             catch (Exception)
             {
                 await loadingPopup.CloseAsync();
 
-                await Application.Current.MainPage.DisplayAlert("Error", "Failed to sign in. Please try again later.", "Ok");
+                await Application.Current.MainPage.DisplayAlert("Error", "Failed to sign in. Please try again later.", "OK");
             }
         }
     }
