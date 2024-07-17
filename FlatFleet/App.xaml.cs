@@ -12,7 +12,7 @@ public partial class App : Application
    
     protected override async void OnStart()
     {
-        await Shell.Current.GoToAsync("//MainPage");
+        await Shell.Current.GoToAsync("//FloorDefinition");
         base.OnStart();
     }
 }

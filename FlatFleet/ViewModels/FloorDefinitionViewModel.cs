@@ -49,6 +49,10 @@ namespace FlatFleet.Pages
         }
 
         public ICommand SelectedItem { get; }
+        public ICommand AddApartmentCommand { get; }
+        public ICommand RemoveApartmentCommand { get; }
+        
+        public event EventHandler OnAddApartment;
 
         public FloorDefinitionViewModel()
         {
@@ -61,13 +65,23 @@ namespace FlatFleet.Pages
             };
 
             SelectedItem = new Command((obj) => SelectedItemAction(obj));
+            AddApartmentCommand = new Command(AddApartment);
+            RemoveApartmentCommand = new Command(RemoveApartment);
         }
 
         private void SelectedItemAction(object obj)
         {
             IsOpened = false;
             SelectedText = obj.ToString();
+        }
 
+        private void AddApartment()
+        {
+            OnAddApartment?.Invoke(this, null);
+        }
+
+        private void RemoveApartment()
+        {
 
         }
     }

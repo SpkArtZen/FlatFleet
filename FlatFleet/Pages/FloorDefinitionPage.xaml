@@ -58,29 +58,31 @@
             </mtc:Expander.Content>
         </mtc:Expander>
 
-        <ScrollView>
-            <HorizontalStackLayout 
-                x:Name="HorizontalLayout"
-                Spacing="10"
-                Padding="10, 0, 10, 10">
-                <Frame
-                    WidthRequest="152"
-                    HeightRequest="48"
-                    Margin="10"/>
-                
-                <Frame
-                    WidthRequest="152"
-                    HeightRequest="48"/>
+        <VerticalStackLayout x:Name="VerticalLayout">
+            <ScrollView>
+                <HorizontalStackLayout 
+                    x:Name="HorizontalLayout"
+                    Spacing="10"
+                    Padding="10, 0, 10, 10">
+                    <Frame
+                        WidthRequest="152"
+                        HeightRequest="48"
+                        Margin="10"/>
 
-                <Image
-                    Source="close_icon_outline.png">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding RemoveApartment}"/>
-                    </Image.GestureRecognizers>
-                </Image>
-            </HorizontalStackLayout>
-        </ScrollView>
+                    <Frame
+                        WidthRequest="152"
+                        HeightRequest="48"/>
 
+                    <Image
+                        Source="close_icon_outline.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RemoveApartment}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </HorizontalStackLayout>
+            </ScrollView>
+        </VerticalStackLayout>
+        
         <StackLayout x:Name="AddTenantLayout" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="15">
             <Label
                 Text="Add values "
@@ -91,9 +93,24 @@
             </Label>
             <Image Source="plus.png">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding AddApartment}"/>
+                    <TapGestureRecognizer Command="{Binding AddApartmentCommand}"/>
                 </Image.GestureRecognizers>
             </Image>
         </StackLayout>
+
+        <Button
+            BackgroundColor="{StaticResource AddButtonBlue}"
+            Margin="15, 275, 15, 0"
+            Text="Submit"
+            Command="{Binding SubmitCommand}"/>
+
+        <Label
+            Text="Remember, the order of the added apartments will be preserved in the final plan of the house"
+            FontSize="14"
+            TextColor="Gray"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            WidthRequest="380"
+            Padding="15"/>
     </VerticalStackLayout>
 </ContentPage>
